@@ -3,17 +3,17 @@ import java.util.Scanner;
 
 public class Jogo_Forca {		
 	public static void menu() {
-    	System.out.println("\nJOGO DA FORCA\nDigite uma opcão:");
+    	System.out.println("\nJOGO DA FORCA\nDigite uma opcao:");
     	System.out.println(" 1. Gerenciar Temas\n 2. Gerenciar Palavras\n 3. Jogar\n 4. Sair");
 	}
 	
 	public static void menu_case1() {
-    	System.out.println("\nGERENCIAR TEMAS\nDigite uma opcão:");
+    	System.out.println("\nGERENCIAR TEMAS\nDigite uma opcao:");
     	System.out.println(" 1. Cadastrar\n 2. Excluir\n 3. Buscar\n 4. Voltar para o Menu");
 	}
 	
 	public static void menu_case2() {
-    	System.out.println("\nGERENCIAR PALAVRAS\nDigite uma opcão:");
+    	System.out.println("\nGERENCIAR PALAVRAS\nDigite uma opcao:");
     	System.out.println(" 1. Cadastrar\n 2. Excluir\n 3. Buscar\n 4. Listagem\n 5. Voltar para o Menu");
 	}
 	
@@ -171,12 +171,12 @@ public class Jogo_Forca {
 		
 		while(tema.equals("fim") == false) {
 			if(j > 0 && (tema_repetido(temas_palavras,tema) == true)) {
-				System.out.println("\nNão foi possível cadastrar o tema. "
+				System.out.println("\nNao foi possível cadastrar o tema. "
 						+ "Verifique se existem temas com esse mesmo nome\nDigite novamente:");
 			}else if(verificar_palavra(tema) == false) {
 				System.out.println("Houve um erro ao cadastrar o tema digitado, por favor insira novamente: ");
 			}else if(cadastrar_tema(temas_palavras,tema) == false){
-				System.out.println("\nNão foi possível cadastrar um tema, pois não há mais espaco."
+				System.out.println("\nNao foi possível cadastrar um tema, pois nao há mais espaco."
 						+ " Tente excluir outro tema antes.");
 			}
 			
@@ -238,7 +238,7 @@ public class Jogo_Forca {
 		}
 		
 		if(retorno == 0) {
-			System.out.println("\nNão foi possível achar esse tema");
+			System.out.println("\nNao foi possível achar esse tema");
 		}
 		
 		return j;
@@ -257,7 +257,7 @@ public class Jogo_Forca {
 					j++;
 				}
 			}else {
-				System.out.println("\nNão foi possível excluir o tema. "
+				System.out.println("\nNao foi possível excluir o tema. "
 						+ "Verifique se existem palavras cadastradas nesse tema.\n");
 			}
 		}
@@ -287,12 +287,12 @@ public class Jogo_Forca {
 			
 			while(palavra.equals("fim") == false) {
 				if(j > 0 && palavra_repetida(temas_palavras,palavra,numero_tema) == true) {
-					System.out.println("\nNão foi possível cadastrar a palavra. "
+					System.out.println("\nNao foi possível cadastrar a palavra. "
 							+ "Verifique se existem palavras com esse mesmo nome\nDigite novamente:");
 				}else if(verificar_palavra(palavra) == false) {
 					System.out.println("Houve um erro ao cadastrar a palavra digitada, por favor insira novamente: ");
 				}else if(cadastrar_palavra(temas_palavras,palavra,numero_tema) == false){
-					System.out.println("\nNão foi possível cadastrar a palavra, pois não há mais espaco."
+					System.out.println("\nNao foi possível cadastrar a palavra, pois nao há mais espaco."
 							+ " Tente excluir outra palavra antes.");
 				}
 				
@@ -346,7 +346,7 @@ public class Jogo_Forca {
 		}
 		
 		if(retorno == 0) {
-			System.out.println("\nNão foi possível achar essa palavra");
+			System.out.println("\nNao foi possível achar essa palavra");
 		}
 	}
 	
@@ -370,7 +370,7 @@ public class Jogo_Forca {
 		}
 	     		
 		if(retorno == 0) {
-			System.out.println("\nPalavra não encontrada");
+			System.out.println("\nPalavra nao encontrada");
 		}
 	}
 
@@ -387,7 +387,7 @@ public class Jogo_Forca {
 		}
 		
 		if(retorno == 0) {
-			System.out.println("\nNão foi possível palavras nesse tema");
+			System.out.println("\nNao foi possível palavras nesse tema");
 		}
 	}
 
@@ -468,7 +468,7 @@ public class Jogo_Forca {
 						int quantidade_de_letras = letra_existe(palavra_sendo_jogada,letra);				
 						if (quantidade_de_letras == 0) {
 							erros++;
-							System.out.print("A palavra não possui essa letra, no momento você possui " + erros + " erros");
+							System.out.print("A palavra nao possui essa letra, no momento você possui " + erros + " erros");
 							
 							if(erros == 5) {
 								System.out.print("\n\nFim de jogo, a palavra era: " + palavra_sendo_jogada + 
