@@ -5,7 +5,7 @@ inicial com as opções: “1. Gerenciar Temas”, “2. Gerenciar Palavras”, 
 detalhamento de cada uma das opções é apresentada a seguir:
 
 1. Gerenciar Temas: o programa deverá ser capaz de armazenar até 50 diferentes temas.
-  (a) Cadastro: o usuário poderá cadastrar temas no programa. Não poderão existir temas com
+  \n(a) Cadastro: o usuário poderá cadastrar temas no programa. Não poderão existir temas com
   nomes iguais.
   (b) Exclusão: o usuário poderá excluir temas desde que não existam palavras associadas a ele.
   Caso não seja possível realizar exclusão, o programa deverá exibir e mensagem “Não foi
