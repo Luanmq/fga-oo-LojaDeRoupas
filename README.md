@@ -1,7 +1,5 @@
 # Jogo da Forca
 
-Especificação do Trabalho Prático 1 (TP1)
-
 Escreva um programa em Java que implemente o jogo da forca. O seu jogo deve exibir um menu
 inicial com as opções: “1. Gerenciar Temas”, “2. Gerenciar Palavras”, “3. Jogar” e “4. Sair”. O
 detalhamento de cada uma das opções é apresentada a seguir:
