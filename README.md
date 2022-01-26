@@ -1,4 +1,4 @@
-# Trabalhos_O.O
+# Jogo da Forca
 
 Especificação do Trabalho Prático 1 (TP1)
 
