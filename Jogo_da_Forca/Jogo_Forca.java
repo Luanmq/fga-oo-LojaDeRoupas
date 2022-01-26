@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Jogo_Forca {		
@@ -16,6 +17,139 @@ public class Jogo_Forca {
     	System.out.println(" 1. Cadastrar\n 2. Excluir\n 3. Buscar\n 4. Listagem\n 5. Voltar para o Menu");
 	}
 	
+	public static void cadastros(String [][] temas_palavras) {
+		temas_palavras[0][0] = "animal";
+		temas_palavras[0][1] = "rato";
+		temas_palavras[0][2] = "gata";
+		temas_palavras[0][3] = "cachorro";
+		temas_palavras[0][4] = "papagaio";
+		temas_palavras[0][5] = "urso";
+		temas_palavras[0][6] = "esquilo";
+		temas_palavras[0][7] = "leao";
+		temas_palavras[0][8] = "tigre";
+		temas_palavras[0][9] = "logo";
+		temas_palavras[0][10] = "onça";
+	
+	temas_palavras[1][0] = "pessoa";
+		temas_palavras[1][1] = "luan";
+		temas_palavras[1][2] = "lais";
+		temas_palavras[1][3] = "lara";
+		temas_palavras[1][4] = "carlos";
+		temas_palavras[1][5] = "joao";
+		temas_palavras[1][6] = "maria";
+		temas_palavras[1][7] = "paulo";
+		temas_palavras[1][8] = "tiago";
+		temas_palavras[1][9] = "julia";
+		temas_palavras[1][10] = "pedro";
+	
+	temas_palavras[2][0] = "lugar";
+		temas_palavras[2][1] = "praia";
+		temas_palavras[2][2] = "biblioteca";
+		temas_palavras[2][3] = "casa";
+		temas_palavras[2][4] = "praça";
+		temas_palavras[2][5] = "quarto";
+		temas_palavras[2][6] = "padaria";
+		temas_palavras[2][7] = "comercio";
+		temas_palavras[2][8] = "piscina";
+		temas_palavras[2][9] = "festa";
+		temas_palavras[2][10] = "casarao";
+		
+	temas_palavras[3][0] = "comida";
+		temas_palavras[3][1] = "pao";
+		temas_palavras[3][2] = "biscoito";
+		temas_palavras[3][3] = "bolacha";
+		temas_palavras[3][4] = "leite";
+		temas_palavras[3][5] = "manteiga";
+		temas_palavras[3][6] = "carne";
+		temas_palavras[3][7] = "frango";
+		temas_palavras[3][8] = "linguiça";
+		temas_palavras[3][9] = "doce";
+		temas_palavras[3][10] = "açucar";
+	
+	temas_palavras[4][0] = "objeto";
+		temas_palavras[4][1] = "mesa";
+		temas_palavras[4][2] = "cadeira";
+		temas_palavras[4][3] = "mouse";
+		temas_palavras[4][4] = "teclado";
+		temas_palavras[4][5] = "tela";
+		temas_palavras[4][6] = "lampada";
+		temas_palavras[4][7] = "celular";
+		temas_palavras[4][8] = "boneca";
+		temas_palavras[4][9] = "lapis";
+		temas_palavras[4][10] = "bolsa";
+	}
+
+	public static boolean verificar_palavra (String tema) {
+		boolean valido = false;
+		String termo_para_validar;
+		termo_para_validar = tema;
+		
+		termo_para_validar = termo_para_validar.toLowerCase();
+		if(termo_para_validar.matches("[a-z]*")){
+			valido = true;
+		}
+		
+		return valido;
+	}
+	
+	public static boolean verificar_numero (String opcao, int numero_switch) {
+		boolean valido = true;
+		String termo_para_validar;
+		termo_para_validar = opcao;
+		
+		if(!termo_para_validar.matches("[1-" + numero_switch + "]*")){
+			valido = false;
+		}
+		
+		if(termo_para_validar.length() != 1) {
+			valido = false;
+		}
+		
+		return valido;
+	}
+	
+	public static void switch_tema(String [][] temas_palavras, String opcao_case1) {
+		switch(opcao_case1) {
+			case "1": //Cadastrar
+				cadastrar_tema(temas_palavras);
+				break;
+				
+			case "2": //Excluir
+				excluir_tema(temas_palavras);
+				break; 
+				
+			case "3": //Buscar
+				buscar_tema(temas_palavras);
+				break; 
+				
+			case "4": //Voltar
+				break;
+		}
+	}
+
+	public static void switch_palavra(String [][] temas_palavras, String opcao_case2) {
+		switch(opcao_case2) {
+    	case "1": //Cadastrar
+    		cadastrar_palavra(temas_palavras);
+    		break;
+    		
+    	case "2": //Excluir
+    		excluir_palavra(temas_palavras);
+    		break; 
+    		
+    	case "3": //Buscar
+    		buscar_palavra(temas_palavras);
+    		break; 
+    		
+    	case "4": //Listagem
+    		listar_palavra(temas_palavras);
+    		break;
+			
+    	case "5": //Voltar
+    		break;
+		}
+	}
+
 	//Vê se tem tema repetido
 	public static boolean tema_repetido(String[][] temas_palavras, String tema) {	
 		for (int j = 0; j < temas_palavras.length; j++) {
@@ -31,22 +165,28 @@ public class Jogo_Forca {
 		System.out.println("\nDigite o tema para ser cadastrado:\nPara finalizar digite fim.");
 		Scanner ler = new Scanner(System.in);
 		String tema = ler.next();
+		ler.nextLine();
 		int i = 0;
 
 		while(tema.equals("fim") == false) {
-			if(i > 0 && tema_repetido(temas_palavras,tema) == true) {
+			if(i > 0 && (tema_repetido(temas_palavras,tema) == true)) {
 				System.out.println("\nNão foi possível cadastrar o tema. "
 						+ "Verifique se existem temas com esse mesmo nome\nDigite novamente:");
-				tema = ler.next();
-			}else {
+			}else if(verificar_palavra(tema) == false) {
+				System.out.println("Houve um erro ao cadastrar o tema digitado, por favor insira novamente: ");
+
+			}else{
 				temas_palavras[i][0] = tema;
 				i++;
-				tema = ler.next();
 			}
+			
+			tema = ler.next();
+			ler.nextLine();
 		}
 		
 		int j = 0;
 		System.out.println("\n");
+		
 		while(temas_palavras[j][0] != null) {
 			System.out.println("Tema cadastrado: " + temas_palavras[j][0]);
 			j++;
@@ -56,14 +196,23 @@ public class Jogo_Forca {
 	
 	//Buscar os temas
 	public static int buscar_tema(String [][] temas_palavras) {
-		System.out.println("\nDigite o tema que deseja buscar:");
 		Scanner ler = new Scanner(System.in);
-		String tema_busca = ler.next();
+		String tema_busca;
+		
+		System.out.println("\nDigite o tema que deseja buscar:");
+		tema_busca = ler.next();
+		ler.nextLine();
+		
+		while (verificar_palavra(tema_busca) == false) {
+			System.out.println("Houve um erro ao buscar o tema digitado, por favor insira novamente: ");
+			tema_busca = ler.next();
+			ler.nextLine();
+		}
 		
 		int j = 0;
 		int retorno = 0;
 		while(temas_palavras[j][0] != null) {	
-			if(temas_palavras[j][0].equals(tema_busca)) {
+			if(temas_palavras[j][0].contains(tema_busca)) {
 				System.out.println("\nTema encontrado: " + temas_palavras[j][0]);				
 				retorno++;
 				return j;
@@ -110,23 +259,30 @@ public class Jogo_Forca {
 	//Cadastra as palavras
 	public static void cadastrar_palavra(String [][] temas_palavras) {
 		int numero_tema = buscar_tema(temas_palavras);
-		
-		if(temas_palavras[numero_tema][0] != null) {
+		System.out.print(numero_tema);
+
+		if((temas_palavras[numero_tema][0] != null) || numero_tema == 0) { // == 0
 			System.out.println("\nDigite a palavra para ser cadastrada no tema " + temas_palavras[numero_tema][0] + ":\nPara finalizar digite fim.");
 			Scanner ler = new Scanner(System.in);
 			String palavra = ler.next();
+			ler.nextLine();
+
 			int i = 1;
 			
 			while(palavra.equals("fim") == false) {
 				if(i > 0 && palavra_repetida(temas_palavras,palavra,numero_tema) == true) {
 					System.out.println("\nNão foi possível cadastrar a palavra. "
 							+ "Verifique se existem palavras com esse mesmo nome\nDigite novamente:");
-					palavra = ler.next();
+
+				}else if(verificar_palavra(palavra) == false) {
+					System.out.println("Houve um erro ao cadastrar a palavra digitada, por favor insira novamente: ");
 				}else {
 					temas_palavras[numero_tema][i] = palavra;
 					i++;
-					palavra = ler.next();
 				}
+				
+				palavra = ler.next();
+				ler.nextLine();
 			}
 			
 			int j = 1;
@@ -135,7 +291,6 @@ public class Jogo_Forca {
 				j++;
 			}
 		}
-		
 	}
 	
 	//Excluir palavras
@@ -143,6 +298,8 @@ public class Jogo_Forca {
 		System.out.println("\nDigite a palavra que deseja excluir:");
 		Scanner ler = new Scanner(System.in);
 		String palavra_excluir = ler.next();
+		ler.nextLine();
+
 		int retorno = 0;
 		
 		for(int j = 0; j < temas_palavras.length; j++){
@@ -164,7 +321,10 @@ public class Jogo_Forca {
 	public static void buscar_palavra(String [][] temas_palavras) {
 		System.out.println("\nDigite a palavra que deseja buscar:");
 		Scanner ler = new Scanner(System.in);
+
 		String palavra_busca = ler.next();
+		ler.nextLine();
+
 		int retorno = 0;
 		
 		for(int j = 0; j < temas_palavras.length; j++){
@@ -192,75 +352,160 @@ public class Jogo_Forca {
 		}
 	}
 
+	//Numero de palavra aleatoria
+	public static int numero_aleatorio (String [][] temas_palavras, int numero_tema) {
+        Random gerador = new Random();
+        int numero_de_elementos = 0;
+        
+        for (int j = 0; j < temas_palavras.length; j++) {
+			if(temas_palavras[numero_tema][j] != null) {
+				numero_de_elementos++;
+			}		
+		}
+        
+        int numero_aleatorio = gerador.nextInt((numero_de_elementos - 1));
+        
+        do {
+        	numero_aleatorio = gerador.nextInt((numero_de_elementos - 1));
+        }while (numero_aleatorio <= 0);
+        
+        return numero_aleatorio;  
+	}
+	
+	//Ver se a letra é repetida
+	public static boolean letra_repetida(String[] letras_digitadas_antes, String letra) {
+		for (int j = 0; j < letras_digitadas_antes.length; j++) {
+
+			if(letra.equals(letras_digitadas_antes[j]) == true) {
+				return true;
+			}		
+		}
+		return false;
+	}
+
+	//Vê se existe a letra
+		public static int letra_existe(String palavra_sendo_jogada, String letra) {	
+			String[] letras_da_palavra = palavra_sendo_jogada.split("(?!^)");
+			int letras_na_palavra = 0;
+			
+			for (int j = 0; j < letras_da_palavra.length; j++) {
+				if(letra.equals(letras_da_palavra[j]) == true) {
+					letras_na_palavra++;
+				}		
+			}
+			return letras_na_palavra;
+		}
+		
+	//Jogar
+	public static void jogar(String [][] temas_palavras) {
+		String jogar_novamente = "texto";
+		int numero_tema = 0;
+		
+		do {
+			numero_tema = buscar_tema(temas_palavras);			
+			if(numero_tema == 0) {
+				int numero_palavra = numero_aleatorio (temas_palavras,numero_tema) ;
+				int erros = 0;
+				int letras_acertadas = 0;
+				int i = 0;
+				String letra = "letra";
+				String []letras_digitadas_antes = new String[50];
+				String palavra_sendo_jogada = temas_palavras[numero_tema][numero_palavra];
+				
+
+				while(letras_acertadas != palavra_sendo_jogada.length() && erros < 5) {
+					System.out.print("\nDigite uma letra:");
+					Scanner ler = new Scanner(System.in);
+					letra = ler.next();	
+					ler.nextLine();
+
+
+					if(i > 0 && letra_repetida(letras_digitadas_antes, letra) == true) {
+						System.out.print("Tente outra letra!");
+					}else if(verificar_palavra(letra) == false) {
+						System.out.println("Houve um erro ao ler a letra digitada, por favor insira novamente: ");
+					}else {
+						letras_digitadas_antes[i] = letra;
+						int quantidade_de_letras = letra_existe(palavra_sendo_jogada,letra);				
+						if (quantidade_de_letras == 0) {
+							erros++;
+							System.out.print("A palavra não possui essa letra, no momento você possui " + erros + " erros");
+							
+							if(erros == 5) {
+								System.out.print("\n\nFim de jogo, a palavra era: " + palavra_sendo_jogada + 
+										"\nVocê perdeu! Digite sim se deseja jogar novamente: ");
+								jogar_novamente = ler.next();
+								ler.nextLine();
+							}
+						}else {
+							System.out.print("A palavra possui " + quantidade_de_letras + " letras " + letra.toUpperCase());
+							letras_acertadas+= quantidade_de_letras;
+							
+							if(letras_acertadas == palavra_sendo_jogada.length()) {
+								System.out.print("\n\nParabéns! A palavra era: " + palavra_sendo_jogada +
+										"\nDigite sim se deseja jogar novamente: ");
+								jogar_novamente = ler.next();
+								ler.nextLine();
+							}
+						}
+			
+						i++;
+					}
+			}
+		}
+	}while (jogar_novamente.equals("sim") == true && numero_tema == 0);
+}
 			
 	// Main
 	public static void main(String[] args) {				
 		String [][] temas_palavras = new String[50][50];
-		Scanner ler = new Scanner(System.in);
-		boolean sair = true;
-		int opcao = 0;
+		cadastros(temas_palavras);
+	
+		boolean sair = false;
+		String opcao;
 		
-		do {			
+		do {		
 			menu();
-	    	opcao = ler.nextInt();
-	    	
-	    	switch(opcao) {
-		    	case 1: //Gerenciar Temas
-		    		menu_case1();
-		        	int opcao_case1 = ler.nextInt();
-		        	
-		        	switch(opcao_case1) {
-			        	case 1: //Cadastrar
-			        		cadastrar_tema(temas_palavras);
-			        		break;
-			        		
-			        	case 2: //Excluir
-			        		excluir_tema(temas_palavras);
-			        		break; 
-			        		
-			        	case 3: //Buscar
-			        		buscar_tema(temas_palavras);
-			        		break; 
-			        		
-			        	case 4: //Voltar
-		    				break;}
-	    		break;
-    		
-		    	case 2: //Gerenciar Palavras
+			Scanner ler = new Scanner(System.in);
+			opcao = ler.nextLine();
+			int numero_switch = 4; 
+			
+			if(verificar_numero(opcao,numero_switch) == false) {
+				System.out.println("Houve um erro ao ler a opçao digitada, por favor insira novamente: ");
+			}else {
+				switch(opcao) {
+		    	case "1": //Gerenciar Temas
+	    			menu_case1();
+		        	String opcao_case1 = ler.nextLine();
+		    		numero_switch = 4;
+		    		
+		    		if(verificar_numero(opcao_case1,numero_switch) == false) {
+						System.out.println("Houve um erro ao ler a opçao digitada, por favor insira novamente: ");
+		    		}else {
+						switch_tema(temas_palavras,opcao_case1);}
+					break;
+			
+		    	case "2": //Gerenciar Palavras
 		    		menu_case2();
-		        	int opcao_case2 = ler.nextInt();
+		        	String opcao_case2 = ler.nextLine();
+		    		numero_switch = 5;
 		    		
-		    		switch(opcao_case2) {
-			        	case 1: //Cadastrar
-			        		cadastrar_palavra(temas_palavras);
-			        		break;
-			        		
-			        	case 2: //Excluir
-			        		excluir_palavra(temas_palavras);
-			        		break; 
-			        		
-			        	case 3: //Buscar
-			        		buscar_palavra(temas_palavras);
-			        		break; 
-			        		
-			        	case 4: //Listagem
-			        		listar_palavra(temas_palavras);
-			        		break;
-		    				
-				    	case 5: //Voltar
-							break;}
-	       
-	        	break;
+		    		if(verificar_numero(opcao_case2,numero_switch) == false) {
+						System.out.println("Houve um erro ao ler a opçao digitada, por favor insira novamente: ");
+		    		}else {
+						switch_palavra(temas_palavras,opcao_case2);}
+					break;
 		    		
-		    	case 3: //Jogar
-		        	System.out.println("3");
+		    	case "3": //Jogar
+		    		jogar(temas_palavras);
 		    		break;
 		    		
-		    	case 4: //Sair X
+		    	case "4": //Sair
 		        	System.out.println("\nAté mais!");
-		        	sair = false;
-		    		break;		
-	    	}
-		}while (sair == true);
+		        	sair = true;
+		        	break;
+				}
+			}
+		}while (sair == false);
 	}
 }
