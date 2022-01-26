@@ -193,21 +193,16 @@ public class Jogo_Forca {
 }
 	
 	//Realizar o cadastro do tema
-	public static boolean cadastrar_tema(String [][] temas_palavras, String tema) {
-		boolean valido = false;
-		int k = 0;
-		
+	public static boolean cadastrar_tema(String [][] temas_palavras, String tema) {		
 		for(int j = 0; j < temas_palavras.length; j++){
-        	if(temas_palavras[k][0] == null) {
-        		temas_palavras[k][0] = tema;
+        	if(temas_palavras[j][0] == null) {
+        		temas_palavras[j][0] = tema;
     			
-        		valido = true;
-        		return valido;
+        		return true;
     		}
-			k++;
         }
 		
-		return valido;
+		return false;
 	}
 
 	
@@ -308,22 +303,17 @@ public class Jogo_Forca {
 		}
 	}
 	
-	//Realizar o cadastro do tema
+	//Realizar o cadastro da palavra
 	public static boolean cadastrar_palavra(String [][] temas_palavras,String palavra, int numero_tema) {
-		boolean valido = false;
-		
-		int k = 1;
-		for(int j = 0; j < temas_palavras.length; j++){
-        	if(temas_palavras[numero_tema][k] == null) {
-        		temas_palavras[numero_tema][k] = palavra;
+		for(int j = 1; j < temas_palavras.length; j++){
+        	if(temas_palavras[numero_tema][j] == null) {
+        		temas_palavras[numero_tema][j] = palavra;
     			
-        		valido = true;
-        		return valido;
+        		return true;
     		}
-			k++;
         }
 		
-		return valido;
+		return false;
 	}
 	
 	//Excluir palavras
