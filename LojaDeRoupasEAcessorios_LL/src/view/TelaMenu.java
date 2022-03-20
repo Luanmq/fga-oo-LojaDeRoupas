@@ -54,7 +54,7 @@ public class TelaMenu implements ActionListener{
 			new TelaMeusProdutos();
 		
 		if(src == verMinhaSacola)
-			new TelaMeusProdutos();
+			new TelaMinhaSacola();
 	}
 
 	public static void dispose() {

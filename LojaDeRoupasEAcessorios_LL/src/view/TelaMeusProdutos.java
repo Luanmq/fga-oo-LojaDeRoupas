@@ -10,18 +10,17 @@ public class TelaMeusProdutos implements ListSelectionListener{
 	private JLabel tituloComprados;
 
 	//Vetores para mostrar os acessorios e roupas a venda
+	private JList<String> listaMeusAcessoriosAVenda = new JList<String>();
+	private String[] listaNomesMeusAcessoriosAVenda = new String[1000];
 	private JList<String> listaMinhasRoupasAVenda = new JList<String>();
 	private String[] listaNomesMinhasRoupasAVenda = new String[1000];
 	
-	private JList<String> listaMeusAcessoriosAVenda = new JList<String>();
-	private String[] listaNomesMeusAcessoriosAVenda = new String[1000];
-	
+	//Vetores para mostrar os acessorios e roupas compradas
+	private JList<String> listaMeusAcessoriosComprados = new JList<String>();
+	private String[] listaNomesMeusAcessoriosComprados = new String[1000];
 	private JList<String> listaMinhasRoupasCompradas = new JList<String>();
 	private String[] listaNomesMinhasRoupasCompradas = new String[1000];
 	
-	private JList<String> listaMeusAcessoriosComprados = new JList<String>();
-	private String[] listaNomesMeusAcessoriosComprados = new String[1000];
-
 	public TelaMeusProdutos() {
 		int k = 0;
 	    int l = 0;

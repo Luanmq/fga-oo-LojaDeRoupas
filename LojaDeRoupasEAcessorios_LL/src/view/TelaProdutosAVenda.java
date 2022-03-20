@@ -44,8 +44,8 @@ public class TelaProdutosAVenda implements ActionListener, ItemListener, ListSel
     	}
     	
     	//Coloca todas roupas dos usuarios cadastrados no array
-    	for(int j = 0; j < Dados.roupasAVenda.size(); j++){
-    		listaNomesRoupasAVenda[l] = Dados.roupasAVenda.get(j).getNome();
+    	for(int i = 0; i < Dados.roupasAVenda.size(); i++){
+    		listaNomesRoupasAVenda[l] = Dados.roupasAVenda.get(i).getNome();
     		l++;
     	}
 		
