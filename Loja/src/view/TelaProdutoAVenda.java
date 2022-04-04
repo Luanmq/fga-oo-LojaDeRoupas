@@ -36,7 +36,8 @@ public class TelaProdutoAVenda implements ActionListener, ItemListener, ListSele
 	private JComboBox filtroDepartamentos;
 	
 	private ControleDados dados;
-
+	
+	//Construtor
 	public TelaProdutoAVenda() {
 		janela = new JFrame("Produtos a Venda");
 		titulo = new JLabel("Produtos a venda");

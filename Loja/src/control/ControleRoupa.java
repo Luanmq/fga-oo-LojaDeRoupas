@@ -16,9 +16,12 @@ public class ControleRoupa {
 	
 	//Coloca um acessorio a venda
 	public void cadastrarRoupa(Roupa roupaNova) {
-		
-		ControleDados.getD().getRoupasAVenda().add(roupaNova);
-		
+		rv.add(roupaNova);
+	}
+	
+	//Deleta uma roupa ja existente
+	public void excluirRoupa(int posicao) {
+		rv.remove(posicao);	
 	}
 
 	//Gets e sets

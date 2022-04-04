@@ -14,12 +14,15 @@ public class ControleAcessorio {
 		av = d.getAcessoriosAVenda();
 	}
 
-	/*//Coloca um acessorio a venda
-	public boolean cadastrarAcessorio(String[] novoDado) {
-		
-		ControleDados.getD().getAcessoriosAVenda().add(novoDado);
-
-	}*/
+	//Coloca um acessorio a venda
+	public void cadastrarAcessorio(Acessorio acessorioNovo) {
+		ControleDados.getD().getAcessoriosAVenda().add(acessorioNovo);
+	}
+	
+	//Deleta um acessorio ja existente
+	public void excluirAcessorio(int posicao) {
+		ac.remove(posicao);	
+	}
 	
 	//Gets e sets
 	public ArrayList<Acessorio> getAc() {
