@@ -456,6 +456,7 @@ public class TelaDetalheProduto implements ActionListener {
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
+	
 	public void mensagemSucessoCadastrar() {
 		JOptionPane.showMessageDialog(null, "O Produto foi cadastrado com sucesso!", null, 
 				JOptionPane.INFORMATION_MESSAGE);

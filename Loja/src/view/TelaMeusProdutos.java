@@ -142,14 +142,12 @@ public class TelaMeusProdutos implements ListSelectionListener, ActionListener{
 		
 		//Abre a tela de edicao do acessorio podendo editar, salvar ou excluir
 		if(e.getValueIsAdjusting() && src == listaMeusAcessoriosAVenda) {
-			new TelaDetalheProduto().cadastrarEditarProduto(dados, 1, 4, 
-					listaMeusAcessoriosAVenda.getSelectedIndex());
+			new TelaDetalheProduto().cadastrarEditarProduto(dados, 1, 4, listaMeusAcessoriosAVenda.getSelectedIndex());
 		}
 		
 		//Abre a tela de edicao da roupa podendo editar, salvar ou excluir
 		if(e.getValueIsAdjusting() && src == listaMinhasRoupasAVenda) {
-			new TelaDetalheProduto().cadastrarEditarProduto(dados, 2, 4, 
-					listaMinhasRoupasAVenda.getSelectedIndex());
+			new TelaDetalheProduto().cadastrarEditarProduto(dados, 2, 4, listaMinhasRoupasAVenda.getSelectedIndex());
 		}
 		
 		if(e.getValueIsAdjusting() && src == listaMeusAcessoriosComprados) {
