@@ -1,18 +1,27 @@
 package view;
-import java.awt.*;
+
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
-import javax.swing.event.*;
-import control.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import control.ControleAcessorio;
+import control.ControleDados;
 
 public class TelaMeusProdutos implements ListSelectionListener, ActionListener{
-	private JFrame janela;
-	private JLabel tituloAVenda;
-	private JLabel tituloComprados;
-	private JButton cadastrarRoupa = new JButton("Cadastrar Roupa");
-	private JButton cadastrarAcessorio = new JButton("Cadastrar Acessorio");
+	private JFrame janela = new JFrame("Meus produtos");
+	private JLabel tituloAVenda = new JLabel("Produtos a venda");
+	private JLabel tituloComprados = new JLabel("Produtos comprados");
+	private JButton cadastrarRoupa = new JButton("Vender Roupa");
+	private JButton cadastrarAcessorio = new JButton("Vender Acessorio");
+	
 	private ControleDados dados;
 	
 	//Vetores para mostrar os acessorios e roupas a venda
@@ -72,10 +81,6 @@ public class TelaMeusProdutos implements ListSelectionListener, ActionListener{
 		
     	listaMeusAcessoriosComprados = new JList<String>(listaNomesMeusAcessoriosComprados);
     	listaMinhasRoupasCompradas = new JList<String>(listaNomesMinhasRoupasCompradas);
-    	
-    	janela = new JFrame("Meus produtos");
-		tituloAVenda = new JLabel("Produtos a venda");
-		tituloComprados = new JLabel("Produtos comprados");
 		
 		tituloAVenda.setFont(new Font("Arial", Font.BOLD, 20));
 		tituloAVenda.setBounds(110, 10, 250, 30);
@@ -142,11 +147,13 @@ public class TelaMeusProdutos implements ListSelectionListener, ActionListener{
 		
 		//Abre a tela de edicao do acessorio podendo editar, salvar ou excluir
 		if(e.getValueIsAdjusting() && src == listaMeusAcessoriosAVenda) {
+			System.out.println(listaMeusAcessoriosAVenda.getSelectedIndex());
 			new TelaDetalheProduto().cadastrarEditarProduto(dados, 1, 4, listaMeusAcessoriosAVenda.getSelectedIndex());
 		}
 		
 		//Abre a tela de edicao da roupa podendo editar, salvar ou excluir
 		if(e.getValueIsAdjusting() && src == listaMinhasRoupasAVenda) {
+			System.out.println(listaMinhasRoupasAVenda.getSelectedIndex());
 			new TelaDetalheProduto().cadastrarEditarProduto(dados, 2, 4, listaMinhasRoupasAVenda.getSelectedIndex());
 		}
 		

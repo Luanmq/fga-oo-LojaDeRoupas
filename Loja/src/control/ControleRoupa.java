@@ -14,14 +14,19 @@ public class ControleRoupa {
 		rv = d.getRoupasAVenda();
 	}
 	
-	//Coloca um acessorio a venda
-	public void cadastrarRoupa(Roupa roupaNova) {
-		rv.add(roupaNova);
+	//Coloca uma roupa a venda
+	public boolean cadastrarRoupa(String[] dadosRoupa, Usuario usuario) {
+		
+		Roupa roupa = new Roupa (dadosRoupa[0], dadosRoupa[1], dadosRoupa[2], dadosRoupa[3], Double.parseDouble(dadosRoupa[4]), 
+		dadosRoupa[5], dadosRoupa[6], usuario, dadosRoupa[7], dadosRoupa[8], dadosRoupa[9]);
+	
+		ControleDados.getD().getRoupasAVenda().add(roupa);
+		return true;
 	}
 	
 	//Deleta uma roupa ja existente
 	public void excluirRoupa(int posicao) {
-		rv.remove(posicao);	
+		ControleDados.getD().getRoupasCompradas().remove(posicao);	
 	}
 
 	//Gets e sets

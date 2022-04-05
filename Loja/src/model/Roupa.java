@@ -12,6 +12,22 @@ public class Roupa extends Produto {
 		this.usuario = usuario;
 	}
 	
+	public Roupa (String n, String dep, String des, String m, double p, String cond, String co, Usuario u, String tam, String t, String e) {
+		this.nome = n;
+		this.departamento = dep;
+		this.descricao = des;
+		this.marca = m;
+		this.preco = p;
+		this.condicao = cond;
+		this.cor =co;
+		this.usuario = u;
+		this.tamanho = tam;
+		this.tecido = t;
+		this.estampa = e;
+	
+		
+	}
+	
 	//Gets e sets	
 	public String getTamanho() {
 		return tamanho;
@@ -35,5 +51,23 @@ public class Roupa extends Produto {
 
 	public void setEstampa(String estampa) {
 		this.estampa = estampa;
+	}
+	
+	//Sobreescrita do equals() para comparacao de roupas
+	@Override
+	 public boolean equals(Object roupa) {
+		if (this.nome == ((Roupa) roupa).getNome() && this.departamento == ((Roupa) roupa).getDepartamento() && this.descricao == ((Roupa) roupa).getDescricao()
+				 && this.marca == ((Roupa) roupa).getMarca() && this.preco == ((Roupa) roupa).getPreco() && this.condicao == ((Roupa) roupa).getCondicao()
+				 && this.cor == ((Roupa) roupa).getCor() && this.usuario == ((Roupa) roupa).getUsuario() && this.estampa == ((Roupa) roupa).getEstampa()
+				 && this.tamanho == ((Roupa) roupa).getTamanho() && this.tecido == ((Roupa) roupa).getTecido()){
+			return true;
+		}
+		return false; 
+	}
+	
+	//Sobreescrita do toString para o print das roupas
+	@Override
+	public String toString() {
+		return "Roupa - Nome: " + this.nome + " Vendedor: " + this.usuario.getNome() + " Departamento: " + this.departamento;
 	}
 }

@@ -13,7 +13,7 @@ import control.ControleDados;
 public class TelaMenu implements ActionListener{
 	private static JFrame janela = new JFrame("Menu");
 	private static JLabel titulo = new JLabel("Menu Principal");
-	private static JButton verProdutosAVenda = new JButton("Produtos a venda");
+	private static JButton verProdutosAVenda = new JButton("Comprar");
 	private static JButton verMinhaConta = new JButton("Minha Conta");
 	private static JButton verMeusProdutos = new JButton("Meus Produtos");
 	private static JButton verMinhaSacola = new JButton("Sacola");
@@ -57,7 +57,7 @@ public class TelaMenu implements ActionListener{
 		Object src = e.getSource();
 		
 		if(src == verProdutosAVenda)
-			new TelaProdutoAVenda().produtosAVenda(dados);
+			new TelaProdutosAVenda().produtosAVenda(dados);
 		
 		
 		if(src == verMinhaConta)

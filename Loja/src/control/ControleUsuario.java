@@ -67,13 +67,42 @@ public class ControleUsuario {
 	
 	//Adiciona um acessorio na sacola do usuario principal
 	public void adicionarAcessorioNaSacola(Acessorio acessorioNovo) {
-		ControleDados.getD().getUsuarioPrincipal().getSacolausuario().adicionarAcessorio(acessorioNovo);
+
+		ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getSacolaParaAcessorios().add(acessorioNovo);
+		ControleDados.getD().getUsuarioPrincipal().getSacolausuario().setValorTotal(ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getValorTotal() + acessorioNovo.getPreco()); 
+		
 	}
 	
 	//Adiciona uma roupa na sacola do usuario principal
 	public void adicionarRoupaNaSacola(Roupa roupaNova) {
-		ControleDados.getD().getUsuarioPrincipal().getSacolausuario().adicionarRoupa(roupaNova);
+		ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getSacolaParaRoupas().add(roupaNova);
+		ControleDados.getD().getUsuarioPrincipal().getSacolausuario().setValorTotal(ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getValorTotal() + roupaNova.getPreco()); 
 	}
+	
+	//Retira um acessorio na sacola do usuario principal
+	public void retirarAcessorioNaSacola(Acessorio acessorioExcluido) {
+
+		ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getSacolaParaAcessorios().remove(acessorioExcluido);
+		ControleDados.getD().getUsuarioPrincipal().getSacolausuario().setValorTotal(ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getValorTotal() - acessorioExcluido.getPreco()); 
+		
+	}
+	
+	//Retira uma roupa na sacola do usuario principal
+	public void retirarRoupaNaSacola(Roupa roupaExcluida) {
+
+		ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getSacolaParaRoupas().remove(roupaExcluida);
+		ControleDados.getD().getUsuarioPrincipal().getSacolausuario().setValorTotal(ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getValorTotal() - roupaExcluida.getPreco()); 
+		
+	}	
+	
+	//Limpa os dados da Sacola para acessorios e da Sacola para roupas do usuario principal
+	public void  esvaziarSacola() {
+
+		ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getSacolaParaRoupas().clear();
+		ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getSacolaParaAcessorios().clear();
+		ControleDados.getD().getUsuarioPrincipal().getSacolausuario().setValorTotal(0); 
+		
+	}	
 	
 	//Gets e Sets
 	public Usuario getUp() {

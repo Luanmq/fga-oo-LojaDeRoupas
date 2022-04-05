@@ -5,7 +5,7 @@ public abstract class Produto {
 	protected String departamento;
 	protected String descricao;
 	protected String marca;
-	protected Double preco;
+	protected double preco;
 	protected String condicao;
 	protected String cor;
 	protected Usuario usuario;

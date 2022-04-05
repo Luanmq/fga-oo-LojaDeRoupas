@@ -1,15 +1,25 @@
 package view;
-import java.awt.*;
+
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
-import javax.swing.event.*;
-import control.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import control.ControleDados;
+import control.ControleUsuario;
 
 public class TelaMinhaSacola implements ListSelectionListener, ActionListener{
-	private JFrame janela;
-	private JLabel titulo;
+	private JFrame janela = new JFrame("Minha Sacola");;
+	private JLabel titulo = new JLabel("Minha Sacola");
 
 	private JList<String> listaAcessoriosSacola = new JList<String>();
 	private String[] listaNomesAcessoriosSacola = new String[1000];
@@ -17,7 +27,7 @@ public class TelaMinhaSacola implements ListSelectionListener, ActionListener{
 	private JList<String> listaRoupasSacola = new JList<String>();
 	private String[] listaNomesRoupasSacola = new String[1000];
 	
-	private JLabel textoValorTotal = new JLabel("Valor: ");
+	private JLabel textoValorTotal = new JLabel("Valor:          R$");
 	private JTextField valorTotalSacola;
 	private JButton retirarProduto = new JButton("Retirar Produto");
 	private JButton esvaziarSacola = new JButton("Esvaziar Sacola");
@@ -30,13 +40,13 @@ public class TelaMinhaSacola implements ListSelectionListener, ActionListener{
 		int k = 0;
 	    int l = 0;
 	    
-	    //Coloca todos os acessorios na sacola
+	    //Coloca todos os acessorios selecionados pelo usuario na sacola
     	for(int i = 0; i < dados.getUsuarioPrincipal().getSacolausuario().getSacolaParaAcessorios().size(); i++){
     		listaNomesAcessoriosSacola[k] =  dados.getUsuarioPrincipal().getSacolausuario().getSacolaParaAcessorios().get(i).getNome();
     		k++;
     	}
     	
-    	//Coloca todos as roupas na sacola
+    	//Coloca todos as roupas na selecionados pelo usuario sacola
     	for(int i = 0; i < dados.getUsuarioPrincipal().getSacolausuario().getSacolaParaRoupas().size(); i++){
     		listaNomesRoupasSacola[l] =  dados.getUsuarioPrincipal().getSacolausuario().getSacolaParaRoupas().get(i).getNome();
     		l++;
@@ -46,9 +56,6 @@ public class TelaMinhaSacola implements ListSelectionListener, ActionListener{
     	listaRoupasSacola = new JList<String>(listaNomesRoupasSacola);
 		String valorTotal = Double.toString(dados.getUsuarioPrincipal().getSacolausuario().getValorTotal());
     	valorTotalSacola = new JTextField(valorTotal);
-    	
-    	janela = new JFrame("Minha Sacola");
-		titulo = new JLabel("Minha Sacola");
 		
 		titulo.setFont(new Font("Arial", Font.BOLD, 20));
 		titulo.setBounds(130, 10, 250, 30);
@@ -97,6 +104,7 @@ public class TelaMinhaSacola implements ListSelectionListener, ActionListener{
 				if(dados.getUsuarioPrincipal().getSacolausuario().getSacolaParaAcessorios()
 				.get(listaAcessoriosSacola.getSelectedIndex()) == dados.getAcessoriosAVenda().get(i)) {
 					new TelaDetalheProduto().cadastrarEditarProduto(dados, 1, 3, i);
+					break;
 				}
 			}
 		}
@@ -106,6 +114,7 @@ public class TelaMinhaSacola implements ListSelectionListener, ActionListener{
 				if(dados.getUsuarioPrincipal().getSacolausuario().getSacolaParaRoupas()
 				.get(listaRoupasSacola.getSelectedIndex()) == dados.getRoupasAVenda().get(i)) {
 					new TelaDetalheProduto().cadastrarEditarProduto(dados, 2, 3, i);
+					break;
 				}
 			}
 		}
@@ -116,18 +125,18 @@ public class TelaMinhaSacola implements ListSelectionListener, ActionListener{
 		
 		if(src == retirarProduto) {
 			if(listaRoupasSacola.getSelectedIndex() != -1) {
-				dados.getUsuarioPrincipal().getSacolausuario().retirarRoupa(listaRoupasSacola.getSelectedIndex());
+				new ControleUsuario(dados).retirarRoupaNaSacola(dados.getUsuarioPrincipal().getSacolausuario().getSacolaParaRoupas().get(listaRoupasSacola.getSelectedIndex()));
 				mensagemSucessoRetirar();
 			}
 			
 			if(listaAcessoriosSacola.getSelectedIndex() != -1) {
-				dados.getUsuarioPrincipal().getSacolausuario().retirarAcessorio(listaAcessoriosSacola.getSelectedIndex());
+				new ControleUsuario(dados).retirarAcessorioNaSacola(dados.getUsuarioPrincipal().getSacolausuario().getSacolaParaAcessorios().get(listaAcessoriosSacola.getSelectedIndex()));
 				mensagemSucessoRetirar();
 			}
 		}
 		
 		if(src == esvaziarSacola) {
-			dados.getUsuarioPrincipal().getSacolausuario().esvaziarSacola();
+			new ControleUsuario(dados).esvaziarSacola();
 			mensagemSucessoEsvaziar();
 			janela.dispose();
 		}

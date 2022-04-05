@@ -23,7 +23,7 @@ public class Dados {
 			  bruno.setSenha("carro");
 			  bruno.setTelefone(998808198);
 			  bruno.setCpf(805743618);
-			  bruno.setEmail("brunosilva.q@gmail.com");
+			  bruno.setEmail("bruno@gmail.com");
 			  	
 		  Endereco enderecobruno = new Endereco(bruno);
 		  		enderecobruno.setPais("Brasil");
@@ -56,9 +56,9 @@ public class Dados {
 			  	bonejeans.setCondicao("Boa");
 			  	bonejeans.setCor("Azul");
 			  	bonejeans.setMaterial("Jeans");
-			  	bonejeans.setPeso("300");
-			  	bonejeans.setMedidaLargura("20");
-			  	bonejeans.setMedidaAltura("20");
+			  	bonejeans.setPeso(300);
+			  	bonejeans.setMedidaLargura(20);
+			  	bonejeans.setMedidaAltura(20);
 			  	acessoriosAVenda.add(bonejeans);
 			  	usuarios.add(bruno);
 			  
@@ -100,9 +100,9 @@ public class Dados {
 			  	oculospreto.setCondicao("Otima");
 			  	oculospreto.setCor("Preto");
 			  	oculospreto.setMaterial("Metal");
-			  	oculospreto.setPeso("100.00");
-			  	oculospreto.setMedidaLargura("10");
-			  	oculospreto.setMedidaAltura("10");
+			  	oculospreto.setPeso(100.00);
+			  	oculospreto.setMedidaLargura(10);
+			  	oculospreto.setMedidaAltura(10);
 			  	acessoriosAVenda.add(oculospreto);
 			  	usuarios.add(lucas);
 
@@ -144,9 +144,9 @@ public class Dados {
 			  	sapatilha.setCondicao("Boa");
 			  	sapatilha.setCor("Rosa");
 			  	sapatilha.setMaterial("Algodao");
-			  	sapatilha.setPeso("200.00");
-			  	sapatilha.setMedidaLargura("30");
-			  	sapatilha.setMedidaAltura("20");
+			  	sapatilha.setPeso(200.00);
+			  	sapatilha.setMedidaLargura(30);
+			  	sapatilha.setMedidaAltura(20);
 			  	acessoriosAVenda.add(sapatilha);
 			  	usuarios.add(sofia);
 
@@ -188,9 +188,9 @@ public class Dados {
 			  	cintocouro.setCondicao("Ruim");
 			  	cintocouro.setCor("Marrom");
 			  	cintocouro.setMaterial("Couro");
-			  	cintocouro.setPeso("300.00");
-			  	cintocouro.setMedidaLargura("5");
-			  	cintocouro.setMedidaAltura("10");
+			  	cintocouro.setPeso(300.00);
+			  	cintocouro.setMedidaLargura(5);
+			  	cintocouro.setMedidaAltura(10);
 			  	acessoriosAVenda.add(cintocouro);
 			  	usuarios.add(helena);
 	  }

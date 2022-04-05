@@ -15,13 +15,18 @@ public class ControleAcessorio {
 	}
 
 	//Coloca um acessorio a venda
-	public void cadastrarAcessorio(Acessorio acessorioNovo) {
-		ControleDados.getD().getAcessoriosAVenda().add(acessorioNovo);
+	public boolean cadastrarAcessorio(String[] dadosAcessorio, Usuario usuario) {
+		Acessorio accessorio = new Acessorio (dadosAcessorio[0], dadosAcessorio[1], dadosAcessorio[2], dadosAcessorio[3], Double.parseDouble(dadosAcessorio[4]), 
+				dadosAcessorio[5], dadosAcessorio[6], usuario, dadosAcessorio[7], Double.parseDouble(dadosAcessorio[8]), Double.parseDouble(dadosAcessorio[9]), Double.parseDouble(dadosAcessorio[10]));
+	
+		ControleDados.getD().getAcessoriosAVenda().add(accessorio);
+		
+		return true;
 	}
 	
 	//Deleta um acessorio ja existente
 	public void excluirAcessorio(int posicao) {
-		ac.remove(posicao);	
+		ControleDados.getD().getAcessoriosComprados().remove(posicao);	
 	}
 	
 	//Gets e sets
@@ -77,15 +82,15 @@ public class ControleAcessorio {
 		return ac.get(i).getMaterial();
 	}
 	
-	public String getPesoAC(int i) {
+	public double getPesoAC(int i) {
 		return ac.get(i).getPeso();
 	}
 	
-	public String getMedidaLarguraAC(int i) {
+	public double getMedidaLarguraAC(int i) {
 		return ac.get(i).getMedidaLargura();
 	}
 	
-	public String getMedidaAlturaAC(int i) {
+	public double getMedidaAlturaAC(int i) {
 		return ac.get(i).getMedidaAltura();
 	}
 	
@@ -125,17 +130,16 @@ public class ControleAcessorio {
 		return av.get(i).getMaterial();
 	}
 	
-	public String getPesoAV(int i) {
+	public double getPesoAV(int i) {
 		return av.get(i).getPeso();
 	}
 	
-	public String getMedidaLarguraAV(int i) {
+	public double getMedidaLarguraAV(int i) {
 		return av.get(i).getMedidaLargura();
 	}
 	
-	public String getMedidaAlturaAV(int i) {
+	public double getMedidaAlturaAV(int i) {
 		return av.get(i).getMedidaAltura();
 	}	
 
 }
-

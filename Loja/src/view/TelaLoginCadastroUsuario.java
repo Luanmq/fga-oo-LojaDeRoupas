@@ -13,9 +13,9 @@ import javax.swing.JTextField;
 
 import control.ControleDados;
 import control.ControleUsuario;
-
+//TelaInicial
 public class TelaLoginCadastroUsuario implements ActionListener{
-	
+
 	private JFrame janela = new JFrame("Login e Cadastro");
 	private JLabel email = new JLabel("Email");
 	private JTextField valorEmail = new JTextField(20);
@@ -59,7 +59,7 @@ public class TelaLoginCadastroUsuario implements ActionListener{
 	public static void main(String[] args) {
 
 		TelaLoginCadastroUsuario telaInicial = new TelaLoginCadastroUsuario();
-		System.out.println(ControleDados.getD().getUsuarios().get(0));
+	
 	}
 	
 	int UsuarioSelecionado = -1;
@@ -105,4 +105,3 @@ public class TelaLoginCadastroUsuario implements ActionListener{
 	}
 	
 }
-

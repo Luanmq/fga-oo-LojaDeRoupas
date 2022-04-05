@@ -3,6 +3,7 @@ package view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -17,6 +18,7 @@ import control.ControleUsuario;
 
 import model.Acessorio;
 import model.Roupa;
+import model.Usuario;
 
 public class TelaDetalheProduto implements ActionListener {
 	private JFrame janela;
@@ -44,7 +46,7 @@ public class TelaDetalheProduto implements ActionListener {
 	private JTextField valorMedidaLargura;
 	private JTextField valorMedidaAltura;
 	private JLabel labelTamanho = new JLabel("Tamanho(P/M/G): ");
-	String tamanhos[] = {"PP", "P", "M", "G", "GG"};
+	private String tamanhos[] = {"PP", "P", "M", "G", "GG"};
 	private JComboBox comboboxTamanho;
 	private JLabel labelTecido = new JLabel("Tecido: ");
 	private JTextField valorTecido;
@@ -54,19 +56,21 @@ public class TelaDetalheProduto implements ActionListener {
 	private JButton botaoComprarAcessorio = new JButton("Comprar");
 	private JButton botaoExcluirAcessorio = new JButton("Excluir");
 	private JButton botaoSalvarAcessorio = new JButton("Salvar");
+	private JButton botaoCadastrarAcessorio = new JButton("Cadastrar");
 	
 	private JButton botaoComprarRoupa= new JButton("Comprar");
 	private JButton botaoExcluirRoupa = new JButton("Excluir");
 	private JButton botaoSalvarRoupa = new JButton("Salvar");
 	private JButton botaoCadastrarRoupa = new JButton("Cadastrar");
-	private JButton botaoCadastrarAcessorio = new JButton("Cadastrar");
 
 	private String[] novoDado = new String[12];
 	private ControleDados dados;
 	
+	private JLabel imagem = new JLabel();
+
 	int pos;
 	
-	public void cadastrarEditarProduto(ControleDados d, int opcaoAcessorioRoupa, int opcao, int posicaoProduto) {
+	public void cadastrarEditarProduto(ControleDados d, int opcaoAcessorioRoupa, int opcao, int posicaoProduto){
 		dados = d;
 		int opAcessorioRoupa = opcaoAcessorioRoupa;
 		int op = opcao;
@@ -78,6 +82,9 @@ public class TelaDetalheProduto implements ActionListener {
 		if(opAcessorioRoupa == 1) {
 			//Cadastrar acessorio
 			if(op == 1) {
+				ImageIcon icon = new ImageIcon("blusa.png");
+				imagem = new JLabel(icon);
+				
 				janela = new JFrame("Cadastro de Acessorio");
 
 				valorNome = new JTextField(200);
@@ -92,12 +99,15 @@ public class TelaDetalheProduto implements ActionListener {
 				valorMedidaLargura = new JTextField(10);
 				valorMedidaAltura = new JTextField(10);
 
-				botaoCadastrarAcessorio.setBounds(180, 320, 180, 25);
+				botaoCadastrarAcessorio.setBounds(520, 320, 180, 25);
 				this.janela.add(botaoCadastrarAcessorio);
 			}
 			
 			//Ver acessorio a venda e Colocar na sacola
 			if(op == 2) {
+				ImageIcon icon = new ImageIcon("blusa.png");
+				imagem = new JLabel(icon);
+						        
 				String nome_acessorio = dados.getAcessoriosAVenda().get(pos).getNome();
 				janela = new JFrame(nome_acessorio);
 
@@ -112,11 +122,11 @@ public class TelaDetalheProduto implements ActionListener {
 				comboboxCondicao =  new JComboBox(condicao_cadastrada);
 				valorCor = new JTextField(dados.getAcessoriosAVenda().get(pos).getCor(),200);
 				valorMaterial = new JTextField(dados.getAcessoriosAVenda().get(pos).getMaterial(),200);
-				valorPeso = new JTextField(dados.getAcessoriosAVenda().get(pos).getPeso(),10);
-				valorMedidaLargura = new JTextField(dados.getAcessoriosAVenda().get(pos).getMedidaLargura(),10);
-				valorMedidaAltura = new JTextField(dados.getAcessoriosAVenda().get(pos).getMedidaAltura(),10);
-				
-				botaoComprarAcessorio.setBounds(180, 320, 180, 25);
+				valorPeso = new JTextField(String.valueOf(dados.getAcessoriosAVenda().get(pos).getPeso()),10);
+				valorMedidaLargura = new JTextField(String.valueOf(dados.getAcessoriosAVenda().get(pos).getMedidaLargura()),10);
+				valorMedidaAltura = new JTextField(String.valueOf(dados.getAcessoriosAVenda().get(pos).getMedidaAltura()),10);
+
+				botaoComprarAcessorio.setBounds(520, 320, 180, 25);
 				this.janela.add(botaoComprarAcessorio);
 			}
 			
@@ -136,68 +146,71 @@ public class TelaDetalheProduto implements ActionListener {
 				comboboxCondicao =  new JComboBox(condicao_cadastrada);
 				valorCor = new JTextField(dados.getAcessoriosAVenda().get(pos).getCor(),200);
 				valorMaterial = new JTextField(dados.getAcessoriosAVenda().get(pos).getMaterial(),200);
-				valorPeso = new JTextField(dados.getAcessoriosAVenda().get(pos).getPeso(),10);
-				valorMedidaLargura = new JTextField(dados.getAcessoriosAVenda().get(pos).getMedidaLargura(),10);
-				valorMedidaAltura = new JTextField(dados.getAcessoriosAVenda().get(pos).getMedidaAltura(),10);
+				valorPeso = new JTextField(String.valueOf(dados.getAcessoriosAVenda().get(pos).getPeso()),10);
+				valorMedidaLargura = new JTextField(String.valueOf(dados.getAcessoriosAVenda().get(pos).getMedidaLargura()),10);
+				valorMedidaAltura = new JTextField(String.valueOf(dados.getAcessoriosAVenda().get(pos).getMedidaAltura()),10);
 			}
 			
 			//Editar ou excluir acessorio
 			if(op == 4) {
+				ImageIcon icon = new ImageIcon("blusa.png");
+				imagem = new JLabel(icon);
+				
 				String nome_acessorio = dados.getAcessoriosAVenda().get(pos).getNome();
 				janela = new JFrame(nome_acessorio);
 				
 				valorNome = new JTextField(dados.getAcessoriosAVenda().get(pos).getNome(),200);
-				String departamento_cadastrado[] = {dados.getAcessoriosAVenda().get(pos).getDepartamento()};
-				comboboxDepartamento =  new JComboBox(departamento_cadastrado);
+				comboboxDepartamento = new JComboBox(departamentos);
 				valorDescricao = new JTextField(dados.getAcessoriosAVenda().get(pos).getDescricao(),200);
 				valorMarca = new JTextField(dados.getAcessoriosAVenda().get(pos).getMarca(),200);
 				String preco_cadastrado = Double.toString(dados.getAcessoriosAVenda().get(pos).getPreco());
 				valorPreco = new JTextField(preco_cadastrado);
-				String condicao_cadastrada[] = {dados.getAcessoriosAVenda().get(pos).getCondicao()};
-				comboboxCondicao =  new JComboBox(condicao_cadastrada);
+				comboboxCondicao = new JComboBox(condicao);
 				valorCor = new JTextField(dados.getAcessoriosAVenda().get(pos).getCor(),200);
 				valorMaterial = new JTextField(dados.getAcessoriosAVenda().get(pos).getMaterial(),200);
-				valorPeso = new JTextField(dados.getAcessoriosAVenda().get(pos).getPeso(),10);
-				valorMedidaLargura = new JTextField(dados.getAcessoriosAVenda().get(pos).getMedidaLargura(),10);
-				valorMedidaAltura = new JTextField(dados.getAcessoriosAVenda().get(pos).getMedidaAltura(),10);
+				valorPeso = new JTextField(String.valueOf(dados.getAcessoriosAVenda().get(pos).getPeso()),10);
+				valorMedidaLargura = new JTextField(String.valueOf(dados.getAcessoriosAVenda().get(pos).getMedidaLargura()),10);
+				valorMedidaAltura = new JTextField(String.valueOf(dados.getAcessoriosAVenda().get(pos).getMedidaAltura()),10);
 				
-				botaoSalvarAcessorio.setBounds(180, 320, 90, 25);
-				botaoExcluirAcessorio.setBounds(270, 320, 90, 25);
+				botaoSalvarAcessorio.setBounds(520, 320, 90, 25);
+				botaoExcluirAcessorio.setBounds(610, 320, 90, 25);
 				this.janela.add(botaoSalvarAcessorio);
 				this.janela.add(botaoExcluirAcessorio);
 			}
+			imagem.setBounds(20, 20, 330, 300);
 			
-			labelNome.setBounds(30, 20, 150, 25);
-			valorNome.setBounds(180, 20, 180, 25);
+			labelNome.setBounds(370, 20, 150, 25);
+			valorNome.setBounds(520, 20, 180, 25);
 			
-			labelDepartamento.setBounds(30, 50, 150, 25);
-			comboboxDepartamento.setBounds(180, 50, 180, 25);
+			labelDepartamento.setBounds(370, 50, 150, 25);
+			comboboxDepartamento.setBounds(520, 50, 180, 25);
 			
-			labelDescricao.setBounds(30, 80, 150, 25);
-			valorDescricao.setBounds(180, 80, 180, 25);
+			labelDescricao.setBounds(370, 80, 150, 25);
+			valorDescricao.setBounds(520, 80, 180, 25);
 			
-			labelMarca.setBounds(30, 110, 150, 25);
-			valorMarca.setBounds(180, 110, 180, 25);
+			labelMarca.setBounds(370, 110, 150, 25);
+			valorMarca.setBounds(520, 110, 180, 25);
 			
-			labelPreco.setBounds(30, 140, 150, 25);
-			valorPreco.setBounds(180, 140, 180, 25);
+			labelPreco.setBounds(370, 140, 150, 25);
+			valorPreco.setBounds(520, 140, 180, 25);
 			
-			labelCondicao.setBounds(30, 170, 150, 25);
-			comboboxCondicao.setBounds(180, 170, 180, 25);
+			labelCondicao.setBounds(370, 170, 150, 25);
+			comboboxCondicao.setBounds(520, 170, 180, 25);
 			
-			labelCor.setBounds(30, 200, 150, 25);
-			valorCor.setBounds(180, 200, 180, 25);
+			labelCor.setBounds(370, 200, 150, 25);
+			valorCor.setBounds(520, 200, 180, 25);
 			
-			labelMaterial.setBounds(30, 230, 150, 25);
-			valorMaterial.setBounds(180, 230, 180, 25);
+			labelMaterial.setBounds(370, 230, 150, 25);
+			valorMaterial.setBounds(520, 230, 180, 25);
 			
-			labelPeso.setBounds(30, 260, 150, 25);
-			valorPeso.setBounds(180, 260, 180, 25);
+			labelPeso.setBounds(370, 260, 150, 25);
+			valorPeso.setBounds(520, 260, 180, 25);
 			
-			labelMedida.setBounds(30, 290, 150, 25);
-			valorMedidaLargura.setBounds(180, 290, 90, 25);
-			valorMedidaAltura.setBounds(270, 290, 90, 25);
+			labelMedida.setBounds(370, 290, 150, 25);
+			valorMedidaLargura.setBounds(520, 290, 90, 25);
+			valorMedidaAltura.setBounds(610, 290, 90, 25);
 			
+			this.janela.add(imagem);
 			this.janela.add(labelNome);
 			this.janela.add(valorNome);
 			this.janela.add(labelDepartamento);
@@ -222,7 +235,7 @@ public class TelaDetalheProduto implements ActionListener {
 			
 			this.janela.setLayout(null);
 			
-			this.janela.setSize(400, 400);
+			this.janela.setSize(750, 400);
 			this.janela.setVisible(true);
 			
 			botaoCadastrarAcessorio.addActionListener(this);
@@ -234,6 +247,9 @@ public class TelaDetalheProduto implements ActionListener {
 		}else if(opAcessorioRoupa == 2) {
 			//Cadastrar roupa
 			if(op == 1) {
+				ImageIcon icon = new ImageIcon("blusa.png");
+				imagem = new JLabel(icon);
+				
 				janela = new JFrame("Cadastro de Roupa");
 
 				valorNome = new JTextField(200);
@@ -247,12 +263,15 @@ public class TelaDetalheProduto implements ActionListener {
 				valorEstampa = new JTextField(200);
 				comboboxTamanho = new JComboBox(tamanhos);
 
-				botaoCadastrarRoupa.setBounds(180, 320, 180, 25);
+				botaoCadastrarRoupa.setBounds(520, 320, 180, 25);
 				this.janela.add(botaoCadastrarRoupa);
 			}
 			
 			//Ver roupa a venda e Comprar
 			if(op == 2) {
+				ImageIcon icon = new ImageIcon("blusa.png");
+				imagem = new JLabel(icon);
+				
 				String nome_roupa = dados.getRoupasAVenda().get(pos).getNome();
 				janela = new JFrame(nome_roupa);
 
@@ -271,7 +290,7 @@ public class TelaDetalheProduto implements ActionListener {
 				String tamanho_cadastrado[] = {dados.getRoupasAVenda().get(pos).getTamanho()};
 				comboboxTamanho =  new JComboBox(tamanho_cadastrado);
 				
-				botaoComprarRoupa.setBounds(180, 320, 180, 25);
+				botaoComprarRoupa.setBounds(520, 320, 180, 25);
 				this.janela.add(botaoComprarRoupa);
 			}
 			
@@ -297,59 +316,62 @@ public class TelaDetalheProduto implements ActionListener {
 			
 			//Editar ou excluir roupa
 			if(op == 4) {
+				ImageIcon icon = new ImageIcon("blusa.png");
+				imagem = new JLabel(icon);
+				
 				String nome_roupa = dados.getRoupasAVenda().get(pos).getNome();
 				janela = new JFrame(nome_roupa);
 				
 				valorNome = new JTextField(dados.getRoupasAVenda().get(pos).getNome(),200);
-				String departamento_cadastrado[] = {dados.getRoupasAVenda().get(pos).getDepartamento()};
-				comboboxDepartamento =  new JComboBox(departamento_cadastrado);
+				comboboxDepartamento = new JComboBox(departamentos);
 				valorDescricao = new JTextField(dados.getRoupasAVenda().get(pos).getDescricao(),200);
 				valorMarca = new JTextField(dados.getRoupasAVenda().get(pos).getMarca(),200);
 				String preco_cadastrado = Double.toString(dados.getRoupasAVenda().get(pos).getPreco());
 				valorPreco = new JTextField(preco_cadastrado);
-				String condicao_cadastrada[] = {dados.getAcessoriosAVenda().get(pos).getCondicao()};
-				comboboxCondicao =  new JComboBox(condicao_cadastrada);				valorCor = new JTextField(dados.getRoupasAVenda().get(pos).getCor(),200);
+				comboboxCondicao = new JComboBox(condicao);
+				valorCor = new JTextField(dados.getRoupasAVenda().get(pos).getCor(),200);
 				valorTecido = new JTextField(dados.getRoupasAVenda().get(pos).getTecido(),200);
 				valorEstampa = new JTextField(dados.getRoupasAVenda().get(pos).getEstampa(),10);
 				String tamanho_cadastrado[] = {dados.getRoupasAVenda().get(pos).getTamanho()};
 				comboboxTamanho =  new JComboBox(tamanho_cadastrado);
-				
-				botaoSalvarRoupa.setBounds(180, 320, 90, 25);
-				botaoExcluirRoupa.setBounds(270, 320, 90, 25);
+
+				botaoSalvarRoupa.setBounds(520, 320, 90, 25);
+				botaoExcluirRoupa.setBounds(610, 320, 90, 25);
 				this.janela.add(botaoSalvarRoupa);
 				this.janela.add(botaoExcluirRoupa);
 			}
+			imagem.setBounds(20, 20, 330, 300);
+			labelNome.setBounds(370, 20, 150, 25);
+			valorNome.setBounds(520, 20, 180, 25);
 			
-			labelNome.setBounds(30, 20, 150, 25);
-			valorNome.setBounds(180, 20, 180, 25);
+			labelDepartamento.setBounds(370, 50, 150, 25);
+			comboboxDepartamento.setBounds(520, 50, 180, 25);
 			
-			labelDepartamento.setBounds(30, 50, 150, 25);
-			comboboxDepartamento.setBounds(180, 50, 180, 25);
+			labelDescricao.setBounds(370, 80, 150, 25);
+			valorDescricao.setBounds(520, 80, 180, 25);
 			
-			labelDescricao.setBounds(30, 80, 150, 25);
-			valorDescricao.setBounds(180, 80, 180, 25);
+			labelMarca.setBounds(370, 110, 150, 25);
+			valorMarca.setBounds(520, 110, 180, 25);
 			
-			labelMarca.setBounds(30, 110, 150, 25);
-			valorMarca.setBounds(180, 110, 180, 25);
+			labelPreco.setBounds(370, 140, 150, 25);
+			valorPreco.setBounds(520, 140, 180, 25);
 			
-			labelPreco.setBounds(30, 140, 150, 25);
-			valorPreco.setBounds(180, 140, 180, 25);
+			labelCondicao.setBounds(370, 170, 150, 25);
+			comboboxCondicao.setBounds(520, 170, 180, 25);
 			
-			labelCondicao.setBounds(30, 170, 150, 25);
-			comboboxCondicao.setBounds(180, 170, 180, 25);
+			labelCor.setBounds(370, 200, 150, 25);
+			valorCor.setBounds(520, 200, 180, 25);
 			
-			labelCor.setBounds(30, 200, 150, 25);
-			valorCor.setBounds(180, 200, 180, 25);
+			labelTecido.setBounds(370, 230, 150, 25);
+			valorTecido.setBounds(520, 230, 180, 25);
 			
-			labelTecido.setBounds(30, 230, 150, 25);
-			valorTecido.setBounds(180, 230, 180, 25);
+			labelEstampa.setBounds(370, 260, 150, 25);
+			valorEstampa.setBounds(520, 260, 180, 25);
 			
-			labelEstampa.setBounds(30, 260, 150, 25);
-			valorEstampa.setBounds(180, 260, 180, 25);
+			labelTamanho.setBounds(370, 290, 150, 25);
+			comboboxTamanho.setBounds(520, 290, 180, 25);
 			
-			labelTamanho.setBounds(30, 290, 150, 25);
-			comboboxTamanho.setBounds(180, 290, 180, 25);
-			
+			this.janela.add(imagem);
 			this.janela.add(labelNome);
 			this.janela.add(valorNome);
 			this.janela.add(labelDepartamento);
@@ -373,7 +395,7 @@ public class TelaDetalheProduto implements ActionListener {
 			
 			this.janela.setLayout(null);
 			
-			this.janela.setSize(400, 400);
+			this.janela.setSize(750, 400);
 			this.janela.setVisible(true);
 			
 			botaoCadastrarRoupa.addActionListener(this);
@@ -387,6 +409,32 @@ public class TelaDetalheProduto implements ActionListener {
 		Object src = e.getSource();
 		
 		if(src == botaoSalvarAcessorio || src == botaoCadastrarAcessorio) {
+			novoDado[0] = valorNome.getText();
+			novoDado[1] = comboboxDepartamento.getSelectedItem().toString();
+			novoDado[2] = valorDescricao.getText();
+			novoDado[3] = valorMarca.getText();
+			novoDado[4] = valorPreco.getText();
+			novoDado[5] = comboboxCondicao.getSelectedItem().toString();
+			novoDado[6] = valorCor.getText();
+			novoDado[7] = valorMaterial.getText();
+			novoDado[8] = valorPeso.getText();
+			novoDado[9] = valorMedidaLargura.getText();
+			novoDado[10] = valorMedidaAltura.getText();
+			Usuario user = dados.getUsuarioPrincipal();
+	
+			boolean auxiliar = new ControleAcessorio(dados).cadastrarAcessorio(novoDado, user);
+			
+			if(auxiliar == true) {
+				mensagemSucessoCadastrar();	
+				
+			}else {
+				mensagemErroSalvarAcessorio();
+			}
+			
+			janela.dispose();
+		}
+		
+		if(src == botaoSalvarRoupa || src == botaoCadastrarRoupa) {			
 				novoDado[0] = valorNome.getText();
 				novoDado[1] = comboboxDepartamento.getSelectedItem().toString();
 				novoDado[2] = valorDescricao.getText();
@@ -394,60 +442,43 @@ public class TelaDetalheProduto implements ActionListener {
 				novoDado[4] = valorPreco.getText();
 				novoDado[5] = comboboxCondicao.getSelectedItem().toString();
 				novoDado[6] = valorCor.getText();
-				novoDado[7] = valorMaterial.getText();
-				novoDado[8] = valorPeso.getText();
-				novoDado[9] = valorMedidaLargura.getText();
-				novoDado[10] = valorMedidaAltura.getText();
-	
-			boolean auxiliar = true;
+				novoDado[7] = comboboxTamanho.getSelectedItem().toString();
+				novoDado[8] = (valorTecido.getText());
+				novoDado[9] = (valorEstampa.getText());
+				Usuario user = dados.getUsuarioPrincipal();
+				
+			boolean auxiliar = new ControleRoupa(dados).cadastrarRoupa(novoDado , user);
 			
-			//auxiliar = new ControleAcessorio(dados).cadastrarAcessorio(novoDado);
 			if(auxiliar == true) {
 				mensagemSucessoCadastrar();	
 				
 			}else {
-				mensagemErroSalvarAcessorio();
+				mensagemErroSalvarRoupa();
 			}
-		}
-		
-		if(src == botaoSalvarRoupa || src == botaoCadastrarRoupa) {
-			Roupa roupa_nova = new Roupa(dados.getUsuarioPrincipal());
-				roupa_nova.setNome(valorNome.getText());
-				
-				String departamentoselecionado = comboboxDepartamento.getSelectedItem().toString();
-				roupa_nova.setDepartamento(departamentoselecionado);
-				roupa_nova.setDescricao(valorDescricao.getText());
-				roupa_nova.setMarca(valorMarca.getText());
-				Double precoselecionado = Double.parseDouble(valorPreco.getText());
-				roupa_nova.setPreco(precoselecionado);
-				String condicaoselecionada = comboboxDepartamento.getSelectedItem().toString();
-				roupa_nova.setCondicao(condicaoselecionada);				
-				roupa_nova.setTecido(valorTecido.getText());
-				roupa_nova.setEstampa(valorEstampa.getText());
-				String tamanhoselecionado = comboboxTamanho.getSelectedItem().toString();
-				roupa_nova.setTamanho(tamanhoselecionado);
-				
-			new ControleRoupa(dados).cadastrarRoupa(roupa_nova);
 			
 			janela.dispose();
 		}
 		
 		if(src == botaoExcluirAcessorio) {
 			new ControleAcessorio(dados).excluirAcessorio(pos);
+			janela.dispose();
 		}
 		
-		if(src == botaoExcluirAcessorio) {
+		if(src == botaoExcluirRoupa) {
 			new ControleRoupa(dados).excluirRoupa(pos);
+			janela.dispose();
 		}
 		
 		if(src == botaoComprarAcessorio) {
 			new ControleUsuario(dados).adicionarAcessorioNaSacola(dados.getAcessoriosAVenda().get(pos));
 			mensagemSucessoSacola();
+			janela.dispose();
 		}
 		
 		if(src == botaoComprarRoupa) {
 			new ControleUsuario(dados).adicionarRoupaNaSacola(dados.getRoupasAVenda().get(pos));
 			mensagemSucessoSacola();
+			janela.dispose();
 		}
 	}
 	
@@ -468,6 +499,15 @@ public class TelaDetalheProduto implements ActionListener {
 				+ "Pode ter ocorrido um dos dois erros a seguir:  \n"
 				+ "1. Nem todos os campos foram preenchidos \n"
 				+ "2. Preco, peso, medida da largura e a medida da altura devem conter apenas numeros", null, 
+				JOptionPane.ERROR_MESSAGE);
+		janela.dispose();
+	}
+	
+	public void mensagemErroSalvarRoupa() {
+		JOptionPane.showMessageDialog(null,"Erro ao salvar os dados!\n "
+				+ "Pode ter ocorrido um dos dois erros a seguir:  \n"
+				+ "1. Nem todos os campos foram preenchidos \n"
+				+ "2. Preco e peso devem conter apenas numeros", null, 
 				JOptionPane.ERROR_MESSAGE);
 		janela.dispose();
 	}

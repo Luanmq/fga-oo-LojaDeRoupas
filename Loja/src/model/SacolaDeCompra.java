@@ -13,38 +13,6 @@ public class SacolaDeCompra {
 	 public SacolaDeCompra(Usuario usuario) {
 			this.usuarioComprador = usuario;
 	 }
-	 
-	  //Adiciona um acessorio na Sacola para acessorios
-	  public void adicionarAcessorio(Acessorio acessorioDentroDaSacola) {
-		  this.valorTotal += acessorioDentroDaSacola.getPreco();
-		  this.SacolaParaAcessorios.add(acessorioDentroDaSacola);
-	  }
-	 
-	  //Adiciona uma roupa na Sacola para roupas
-	  public void adicionarRoupa(Roupa roupaDentroDaSacola) {
-		  this.valorTotal += roupaDentroDaSacola.getPreco();
-		  this.SacolaParaRoupas.add(roupaDentroDaSacola);
-	  }
-	
-	  //Retira uma roupa da Sacola para roupas
-	  public void retirarRoupa(int posicao) {
-		  this.SacolaParaRoupas.remove(posicao);
-		  this.valorTotal = valorTotal - SacolaParaRoupas.get(posicao).getPreco();
-	  }
-	  
-	  //Retira um acessorio da Sacola para acessorios
-	  public void retirarAcessorio(int posicao) {
-		  this.SacolaParaAcessorios.remove(posicao);
-		  this.valorTotal = valorTotal - SacolaParaAcessorios.get(posicao).getPreco();
-	  }
-	  
-	  //Limpa os dados da Sacola para acessorios e da Sacola para roupas
-	  public void esvaziarSacola() {
-		  SacolaParaAcessorios.clear();
-		  SacolaParaRoupas.clear();
-		  this.valorTotal = 0;
-	  }
-	  
 	  //Mostra os produtos na sacola, joga para produtos comprados do usuario que deseja comprar e
 	  //retira os produtos dos usuarios que venderam
 	 /* public void finalizarCompra() {
@@ -65,7 +33,6 @@ public class SacolaDeCompra {
 		  System.out.println("\nDeseja finalizar a compra? Digite sim ou nao:");
 		  String resposta_finalizar;
 		  resposta_finalizar = ler.next();
-
 		  if(resposta_finalizar.equals("sim") == true ) {
 			  //Adiciona os acessorios a produtos comprados do usuario comprador
 			  for(Acessorio acessorioComprado : SacolaParaAcessorios) {
@@ -134,4 +101,6 @@ public class SacolaDeCompra {
 	public void setUsuarioComprador(Usuario usuarioComprador) {
 		this.usuarioComprador = usuarioComprador;
 	}
+	 
+	 
 }
