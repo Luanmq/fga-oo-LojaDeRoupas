@@ -82,7 +82,8 @@ public class TelaDetalheProduto implements ActionListener {
 		if(opAcessorioRoupa == 1) {
 			//Cadastrar acessorio
 			if(op == 1) {
-				ImageIcon icon = new ImageIcon("blusa.png");
+				String arquivo = ("img/Placeholder.png");
+				ImageIcon icon = new ImageIcon(arquivo);
 				imagem = new JLabel(icon);
 				
 				janela = new JFrame("Cadastro de Acessorio");
@@ -105,7 +106,9 @@ public class TelaDetalheProduto implements ActionListener {
 			
 			//Ver acessorio a venda e Colocar na sacola
 			if(op == 2) {
-				ImageIcon icon = new ImageIcon("blusa.png");
+				String arquivo = dados.getAcessoriosAVenda().get(pos).getImagem();
+				System.out.println(arquivo);
+				ImageIcon icon = new ImageIcon(arquivo);
 				imagem = new JLabel(icon);
 						        
 				String nome_acessorio = dados.getAcessoriosAVenda().get(pos).getNome();
@@ -132,7 +135,8 @@ public class TelaDetalheProduto implements ActionListener {
 			
 			//Ver acessorio
 			if(op == 3) {
-				ImageIcon icon = new ImageIcon("blusa.png");
+				String arquivo = dados.getAcessoriosAVenda().get(pos).getImagem();
+				ImageIcon icon = new ImageIcon(arquivo);
 				imagem = new JLabel(icon);
 				
 				String nome_acessorio = dados.getAcessoriosAVenda().get(pos).getNome();
@@ -156,7 +160,8 @@ public class TelaDetalheProduto implements ActionListener {
 			
 			//Editar ou excluir acessorio
 			if(op == 4) {
-				ImageIcon icon = new ImageIcon("blusa.png");
+				String arquivo = dados.getAcessoriosAVenda().get(pos).getImagem();
+				ImageIcon icon = new ImageIcon(arquivo);
 				imagem = new JLabel(icon);
 				
 				String nome_acessorio = dados.getAcessoriosAVenda().get(pos).getNome();
@@ -182,7 +187,9 @@ public class TelaDetalheProduto implements ActionListener {
 			}
 			//Ver acessorio comprado
 			if(op == 5) {
-				ImageIcon icon = new ImageIcon("blusa.png");
+				String arquivo = dados.getAcessoriosComprados().get(pos).getImagem();
+				System.out.println(arquivo);
+				ImageIcon icon = new ImageIcon(arquivo);
 				imagem = new JLabel(icon);
 				
 				String nome_acessorio = dados.getAcessoriosComprados().get(pos).getNome();
@@ -274,7 +281,8 @@ public class TelaDetalheProduto implements ActionListener {
 		}else if(opAcessorioRoupa == 2) {
 			//Cadastrar roupa
 			if(op == 1) {
-				ImageIcon icon = new ImageIcon("blusa.png");
+				String arquivo = ("img/Placeholder.png");
+				ImageIcon icon = new ImageIcon(arquivo);
 				imagem = new JLabel(icon);
 				
 				janela = new JFrame("Cadastro de Roupa");
@@ -296,7 +304,8 @@ public class TelaDetalheProduto implements ActionListener {
 			
 			//Ver roupa a venda e Comprar
 			if(op == 2) {
-				ImageIcon icon = new ImageIcon("blusa.png");
+				String arquivo = dados.getRoupasAVenda().get(pos).getImagem();
+				ImageIcon icon = new ImageIcon(arquivo);
 				imagem = new JLabel(icon);
 				
 				String nome_roupa = dados.getRoupasAVenda().get(pos).getNome();
@@ -323,7 +332,8 @@ public class TelaDetalheProduto implements ActionListener {
 			
 			//Ver roupa
 			if(op == 3) {
-				ImageIcon icon = new ImageIcon("blusa.png");
+				String arquivo = dados.getRoupasAVenda().get(pos).getImagem();
+				ImageIcon icon = new ImageIcon(arquivo);
 				imagem = new JLabel(icon);
 				
 				String nome_roupa = dados.getRoupasAVenda().get(pos).getNome();
@@ -347,7 +357,8 @@ public class TelaDetalheProduto implements ActionListener {
 			
 			//Editar ou excluir roupa
 			if(op == 4) {
-				ImageIcon icon = new ImageIcon("blusa.png");
+				String arquivo = dados.getRoupasAVenda().get(pos).getImagem();
+				ImageIcon icon = new ImageIcon(arquivo);
 				imagem = new JLabel(icon);
 				
 				String nome_roupa = dados.getRoupasAVenda().get(pos).getNome();
@@ -373,7 +384,8 @@ public class TelaDetalheProduto implements ActionListener {
 			}
 			//Ver roupa comprada
 			if(op == 5) {
-				ImageIcon icon = new ImageIcon("blusa.png");
+				String arquivo = dados.getRoupasCompradas().get(pos).getImagem();
+				ImageIcon icon = new ImageIcon(arquivo);
 				imagem = new JLabel(icon);
 				
 				String nome_roupa = dados.getRoupasCompradas().get(pos).getNome();

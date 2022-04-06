@@ -19,7 +19,9 @@ public class ControleRoupa {
 		
 		Roupa roupa = new Roupa (dadosRoupa[0], dadosRoupa[1], dadosRoupa[2], dadosRoupa[3], Double.parseDouble(dadosRoupa[4]), 
 		dadosRoupa[5], dadosRoupa[6], usuario, dadosRoupa[7], dadosRoupa[8], dadosRoupa[9]);
-	
+		
+		roupa.setImagem("img/Placeholder.png");
+		
 		ControleDados.getD().getRoupasAVenda().add(roupa);
 		return true;
 	}

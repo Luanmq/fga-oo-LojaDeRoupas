@@ -18,7 +18,9 @@ public class ControleAcessorio {
 	public boolean cadastrarAcessorio(String[] dadosAcessorio, Usuario usuario) {
 		Acessorio accessorio = new Acessorio (dadosAcessorio[0], dadosAcessorio[1], dadosAcessorio[2], dadosAcessorio[3], Double.parseDouble(dadosAcessorio[4]), 
 				dadosAcessorio[5], dadosAcessorio[6], usuario, dadosAcessorio[7], Double.parseDouble(dadosAcessorio[8]), Double.parseDouble(dadosAcessorio[9]), Double.parseDouble(dadosAcessorio[10]));
-	
+		
+		accessorio.setImagem("img/Placeholder.png");
+		
 		ControleDados.getD().getAcessoriosAVenda().add(accessorio);
 		
 		return true;
