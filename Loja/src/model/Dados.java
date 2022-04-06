@@ -35,6 +35,7 @@ public class Dados {
 				bruno.setEndereco(enderecobruno);
 				
 		  Roupa blusapreta = new Roupa(bruno);
+		  		blusapreta.setImagem("img/Roupa.0.png");
 		  		blusapreta.setNome("Blusa Preta");
 			 	blusapreta.setDepartamento("Masculino");
 			 	blusapreta.setDescricao("Blusa preta com estampa de listras na frente");
@@ -48,6 +49,7 @@ public class Dados {
 			 	roupasAVenda.add(blusapreta);
 		  
 		  Acessorio bonejeans = new Acessorio(bruno);
+		  		bonejeans.setImagem("img/Acess.0.png");
 			  	bonejeans.setNome("Bone Jeans");
 			  	bonejeans.setDepartamento("Unissex");
 			  	bonejeans.setDescricao("Bone com tecido jeans azul");
@@ -79,6 +81,7 @@ public class Dados {
 				  lucas.setEndereco(enderecolucas);
 		  		  
 		  Roupa blusaverde = new Roupa(lucas);
+		  		blusaverde.setImagem("img/Roupa.1.png");
 			  	blusaverde.setNome("Blusa Verde Nike");
 			  	blusaverde.setDepartamento("Infatil");
 			  	blusaverde.setDescricao("Blusa infantil verde da marca Nike");
@@ -92,6 +95,7 @@ public class Dados {
 			 	roupasAVenda.add(blusaverde);
 		  
 		  Acessorio oculospreto = new Acessorio(lucas);
+		  		oculospreto.setImagem("img/Acess.1.png");
 			  	oculospreto.setNome("Oculos preto chique");
 			  	oculospreto.setDepartamento("Feminino");
 			  	oculospreto.setDescricao("Oculos preto da marca Chilli Beans");
@@ -123,6 +127,7 @@ public class Dados {
 			sofia.setEndereco(enderecosofia);
 		  		  
 		  Roupa vestidorosa = new Roupa(sofia);
+		  		vestidorosa.setImagem("img/Roupa.2.png");
 			  	vestidorosa.setNome("Vestido florido rosa");
 			  	vestidorosa.setDepartamento("Infantil");
 			  	vestidorosa.setDescricao("Vestido rosa florido e infantil");
@@ -136,6 +141,7 @@ public class Dados {
 			  	roupasAVenda.add(vestidorosa);
 		  
 		  Acessorio sapatilha = new Acessorio(sofia);
+		  		sapatilha.setImagem("img/Acess.2.png");
 			  	sapatilha.setNome("Sapatilha de balé");
 			  	sapatilha.setDepartamento("Feminino");
 			  	sapatilha.setDescricao("Sapatilha de balé rosa claro");
@@ -167,8 +173,9 @@ public class Dados {
 			  helena.setEndereco(enderecohelena);
 		  		  
 		  Roupa calcajeanspreta = new Roupa(helena);
+		  		calcajeanspreta.setImagem("img/Roupa.3.png");
 			  	calcajeanspreta.setNome("Calca Jeans preta");
-			  	calcajeanspreta.setDepartamento("Unissex");
+			  	calcajeanspreta.setDepartamento("Masculino");
 			  	calcajeanspreta.setDescricao("Calca jeans preta rasgada");
 			  	calcajeanspreta.setMarca("Levi");
 			  	calcajeanspreta.setPreco(140.00);
@@ -180,6 +187,7 @@ public class Dados {
 			  	roupasAVenda.add(calcajeanspreta);
 		  
 		  Acessorio cintocouro = new Acessorio(helena);
+		  		cintocouro.setImagem("img/Acess.3.png");
 			  	cintocouro.setNome("Cinto de couro");
 			  	cintocouro.setDepartamento("Unissex");
 			  	cintocouro.setDescricao("Cinto de couro marrom");
