@@ -24,9 +24,34 @@ public class ControleRoupa {
 		return true;
 	}
 	
+	//Salva os dados editados de uma roupa
+	public boolean salvarRoupa(String[] dadosAcessorio, Usuario usuario, int posicao) {
+		ControleDados.getD().getRoupasAVenda().get(posicao).setNome(dadosAcessorio[0]);
+		ControleDados.getD().getRoupasAVenda().get(posicao).setDepartamento(dadosAcessorio[1]);
+		ControleDados.getD().getRoupasAVenda().get(posicao).setDescricao(dadosAcessorio[2]);
+		ControleDados.getD().getRoupasAVenda().get(posicao).setMarca(dadosAcessorio[3]);
+		ControleDados.getD().getRoupasAVenda().get(posicao).setPreco(Double.parseDouble(dadosAcessorio[4]));
+		ControleDados.getD().getRoupasAVenda().get(posicao).setCondicao(dadosAcessorio[5]);
+		ControleDados.getD().getRoupasAVenda().get(posicao).setCor(dadosAcessorio[6]);
+
+		ControleDados.getD().getRoupasAVenda().get(posicao).setTamanho(dadosAcessorio[7]);
+		ControleDados.getD().getRoupasAVenda().get(posicao).setTecido(dadosAcessorio[8]);
+		ControleDados.getD().getRoupasAVenda().get(posicao).setEstampa(dadosAcessorio[9]);
+
+		return true;
+	}
+	
 	//Deleta uma roupa ja existente
 	public void excluirRoupa(int posicao) {
-		ControleDados.getD().getRoupasCompradas().remove(posicao);	
+		for(int i = 0; i < ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getSacolaParaRoupas().size(); i++){
+			if(ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getSacolaParaRoupas().get(i) ==
+			ControleDados.getD().getRoupasAVenda().get(posicao)) {
+				//Tira as roupas compradas de Roupas Venda
+				ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getSacolaParaRoupas().remove(i);
+			}
+		}
+		
+		ControleDados.getD().getRoupasAVenda().remove(posicao);
 	}
 
 	//Gets e sets

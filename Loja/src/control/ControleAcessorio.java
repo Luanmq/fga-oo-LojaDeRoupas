@@ -24,10 +24,35 @@ public class ControleAcessorio {
 		return true;
 	}
 	
+	//Salva os dados editados de um acessorio
+	public boolean salvarAcessorio(String[] dadosAcessorio, Usuario usuario, int posicao) {
+		ControleDados.getD().getAcessoriosAVenda().get(posicao).setNome(dadosAcessorio[0]);
+		ControleDados.getD().getAcessoriosAVenda().get(posicao).setDepartamento(dadosAcessorio[1]);
+		ControleDados.getD().getAcessoriosAVenda().get(posicao).setDescricao(dadosAcessorio[2]);
+		ControleDados.getD().getAcessoriosAVenda().get(posicao).setMarca(dadosAcessorio[3]);
+		ControleDados.getD().getAcessoriosAVenda().get(posicao).setPreco(Double.parseDouble(dadosAcessorio[4]));
+		ControleDados.getD().getAcessoriosAVenda().get(posicao).setCondicao(dadosAcessorio[5]);
+		ControleDados.getD().getAcessoriosAVenda().get(posicao).setCor(dadosAcessorio[6]);
+
+		ControleDados.getD().getAcessoriosAVenda().get(posicao).setMaterial(dadosAcessorio[7]);
+		ControleDados.getD().getAcessoriosAVenda().get(posicao).setPeso(Double.parseDouble(dadosAcessorio[8]));
+		ControleDados.getD().getAcessoriosAVenda().get(posicao).setMedidaLargura(Double.parseDouble(dadosAcessorio[9]));
+		ControleDados.getD().getAcessoriosAVenda().get(posicao).setMedidaAltura(Double.parseDouble(dadosAcessorio[10]));
+
+		return true;
+	}
+	
 	//Deleta um acessorio ja existente
 	public void excluirAcessorio(int posicao) {
-		ControleDados.getD().getAcessoriosComprados().remove(posicao);	
-	}
+		for(int i = 0; i < ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getSacolaParaAcessorios().size(); i++){
+			if(ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getSacolaParaAcessorios().get(i) ==
+			ControleDados.getD().getAcessoriosAVenda().get(posicao)) {
+				//Tira as roupas compradas de Roupas Venda
+				ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getSacolaParaAcessorios().remove(i);
+			}
+		}
+		
+		ControleDados.getD().getAcessoriosAVenda().remove(posicao);	}
 	
 	//Gets e sets
 	public ArrayList<Acessorio> getAc() {

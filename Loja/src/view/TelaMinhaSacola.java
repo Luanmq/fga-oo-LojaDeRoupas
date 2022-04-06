@@ -27,7 +27,7 @@ public class TelaMinhaSacola implements ListSelectionListener, ActionListener{
 	private JList<String> listaRoupasSacola = new JList<String>();
 	private String[] listaNomesRoupasSacola = new String[1000];
 	
-	private JLabel textoValorTotal = new JLabel("Valor:          R$");
+	private JLabel textoValorTotal = new JLabel("Valor:    R$");
 	private JTextField valorTotalSacola;
 	private JButton retirarProduto = new JButton("Retirar Produto");
 	private JButton esvaziarSacola = new JButton("Esvaziar Sacola");
@@ -110,10 +110,10 @@ public class TelaMinhaSacola implements ListSelectionListener, ActionListener{
 		}
 		
 		if(e.getValueIsAdjusting() && src == listaRoupasSacola) {
-			for(int i = 0; i < dados.getRoupasAVenda().size(); i++) {
+			for(int j = 0; j < dados.getRoupasAVenda().size(); j++) {
 				if(dados.getUsuarioPrincipal().getSacolausuario().getSacolaParaRoupas()
-				.get(listaRoupasSacola.getSelectedIndex()) == dados.getRoupasAVenda().get(i)) {
-					new TelaDetalheProduto().cadastrarEditarProduto(dados, 2, 3, i);
+				.get(listaRoupasSacola.getSelectedIndex()) == dados.getRoupasAVenda().get(j)) {
+					new TelaDetalheProduto().cadastrarEditarProduto(dados, 2, 3, j);
 					break;
 				}
 			}
@@ -126,19 +126,23 @@ public class TelaMinhaSacola implements ListSelectionListener, ActionListener{
 		if(src == retirarProduto) {
 			if(listaRoupasSacola.getSelectedIndex() != -1) {
 				new ControleUsuario(dados).retirarRoupaNaSacola(dados.getUsuarioPrincipal().getSacolausuario().getSacolaParaRoupas().get(listaRoupasSacola.getSelectedIndex()));
-				mensagemSucessoRetirar();
+				mensagemSucessoRetirarAcessorio();
 			}
 			
 			if(listaAcessoriosSacola.getSelectedIndex() != -1) {
 				new ControleUsuario(dados).retirarAcessorioNaSacola(dados.getUsuarioPrincipal().getSacolausuario().getSacolaParaAcessorios().get(listaAcessoriosSacola.getSelectedIndex()));
-				mensagemSucessoRetirar();
+				mensagemSucessoRetirarRoupa();
 			}
 		}
 		
 		if(src == esvaziarSacola) {
 			new ControleUsuario(dados).esvaziarSacola();
 			mensagemSucessoEsvaziar();
-			janela.dispose();
+		}
+		
+		if(src == finalizarCompra) {
+			new ControleUsuario(dados).finalizarCompra();
+			mensagemSucessoFinalizarCompra();
 		}
 	}
 	
@@ -148,8 +152,20 @@ public class TelaMinhaSacola implements ListSelectionListener, ActionListener{
 		janela.dispose();
 	}
 	
-	public void mensagemSucessoRetirar() {
-		JOptionPane.showMessageDialog(null, "O Produto foi retirado com sucesso!", null, 
+	public void mensagemSucessoRetirarAcessorio() {
+		JOptionPane.showMessageDialog(null, "O Acessorio foi retirado com sucesso!", null, 
+				JOptionPane.INFORMATION_MESSAGE);
+		janela.dispose();
+	}
+	
+	public void mensagemSucessoRetirarRoupa() {
+		JOptionPane.showMessageDialog(null, "A Roupa foi retirada com sucesso!", null, 
+				JOptionPane.INFORMATION_MESSAGE);
+		janela.dispose();
+	}
+	
+	public void mensagemSucessoFinalizarCompra() {
+		JOptionPane.showMessageDialog(null, "A Compra foi finalizada com sucesso!", null, 
 				JOptionPane.INFORMATION_MESSAGE);
 		janela.dispose();
 	}
