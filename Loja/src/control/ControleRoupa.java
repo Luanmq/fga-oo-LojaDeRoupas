@@ -16,6 +16,17 @@ public class ControleRoupa {
 	
 	//Coloca uma roupa a venda
 	public boolean cadastrarRoupa(String[] dadosRoupa, Usuario usuario) {
+		if(!dadosRoupa[4].matches("[0-9]+")) {
+			return false;
+		}
+		if(dadosRoupa[0].isEmpty() || dadosRoupa[1].isEmpty() || dadosRoupa[2].isEmpty() || dadosRoupa[3].isEmpty() || dadosRoupa[4].isEmpty() || dadosRoupa[5].isEmpty() ||
+				dadosRoupa[6].isEmpty() || dadosRoupa[7].isEmpty() || dadosRoupa[8].isEmpty() || dadosRoupa[9].isEmpty()){
+			return false;
+		}
+		if(!dadosRoupa[0].matches("[A-Za-z ]+") || !dadosRoupa[6].matches("[A-Za-z ]+") ||
+				!dadosRoupa[8].matches("[A-Za-z ]+") ){
+			return false;
+		}
 		
 		Roupa roupa = new Roupa (dadosRoupa[0], dadosRoupa[1], dadosRoupa[2], dadosRoupa[3], Double.parseDouble(dadosRoupa[4]), 
 		dadosRoupa[5], dadosRoupa[6], usuario, dadosRoupa[7], dadosRoupa[8], dadosRoupa[9]);

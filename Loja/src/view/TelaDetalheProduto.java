@@ -616,18 +616,20 @@ public class TelaDetalheProduto implements ActionListener {
 	
 	public void mensagemErroSalvarAcessorio() {
 		JOptionPane.showMessageDialog(null,"Erro ao salvar os dados!\n "
-				+ "Pode ter ocorrido um dos dois erros a seguir:  \n"
+				+ "Pode ter ocorrido um dos tres erros a seguir:  \n"
 				+ "1. Nem todos os campos foram preenchidos \n"
-				+ "2. Preco, peso, medida da largura e a medida da altura devem conter apenas numeros", null, 
+				+ "2. Preco, peso, medida da largura e a medida da altura nao contem apenas numeros \n"
+				+ "3. Nome e cor nao contem apenas letras", null, 
 				JOptionPane.ERROR_MESSAGE);
 		janela.dispose();
 	}
 	
 	public void mensagemErroSalvarRoupa() {
 		JOptionPane.showMessageDialog(null,"Erro ao salvar os dados!\n "
-				+ "Pode ter ocorrido um dos dois erros a seguir:  \n"
+				+ "Pode ter ocorrido um tres erros a seguir:  \n"
 				+ "1. Nem todos os campos foram preenchidos \n"
-				+ "2. Preco e peso devem conter apenas numeros", null, 
+				+ "2. Preco nao contem apenas numeros \n"
+				+ "3. Nome, cor e tecido nao contem apenas letras", null, 
 				JOptionPane.ERROR_MESSAGE);
 		janela.dispose();
 	}

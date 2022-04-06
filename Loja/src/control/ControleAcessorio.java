@@ -16,6 +16,18 @@ public class ControleAcessorio {
 
 	//Coloca um acessorio a venda
 	public boolean cadastrarAcessorio(String[] dadosAcessorio, Usuario usuario) {
+		if(!dadosAcessorio[4].matches("[0-9]+") || !dadosAcessorio[8].matches("[0-9]+") || 
+				!dadosAcessorio[9].matches("[0-9]+") || !dadosAcessorio[10].matches("[0-9]+")) {
+			return false;
+		}
+		if(dadosAcessorio[0].isEmpty() || dadosAcessorio[1].isEmpty() || dadosAcessorio[2].isEmpty() || dadosAcessorio[3].isEmpty() || dadosAcessorio[4].isEmpty() || dadosAcessorio[5].isEmpty() ||
+				dadosAcessorio[6].isEmpty() || dadosAcessorio[7].isEmpty() || dadosAcessorio[8].isEmpty() || dadosAcessorio[9].isEmpty() || dadosAcessorio[10].isEmpty()){
+			return false;
+		}
+		if(!dadosAcessorio[0].matches("[A-Za-z ]+") || !dadosAcessorio[6].matches("[A-Za-z ]+") ){
+			return false;
+		}
+		
 		Acessorio accessorio = new Acessorio (dadosAcessorio[0], dadosAcessorio[1], dadosAcessorio[2], dadosAcessorio[3], Double.parseDouble(dadosAcessorio[4]), 
 				dadosAcessorio[5], dadosAcessorio[6], usuario, dadosAcessorio[7], Double.parseDouble(dadosAcessorio[8]), Double.parseDouble(dadosAcessorio[9]), Double.parseDouble(dadosAcessorio[10]));
 		

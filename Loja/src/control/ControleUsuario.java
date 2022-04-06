@@ -2,8 +2,7 @@ package control;
 
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 import model.*;
 
@@ -19,22 +18,45 @@ public class ControleUsuario {
 	
 	//Define o usuario principal
 	public void selecionaUsuarioPrincipal(Usuario usuarioPrincipal) {
+		
 		ControleDados.getD().setUsuarioPrincipal(usuarioPrincipal);
+	
 	}
 	
 	//Realiza o cadastro de um novo usuario
 	public boolean cadastrarUsuario(String[] dadosUsuario) {
-		if(!dadosUsuario[2].matches("[0-9]+") || !dadosUsuario[2].matches("[0-9]+") || 
+		if(!dadosUsuario[2].matches("[0-9]+") || !dadosUsuario[3].matches("[0-9]+") || 
 				!dadosUsuario[8].matches("[0-9]+") || !dadosUsuario[9].matches("[0-9]+")) {
 			return false;
-		}else {
-			Usuario user = new Usuario(dadosUsuario[0], dadosUsuario[1], Long.parseLong(dadosUsuario[2]), Long.parseLong(dadosUsuario[3]), dadosUsuario[4], 
-					dadosUsuario[5], dadosUsuario[6], dadosUsuario[7], Integer.parseInt(dadosUsuario[8]), Integer.parseInt(dadosUsuario[9]), dadosUsuario[10]);
-		
-			ControleDados.getD().getUsuarios().add(user);
-			
-			return true;
 		}
+		if(dadosUsuario[0].isEmpty() || dadosUsuario[1].isEmpty() || dadosUsuario[2].isEmpty() || dadosUsuario[3].isEmpty() || dadosUsuario[4].isEmpty() || dadosUsuario[5].isEmpty() ||
+				dadosUsuario[6].isEmpty() || dadosUsuario[7].isEmpty() || dadosUsuario[8].isEmpty() || dadosUsuario[9].isEmpty() || dadosUsuario[10].isEmpty()){
+			return false;
+		}
+		if(!dadosUsuario[0].matches("[A-Za-z ]+") || !dadosUsuario[5].matches("[A-Za-z ]+") || !dadosUsuario[6].matches("[A-Za-z ]+") || !dadosUsuario[7].matches("[A-Za-z ]+")){
+			return false;
+		}
+		if(!dadosUsuario[4].contains("@")){
+			return false;			
+		}
+				
+		for(int i = 0; i < ControleDados.getD().getUsuarios().size(); i++) {
+		
+			if(ControleDados.getD().getUsuarios().get(i).getEmail().equals(dadosUsuario[4])) {
+				mensagemEmailExistente();
+				return false;
+			}
+			
+		}
+			
+		Usuario user = new Usuario(dadosUsuario[0], dadosUsuario[1], Long.parseLong(dadosUsuario[2]), Long.parseLong(dadosUsuario[3]), dadosUsuario[4], 
+				dadosUsuario[5], dadosUsuario[6], dadosUsuario[7], Integer.parseInt(dadosUsuario[8]), Integer.parseInt(dadosUsuario[9]), dadosUsuario[10]);
+	
+		ControleDados.getD().getUsuarios().add(user);
+		
+		return true;
+		
+		
 	}
 	
 	//Salva a edicao de um usuario ja existente
@@ -50,6 +72,7 @@ public class ControleUsuario {
 			
 			return true;
 		}
+		
 	}
 	
 	//Deleta um usuario ja existente
@@ -66,8 +89,10 @@ public class ControleUsuario {
 	
 	//Adiciona um acessorio na sacola do usuario principal
 	public void adicionarAcessorioNaSacola(Acessorio acessorioNovo) {
+
 		ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getSacolaParaAcessorios().add(acessorioNovo);
 		ControleDados.getD().getUsuarioPrincipal().getSacolausuario().setValorTotal(ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getValorTotal() + acessorioNovo.getPreco()); 
+		
 	}
 	
 	//Adiciona uma roupa na sacola do usuario principal
@@ -78,8 +103,10 @@ public class ControleUsuario {
 	
 	//Retira um acessorio na sacola do usuario principal
 	public void retirarAcessorioNaSacola(Acessorio acessorioExcluido) {
+
 		ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getSacolaParaAcessorios().remove(acessorioExcluido);
 		ControleDados.getD().getUsuarioPrincipal().getSacolausuario().setValorTotal(ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getValorTotal() - acessorioExcluido.getPreco()); 
+		
 	}
 	
 	//Retira uma roupa na sacola do usuario principal
@@ -220,6 +247,12 @@ public class ControleUsuario {
 	
 	public SacolaDeCompra getSacolaUsuario(int i) {
 		return u.get(i).getSacolausuario();
+	}
+	
+	public void mensagemEmailExistente() {
+		JOptionPane.showMessageDialog(null,"Erro ao salvar os dados!\n "
+				+ "Este email ja existe, tente outro\n", null, 
+				JOptionPane.WARNING_MESSAGE);
 	}
 
 }
