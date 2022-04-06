@@ -232,10 +232,11 @@ public class TelaDetalheUsuario implements ActionListener {
 
 	public void mensagemErroSalvar() {
 		JOptionPane.showMessageDialog(null,"Erro ao salvar os dados!\n "
-				+ "Pode ter ocorrido um dos tres erros a seguir:  \n"
+				+ "Pode ter ocorrido um dos quatro erros a seguir:  \n"
 				+ "1. Nem todos os campos foram preenchidos \n"
-				+ "2. Observe que os campos CPF, telefone, numero da residencia e cep devem conter apenas numeros\n"
-				+ "3. O  email cadastrado ja existe, tente outro", null, 
+				+ "2. Os campos CPF, telefone, numero da residencia e cep nao contem apenas numeros \n"
+				+ "3. O  email cadastrado ja existe ou nao e valido \n"
+				+ "4. Os campos nome, pais, estado e cidade nao contem apenas letras", null, 
 				JOptionPane.ERROR_MESSAGE);
 	}
 	

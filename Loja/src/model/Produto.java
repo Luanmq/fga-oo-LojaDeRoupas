@@ -1,6 +1,6 @@
 package model;
 public abstract class Produto {
-	protected String imagem;
+	
 	protected String nome;
 	protected String departamento;
 	protected String descricao;
@@ -11,12 +11,6 @@ public abstract class Produto {
 	protected Usuario usuario;
 	
 	//Gets e sets
-	public String getImagem() {
-		return imagem;
-	}
-	public void setImagem(String imagem) {
-		this.imagem = imagem;
-	}
 	public String getNome() {
 		return nome;
 	}
