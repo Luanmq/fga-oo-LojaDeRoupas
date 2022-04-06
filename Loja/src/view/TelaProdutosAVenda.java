@@ -114,8 +114,8 @@ public class TelaProdutosAVenda implements ActionListener, ItemListener, ListSel
     		Arrays.fill(listaNomesAcessoriosAVenda, null);
 			int k = 0;
 	    	for(int i = 0; i < dados.getAcessoriosAVenda().size(); i++){
-	    		if((dados.getAcessoriosAVenda().get(i).getNome().toLowerCase()).contains(textoBusca.getText().toLowerCase()) == true) {
-	    			listaNomesAcessoriosAVenda[k] = dados.getAcessoriosAVenda().get(i).getNome();
+	    		if(dados.getAcessoriosAVenda().get(i).getNome().contains(textoBusca.getText()) == true) {
+	  				listaNomesAcessoriosAVenda[k] = dados.getAcessoriosAVenda().get(i).getNome();
 	  			}
 	  			k++;
 	    	}
@@ -127,7 +127,7 @@ public class TelaProdutosAVenda implements ActionListener, ItemListener, ListSel
     		Arrays.fill(listaNomesRoupasAVenda, null);
 		    int l = 0;
 	    	for(int j = 0; j < dados.getRoupasAVenda().size(); j++){
-	    		if((dados.getRoupasAVenda().get(j).getNome().toLowerCase()).contains(textoBusca.getText().toLowerCase()) == true) {
+	    		if(dados.getRoupasAVenda().get(j).getNome().contains(textoBusca.getText()) == true) {
 	    			listaNomesRoupasAVenda[l] = dados.getRoupasAVenda().get(j).getNome();
 	  			}
 	    		l++;

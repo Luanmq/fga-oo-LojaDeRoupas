@@ -3,7 +3,6 @@ package view;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,7 +21,7 @@ public class TelaMeusProdutos implements ListSelectionListener, ActionListener{
 	private JLabel tituloComprados = new JLabel("Produtos comprados");
 	private JButton cadastrarRoupa = new JButton("Vender Roupa");
 	private JButton cadastrarAcessorio = new JButton("Vender Acessorio");
-	private JButton atualizar = new JButton("Atualizar");
+	
 	private ControleDados dados;
 	
 	//Vetores para mostrar os acessorios e roupas a venda
@@ -63,12 +62,18 @@ public class TelaMeusProdutos implements ListSelectionListener, ActionListener{
 		
 		//Coloca todos os acessorios comprados do usuario cadastrado no array
     	for(int i = 0; i < dados.getAcessoriosComprados().size(); i++){
-    		listaNomesMeusAcessoriosComprados[i] =  dados.getAcessoriosComprados().get(i).getNome();
+    		if(dados.getUsuarioPrincipal() == dados.getAcessoriosComprados().get(i).getUsuario()) {
+    			listaNomesMeusAcessoriosComprados[m] =  dados.getAcessoriosComprados().get(i).getNome();
+    		}
+    		m++;
     	}
     	
     	//Coloca todos os acessorios dos usuarios cadastrados no array
-    	for(int j = 0; j < dados.getRoupasCompradas().size(); j++){
-    		listaNomesMinhasRoupasCompradas[j] =  dados.getRoupasCompradas().get(j).getNome();
+    	for(int i = 0; i < dados.getRoupasCompradas().size(); i++){
+    		if(dados.getUsuarioPrincipal() == dados.getRoupasCompradas().get(i).getUsuario()) {
+    			listaNomesMinhasRoupasCompradas[n] =  dados.getRoupasCompradas().get(i).getNome();
+    		}
+    		n++;
     	}
     	
     	listaMeusAcessoriosAVenda = new JList<String>(listaNomesMeusAcessoriosAVenda);
@@ -90,16 +95,15 @@ public class TelaMeusProdutos implements ListSelectionListener, ActionListener{
 		
 		cadastrarRoupa.setBounds(20, 265, 170, 30);
 		cadastrarAcessorio.setBounds(200, 265, 170, 30);
-		atualizar.setBounds(20, 305, 350, 30);
 		
 		tituloComprados.setFont(new Font("Arial", Font.BOLD, 20));
-		tituloComprados.setBounds(110, 345, 250, 30);
+		tituloComprados.setBounds(110, 305, 250, 30);
 				
-		listaMeusAcessoriosComprados.setBounds(20, 385, 350, 100);
+		listaMeusAcessoriosComprados.setBounds(20, 345, 350, 100);
 		listaMeusAcessoriosComprados.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		listaMeusAcessoriosComprados.setVisibleRowCount(10);
 	    
-		listaMinhasRoupasCompradas.setBounds(20, 495, 350, 100);
+		listaMinhasRoupasCompradas.setBounds(20, 455, 350, 100);
 		listaMinhasRoupasCompradas.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 		listaMinhasRoupasCompradas.setVisibleRowCount(10);
 	    
@@ -107,19 +111,17 @@ public class TelaMeusProdutos implements ListSelectionListener, ActionListener{
 	    janela.add(tituloAVenda);
 	    janela.add(cadastrarRoupa);
 	    janela.add(cadastrarAcessorio);
-	    janela.add(atualizar);
 	    janela.add(listaMeusAcessoriosAVenda);
 	    janela.add(listaMinhasRoupasAVenda);
 	    janela.add(tituloComprados);
 	    janela.add(listaMeusAcessoriosComprados);
 		janela.add(listaMinhasRoupasCompradas);
 
-		janela.setSize(400, 650);
+		janela.setSize(400, 600);
 		janela.setVisible(true);
 		
 		cadastrarRoupa.addActionListener(this);
 		cadastrarAcessorio.addActionListener(this);
-		atualizar.addActionListener(this);
 		listaMeusAcessoriosAVenda.addListSelectionListener(this);
 		listaMinhasRoupasAVenda.addListSelectionListener(this);
 		listaMeusAcessoriosComprados.addListSelectionListener(this);
@@ -137,60 +139,31 @@ public class TelaMeusProdutos implements ListSelectionListener, ActionListener{
 		if(src == cadastrarAcessorio) {
 			new TelaDetalheProduto().cadastrarEditarProduto(dados, 1, 1, 0);
 		}
-		
-		if(src == atualizar) {
-			int k = 0;
-    		Arrays.fill(listaNomesMeusAcessoriosAVenda, null);
-			//Coloca todos os acessorios a venda do usuarios cadastrado no array
-	    	for(int i = 0; i < dados.getAcessoriosAVenda().size(); i++){
-	    		if(dados.getUsuarioPrincipal() == dados.getAcessoriosAVenda().get(i).getUsuario()) {
-	    			listaNomesMeusAcessoriosAVenda[k] =  dados.getAcessoriosAVenda().get(i).getNome();
-	    		}
-	    		k++;
-	    	}
-	    	
-	    	listaMeusAcessoriosAVenda.setListData(listaNomesMeusAcessoriosAVenda);
-	    	listaMeusAcessoriosAVenda.updateUI();
-	    	
-	    	
-	    	int l = 0;
-    		Arrays.fill(listaNomesMinhasRoupasAVenda, null);
-	    	//Coloca todas as roupas a venda do usuarios cadastrado no array
-	    	for(int i = 0; i < dados.getRoupasAVenda().size(); i++){
-	    		if(dados.getUsuarioPrincipal() == dados.getRoupasAVenda().get(i).getUsuario()) {
-	    			listaNomesMinhasRoupasAVenda[l] =  dados.getRoupasAVenda().get(i).getNome();
-	    		}
-	    		l++;
-	    	}
-		
-	    	listaMinhasRoupasAVenda.setListData(listaNomesMinhasRoupasAVenda);
-	    	listaMinhasRoupasAVenda.updateUI();
-	    }
 	}
 	
 	//Detalhes dos produtos
 	public void valueChanged(ListSelectionEvent e) {
 		Object src = e.getSource();
 		
-		//Abre a tela de detalhes do acessorio podendo editar, salvar ou excluir
+		//Abre a tela de edicao do acessorio podendo editar, salvar ou excluir
 		if(e.getValueIsAdjusting() && src == listaMeusAcessoriosAVenda) {
-			new TelaDetalheProduto().cadastrarEditarProduto(dados, 1, 4,
-					listaMeusAcessoriosAVenda.getSelectedIndex());
+			System.out.println(listaMeusAcessoriosAVenda.getSelectedIndex());
+			new TelaDetalheProduto().cadastrarEditarProduto(dados, 1, 4, listaMeusAcessoriosAVenda.getSelectedIndex());
 		}
 		
-		//Abre a tela de detalhes da roupa podendo editar, salvar ou excluir
+		//Abre a tela de edicao da roupa podendo editar, salvar ou excluir
 		if(e.getValueIsAdjusting() && src == listaMinhasRoupasAVenda) {
-			new TelaDetalheProduto().cadastrarEditarProduto(dados, 2, 4,
-					listaMinhasRoupasAVenda.getSelectedIndex());
+			System.out.println(listaMinhasRoupasAVenda.getSelectedIndex());
+			new TelaDetalheProduto().cadastrarEditarProduto(dados, 2, 4, listaMinhasRoupasAVenda.getSelectedIndex());
 		}
 		
 		if(e.getValueIsAdjusting() && src == listaMeusAcessoriosComprados) {
-			new TelaDetalheProduto().cadastrarEditarProduto(dados, 1, 5, 
+			new TelaDetalheProduto().cadastrarEditarProduto(dados, 2, 3, 
 					listaMeusAcessoriosComprados.getSelectedIndex());
 		}
 				
 		if(e.getValueIsAdjusting() && src == listaMinhasRoupasCompradas) {
-			new TelaDetalheProduto().cadastrarEditarProduto(dados, 2, 5, 
+			new TelaDetalheProduto().cadastrarEditarProduto(dados, 2, 3, 
 					listaMinhasRoupasCompradas.getSelectedIndex());
 		}
 	}

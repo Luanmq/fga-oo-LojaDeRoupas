@@ -16,44 +16,28 @@ public class ControleRoupa {
 	
 	//Coloca uma roupa a venda
 	public boolean cadastrarRoupa(String[] dadosRoupa, Usuario usuario) {
+		if(!dadosRoupa[4].matches("[0-9]+")) {
+			return false;
+		}
+		if(dadosRoupa[0].isEmpty() || dadosRoupa[1].isEmpty() || dadosRoupa[2].isEmpty() || dadosRoupa[3].isEmpty() || dadosRoupa[4].isEmpty() || dadosRoupa[5].isEmpty() ||
+				dadosRoupa[6].isEmpty() || dadosRoupa[7].isEmpty() || dadosRoupa[8].isEmpty() || dadosRoupa[9].isEmpty()){
+			return false;
+		}
+		if(!dadosRoupa[0].matches("[A-Za-z ]+") || !dadosRoupa[6].matches("[A-Za-z ]+") ||
+				!dadosRoupa[8].matches("[A-Za-z ]+") ){
+			return false;
+		}
 		
 		Roupa roupa = new Roupa (dadosRoupa[0], dadosRoupa[1], dadosRoupa[2], dadosRoupa[3], Double.parseDouble(dadosRoupa[4]), 
 		dadosRoupa[5], dadosRoupa[6], usuario, dadosRoupa[7], dadosRoupa[8], dadosRoupa[9]);
-		
-		roupa.setImagem("img/Placeholder.png");
-		
-		ControleDados.getD().getRoupasAVenda().add(roupa);
-		return true;
-	}
 	
-	//Salva os dados editados de uma roupa
-	public boolean salvarRoupa(String[] dadosAcessorio, Usuario usuario, int posicao) {
-		ControleDados.getD().getRoupasAVenda().get(posicao).setNome(dadosAcessorio[0]);
-		ControleDados.getD().getRoupasAVenda().get(posicao).setDepartamento(dadosAcessorio[1]);
-		ControleDados.getD().getRoupasAVenda().get(posicao).setDescricao(dadosAcessorio[2]);
-		ControleDados.getD().getRoupasAVenda().get(posicao).setMarca(dadosAcessorio[3]);
-		ControleDados.getD().getRoupasAVenda().get(posicao).setPreco(Double.parseDouble(dadosAcessorio[4]));
-		ControleDados.getD().getRoupasAVenda().get(posicao).setCondicao(dadosAcessorio[5]);
-		ControleDados.getD().getRoupasAVenda().get(posicao).setCor(dadosAcessorio[6]);
-
-		ControleDados.getD().getRoupasAVenda().get(posicao).setTamanho(dadosAcessorio[7]);
-		ControleDados.getD().getRoupasAVenda().get(posicao).setTecido(dadosAcessorio[8]);
-		ControleDados.getD().getRoupasAVenda().get(posicao).setEstampa(dadosAcessorio[9]);
-
+		ControleDados.getD().getRoupasAVenda().add(roupa);
 		return true;
 	}
 	
 	//Deleta uma roupa ja existente
 	public void excluirRoupa(int posicao) {
-		for(int i = 0; i < ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getSacolaParaRoupas().size(); i++){
-			if(ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getSacolaParaRoupas().get(i) ==
-			ControleDados.getD().getRoupasAVenda().get(posicao)) {
-				//Tira as roupas compradas de Roupas Venda
-				ControleDados.getD().getUsuarioPrincipal().getSacolausuario().getSacolaParaRoupas().remove(i);
-			}
-		}
-		
-		ControleDados.getD().getRoupasAVenda().remove(posicao);
+		ControleDados.getD().getRoupasCompradas().remove(posicao);	
 	}
 
 	//Gets e sets

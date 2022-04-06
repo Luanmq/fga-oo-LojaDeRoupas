@@ -62,6 +62,18 @@ public class Acessorio extends Produto{
 	public void setMedidaAltura(double medidaAltura) {
 		this.medidaAltura = medidaAltura;
 	}
+	
+	//Sobreescrita do equals() para comparacao de acessorios
+	@Override
+	 public boolean equals(Object acessorio) {
+		if (this.nome == ((Acessorio) acessorio).getNome() && this.departamento == ((Acessorio) acessorio).getDepartamento() && this.descricao == ((Acessorio) acessorio).getDescricao()
+				 && this.marca == ((Acessorio) acessorio).getMarca() && this.preco == ((Acessorio) acessorio).getPreco() && this.condicao == ((Acessorio) acessorio).getCondicao()
+				 && this.cor == ((Acessorio) acessorio).getCor() && this.usuario == ((Acessorio) acessorio).getUsuario() && this.material == ((Acessorio) acessorio).getMaterial()
+				 && this.peso == ((Acessorio) acessorio).getPeso()){
+			return true;
+		}
+		return false; 
+	}
 
 	//Sobreescrita do toString para o print dos acessorios
 	@Override
