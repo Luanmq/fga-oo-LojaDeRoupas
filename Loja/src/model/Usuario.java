@@ -1,5 +1,15 @@
 package model;
-
+/**
+ * Classe que representa o Usuário do sistema
+ * @author Luan Melo
+ * @param nome Nome do Usuário
+ * @param senha Senha do Usuário
+ * @param telefone Telefone do Usuário
+ * @param cpf CPF do Usuário
+ * @param email Email do Usuário
+ * @param endereco ArrayList que possui os Endereços cadastrados pelo Usuário
+ * @param sacolausuario Representa a Sacola de Compras do Usuário
+ */
 import java.util.ArrayList;
 
 public class Usuario {
@@ -16,17 +26,13 @@ public class Usuario {
 		
 	}
 	
-	public Usuario(String n, String s, long t, long c, String e, String p, String es, String ci, int num, int ce, String r ) {
+	public Usuario(String n, String s, long t, long c, String e) {
 		
 		this.nome = n;
 		this.senha = s;
 		this.telefone = t;
 		this.cpf = c;
-		this.email = e;
-		
-		Endereco end = new Endereco(p, es, ci, num, ce, r, this);
-		this.enderecos.add(end);
-		
+		this.email = e;		
 	}
 
 	//Gets e sets	

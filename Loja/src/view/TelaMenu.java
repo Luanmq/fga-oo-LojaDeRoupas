@@ -10,6 +10,21 @@ import javax.swing.JLabel;
 
 import control.ControleDados;
 
+/**
+ * Tela Menu usada para se acessar as diversas partes do sistema
+ * @author Luan Melo
+ * @param janela JFrame que representa a Tela a ser executada
+ * @param titulo JLabel usado para mostrar "Menu Principal" na tela
+ * @param verProdutosAVenda JButton que quando apertado chama a Tela de Produtos à Venda
+ * @param verMinhaConta JButton que quando apertado chama a Tela de Detalhes do Usuário na forma de Edição ou Exclusão
+ * @param verMeusProdutos JButton que quando apertado chama a Tela Meus Produtos,
+ * 		que mostra os Produtos comprados e vendidos que o Usuário possui
+ * @param verMinhaSacola JButton que quando apertado chama a Tela Minha Sacola,
+ * 		que mostra a Sacola de Compras do Usuário
+ * @param sair JButton que quando apertado fecha a Tela Menu e abre a Tela de Login e Cadastro de Usuário
+ * @param dados Instância de Controle de Dados utilizada para o acesso das mesmas informações em todo sistema.
+ * 		A instância tem o seu valor substituído por de outra instância já utilizada no código
+ */
 public class TelaMenu implements ActionListener{
 	private static JFrame janela = new JFrame("Menu");
 	private static JLabel titulo = new JLabel("Menu Principal");
@@ -21,7 +36,10 @@ public class TelaMenu implements ActionListener{
 	
 	private ControleDados dados;
 	
-
+	/**
+	 * Construtor da Tela Menu
+	 * @param d Instância de Controle de Dados já usada em outra parte do código
+	 */
 	public TelaMenu(ControleDados d) {
 		dados = d;
 		
@@ -61,7 +79,7 @@ public class TelaMenu implements ActionListener{
 		
 		
 		if(src == verMinhaConta)
-			new TelaDetalheUsuario().cadastrarEditarUsuario(dados, 2, 0);
+			new TelaDetalheUsuario().cadastrarEditarUsuario(dados, 2);
 		
 		if(src == verMeusProdutos)
 			new TelaMeusProdutos(dados);

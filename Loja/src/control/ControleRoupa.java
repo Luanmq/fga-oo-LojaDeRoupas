@@ -6,21 +6,21 @@ import model.*;
 
 public class ControleRoupa {
 	
-	private ArrayList<Roupa> rc = new ArrayList<>();
-	private ArrayList<Roupa> rv = new ArrayList<>();
+	private ArrayList<Roupa> roupasCompradas = new ArrayList<>();
+	private ArrayList<Roupa> roupasAVenda = new ArrayList<>();
 	
 	public ControleRoupa (ControleDados d) {
-		rc = d.getRoupasCompradas();
-		rv = d.getRoupasAVenda();
+		roupasCompradas = d.getRoupasCompradas();
+		roupasAVenda = d.getRoupasAVenda();
 	}
 	
 	//Coloca uma roupa a venda
 	public boolean cadastrarRoupa(String[] dadosRoupa, Usuario usuario) {
-		if(!dadosRoupa[4].matches("[0-9]+")) {
-			return false;
-		}
 		if(dadosRoupa[0].isEmpty() || dadosRoupa[1].isEmpty() || dadosRoupa[2].isEmpty() || dadosRoupa[3].isEmpty() || dadosRoupa[4].isEmpty() || dadosRoupa[5].isEmpty() ||
 				dadosRoupa[6].isEmpty() || dadosRoupa[7].isEmpty() || dadosRoupa[8].isEmpty() || dadosRoupa[9].isEmpty()){
+			return false;
+		}
+		if(!dadosRoupa[4].matches("[0-9]+")) {
 			return false;
 		}
 		if(!dadosRoupa[0].matches("[A-Za-z ]+") || !dadosRoupa[6].matches("[A-Za-z ]+") ||
@@ -38,18 +38,30 @@ public class ControleRoupa {
 	}
 	
 	//Salva os dados editados de uma roupa
-	public boolean salvarRoupa(String[] dadosAcessorio, Usuario usuario, int posicao) {
-		ControleDados.getD().getRoupasAVenda().get(posicao).setNome(dadosAcessorio[0]);
-		ControleDados.getD().getRoupasAVenda().get(posicao).setDepartamento(dadosAcessorio[1]);
-		ControleDados.getD().getRoupasAVenda().get(posicao).setDescricao(dadosAcessorio[2]);
-		ControleDados.getD().getRoupasAVenda().get(posicao).setMarca(dadosAcessorio[3]);
-		ControleDados.getD().getRoupasAVenda().get(posicao).setPreco(Double.parseDouble(dadosAcessorio[4]));
-		ControleDados.getD().getRoupasAVenda().get(posicao).setCondicao(dadosAcessorio[5]);
-		ControleDados.getD().getRoupasAVenda().get(posicao).setCor(dadosAcessorio[6]);
+	public boolean salvarRoupa(String[] dadosRoupa, Usuario usuario, int posicao) {
+		if(dadosRoupa[0].isEmpty() || dadosRoupa[1].isEmpty() || dadosRoupa[2].isEmpty() || dadosRoupa[3].isEmpty() || dadosRoupa[4].isEmpty() || dadosRoupa[5].isEmpty() ||
+				dadosRoupa[6].isEmpty() || dadosRoupa[7].isEmpty() || dadosRoupa[8].isEmpty() || dadosRoupa[9].isEmpty()){
+			return false;
+		}
+		if(!dadosRoupa[4].matches("[0-9]+")) {
+			return false;
+		}
+		if(!dadosRoupa[0].matches("[A-Za-z ]+") || !dadosRoupa[6].matches("[A-Za-z ]+") ||
+				!dadosRoupa[8].matches("[A-Za-z ]+") ){
+			return false;
+		}
+		
+		ControleDados.getD().getRoupasAVenda().get(posicao).setNome(dadosRoupa[0]);
+		ControleDados.getD().getRoupasAVenda().get(posicao).setDepartamento(dadosRoupa[1]);
+		ControleDados.getD().getRoupasAVenda().get(posicao).setDescricao(dadosRoupa[2]);
+		ControleDados.getD().getRoupasAVenda().get(posicao).setMarca(dadosRoupa[3]);
+		ControleDados.getD().getRoupasAVenda().get(posicao).setPreco(Double.parseDouble(dadosRoupa[4]));
+		ControleDados.getD().getRoupasAVenda().get(posicao).setCondicao(dadosRoupa[5]);
+		ControleDados.getD().getRoupasAVenda().get(posicao).setCor(dadosRoupa[6]);
 
-		ControleDados.getD().getRoupasAVenda().get(posicao).setTamanho(dadosAcessorio[7]);
-		ControleDados.getD().getRoupasAVenda().get(posicao).setTecido(dadosAcessorio[8]);
-		ControleDados.getD().getRoupasAVenda().get(posicao).setEstampa(dadosAcessorio[9]);
+		ControleDados.getD().getRoupasAVenda().get(posicao).setTamanho(dadosRoupa[7]);
+		ControleDados.getD().getRoupasAVenda().get(posicao).setTecido(dadosRoupa[8]);
+		ControleDados.getD().getRoupasAVenda().get(posicao).setEstampa(dadosRoupa[9]);
 
 		return true;
 	}
@@ -69,107 +81,107 @@ public class ControleRoupa {
 
 	//Gets e sets
 	public ArrayList<Roupa> getAc() {
-		return rc;
+		return roupasCompradas;
 	}
 
-	public void setAc(ArrayList<Roupa> rc) {
-		this.rc = rc;
+	public void setAc(ArrayList<Roupa> roupasCompradas) {
+		this.roupasCompradas = roupasCompradas;
 	}
 
 	public ArrayList<Roupa> getAv() {
-		return rv;
+		return roupasAVenda;
 	}
 
-	public void setAv(ArrayList<Roupa> rv) {
-		this.rv = rv;
+	public void setAv(ArrayList<Roupa> roupasAVenda) {
+		this.roupasAVenda = roupasAVenda;
 	}
 	
 	public String getNomeAC(int i) {
-		return rc.get(i).getNome();
+		return roupasCompradas.get(i).getNome();
 	}
 	
 	public String getDepartamentoAC(int i) {
-		return rc.get(i).getDepartamento();
+		return roupasCompradas.get(i).getDepartamento();
 	}
 	
 	public String getDescricaoAC(int i) {
-		return rc.get(i).getDescricao();
+		return roupasCompradas.get(i).getDescricao();
 	}
 	
 	public String getMarcaAC(int i) {
-		return rc.get(i).getMarca();
+		return roupasCompradas.get(i).getMarca();
 	}
 	
 	public Double getPrecoAC(int i) {
-		return rc.get(i).getPreco();
+		return roupasCompradas.get(i).getPreco();
 	}
 	
 	public String getCondicaoAC(int i) {
-		return rc.get(i).getCondicao();
+		return roupasCompradas.get(i).getCondicao();
 	}
 	
 	public String getCorAC(int i) {
-		return rc.get(i).getCor();
+		return roupasCompradas.get(i).getCor();
 	}
 
 	public Usuario getUsuarioAC(int i) {
-		return rc.get(i).getUsuario();
+		return roupasCompradas.get(i).getUsuario();
 	}
 	
 	public String getTamanhoAC(int i) {
-		return rc.get(i).getTamanho();
+		return roupasCompradas.get(i).getTamanho();
 	}
 	
 	public String getTecidoAC(int i) {
-		return rc.get(i).getTecido();
+		return roupasCompradas.get(i).getTecido();
 	}
 	
 	public String EstampaAC(int i) {
-		return rc.get(i).getEstampa();
+		return roupasCompradas.get(i).getEstampa();
 	}
 	
 	public String getNomeAV(int i) {
-		return rv.get(i).getNome();
+		return roupasAVenda.get(i).getNome();
 	}
 	
 	public String getDepartamentoAV(int i) {
-		return rv.get(i).getDepartamento();
+		return roupasAVenda.get(i).getDepartamento();
 	}
 	
 	public String getDescricaoAV(int i) {
-		return rv.get(i).getDescricao();
+		return roupasAVenda.get(i).getDescricao();
 	}
 	
 	public String getMarcaAV(int i) {
-		return rv.get(i).getMarca();
+		return roupasAVenda.get(i).getMarca();
 	}
 	
 	public Double getPrecoAV(int i) {
-		return rv.get(i).getPreco();
+		return roupasAVenda.get(i).getPreco();
 	}
 	
 	public String getCondicaoAV(int i) {
-		return rv.get(i).getCondicao();
+		return roupasAVenda.get(i).getCondicao();
 	}
 	
 	public String getCorAV(int i) {
-		return rv.get(i).getCor();
+		return roupasAVenda.get(i).getCor();
 	}
 
 	public Usuario getUsuarioAV(int i) {
-		return rv.get(i).getUsuario();
+		return roupasAVenda.get(i).getUsuario();
 	}
 	
 	public String getTamanhoAV(int i) {
-		return rv.get(i).getTamanho();
+		return roupasAVenda.get(i).getTamanho();
 	}
 	
 	public String getTecidoAV(int i) {
-		return rv.get(i).getTecido();
+		return roupasAVenda.get(i).getTecido();
 	}
 	
 	public String EstampaAV(int i) {
-		return rv.get(i).getEstampa();
+		return roupasAVenda.get(i).getEstampa();
 	}
 
 }

@@ -18,61 +18,108 @@ public class ControleUsuario {
 	
 	//Define o usuario principal
 	public void selecionaUsuarioPrincipal(Usuario usuarioPrincipal) {
-		
 		ControleDados.getD().setUsuarioPrincipal(usuarioPrincipal);
-	
 	}
 	
+	//Realiza o cadastro de um novo endereco
+	public boolean cadastrarEndereco(String[] dadosUsuario) {
+		if(dadosUsuario[5].isEmpty() || dadosUsuario[6].isEmpty() || dadosUsuario[7].isEmpty() || dadosUsuario[8].isEmpty() || dadosUsuario[9].isEmpty() || dadosUsuario[10].isEmpty()){
+			return false;
+		}
+		if(!dadosUsuario[8].matches("[0-9]+") || !dadosUsuario[9].matches("[0-9]+")) {
+			return false;
+		}
+		if(!dadosUsuario[5].matches("[A-Za-z ]+") || !dadosUsuario[6].matches("[A-Za-z ]+") || !dadosUsuario[7].matches("[A-Za-z ]+")){
+			return false;
+		}
+		
+		Endereco endereco = new Endereco(dadosUsuario[5], dadosUsuario[6], dadosUsuario[7], Long.parseLong(dadosUsuario[8]), Long.parseLong(dadosUsuario[9]),dadosUsuario[10]);
+		up.getEnderecos().add(endereco);
+		
+		System.out.println(up.getEnderecos());
+		return true;
+	}
+	
+	//Salva as edicoes feitas no endereco
+	public boolean salvarEndereco(String[] dadosUsuario, int posicao) {
+		if(dadosUsuario[5].isEmpty() || dadosUsuario[6].isEmpty() || dadosUsuario[7].isEmpty() || dadosUsuario[8].isEmpty() || dadosUsuario[9].isEmpty() || dadosUsuario[10].isEmpty()){
+			return false;
+		}
+		if(!dadosUsuario[8].matches("[0-9]+") || !dadosUsuario[9].matches("[0-9]+")) {
+			return false;
+		}
+		if(!dadosUsuario[5].matches("[A-Za-z ]+") || !dadosUsuario[6].matches("[A-Za-z ]+") || !dadosUsuario[7].matches("[A-Za-z ]+")){
+			return false;
+		}
+		
+		ControleDados.getD().getUsuarioPrincipal().getEnderecos().get(posicao).setPais(dadosUsuario[5]);
+		ControleDados.getD().getUsuarioPrincipal().getEnderecos().get(posicao).setEstado(dadosUsuario[6]);
+		ControleDados.getD().getUsuarioPrincipal().getEnderecos().get(posicao).setCidade(dadosUsuario[7]);
+		ControleDados.getD().getUsuarioPrincipal().getEnderecos().get(posicao).setNumeroResidencia(Long.parseLong(dadosUsuario[8]));
+		ControleDados.getD().getUsuarioPrincipal().getEnderecos().get(posicao).setCep(Long.parseLong(dadosUsuario[9]));
+		ControleDados.getD().getUsuarioPrincipal().getEnderecos().get(posicao).setReferencia(dadosUsuario[10]);
+
+		return true;
+	}
+
 	//Realiza o cadastro de um novo usuario
 	public boolean cadastrarUsuario(String[] dadosUsuario) {
-		if(!dadosUsuario[2].matches("[0-9]+") || !dadosUsuario[3].matches("[0-9]+") || 
-				!dadosUsuario[8].matches("[0-9]+") || !dadosUsuario[9].matches("[0-9]+")) {
+		if(dadosUsuario[0].isEmpty() || dadosUsuario[1].isEmpty() || dadosUsuario[2].isEmpty() || dadosUsuario[3].isEmpty() || dadosUsuario[4].isEmpty()){
 			return false;
 		}
-		if(dadosUsuario[0].isEmpty() || dadosUsuario[1].isEmpty() || dadosUsuario[2].isEmpty() || dadosUsuario[3].isEmpty() || dadosUsuario[4].isEmpty() || dadosUsuario[5].isEmpty() ||
-				dadosUsuario[6].isEmpty() || dadosUsuario[7].isEmpty() || dadosUsuario[8].isEmpty() || dadosUsuario[9].isEmpty() || dadosUsuario[10].isEmpty()){
+		if(!dadosUsuario[2].matches("[0-9]+") || !dadosUsuario[3].matches("[0-9]+")) {
 			return false;
 		}
-		if(!dadosUsuario[0].matches("[A-Za-z ]+") || !dadosUsuario[5].matches("[A-Za-z ]+") || !dadosUsuario[6].matches("[A-Za-z ]+") || !dadosUsuario[7].matches("[A-Za-z ]+")){
+		if(!dadosUsuario[0].matches("[A-Za-z ]+")){
 			return false;
 		}
 		if(!dadosUsuario[4].contains("@")){
 			return false;			
 		}
-				
-		for(int i = 0; i < ControleDados.getD().getUsuarios().size(); i++) {
-		
-			if(ControleDados.getD().getUsuarios().get(i).getEmail().equals(dadosUsuario[4])) {
-				mensagemEmailExistente();
-				return false;
+		if(!dadosUsuario[4].equals(up.getEmail())){
+			for(int i = 0; i < ControleDados.getD().getUsuarios().size(); i++) {
+				if(ControleDados.getD().getUsuarios().get(i).getEmail().equals(dadosUsuario[4])) {
+					mensagemEmailExistente();
+					return false;
+				}
 			}
-			
 		}
 			
-		Usuario user = new Usuario(dadosUsuario[0], dadosUsuario[1], Long.parseLong(dadosUsuario[2]), Long.parseLong(dadosUsuario[3]), dadosUsuario[4], 
-				dadosUsuario[5], dadosUsuario[6], dadosUsuario[7], Integer.parseInt(dadosUsuario[8]), Integer.parseInt(dadosUsuario[9]), dadosUsuario[10]);
-	
-		ControleDados.getD().getUsuarios().add(user);
-		
+		Usuario user = new Usuario(dadosUsuario[0], dadosUsuario[1], Long.parseLong(dadosUsuario[2]), Long.parseLong(dadosUsuario[3]), dadosUsuario[4]);
+		u.add(user);
 		return true;
-		
-		
 	}
 	
-	//Salva a edicao de um usuario ja existente
-	public boolean salvarUsuario(String[] dadosUsuario) {		
-		if(!dadosUsuario[2].matches("[0-9]+") || !dadosUsuario[2].matches("[0-9]+") || 
-				!dadosUsuario[8].matches("[0-9]+") || !dadosUsuario[9].matches("[0-9]+")) {
+	//Salva as edicoes feitas no usuario
+	public boolean salvarUsuario(String[] dadosUsuario) {
+		if(dadosUsuario[0].isEmpty() || dadosUsuario[1].isEmpty() || dadosUsuario[2].isEmpty() || dadosUsuario[3].isEmpty() || dadosUsuario[4].isEmpty()){
 			return false;
-		}else {
-			Usuario user = new Usuario(dadosUsuario[0], dadosUsuario[1], Long.parseLong(dadosUsuario[2]), Long.parseLong(dadosUsuario[3]), dadosUsuario[4], 
-					dadosUsuario[5], dadosUsuario[6], dadosUsuario[7], Integer.parseInt(dadosUsuario[8]), Integer.parseInt(dadosUsuario[9]), dadosUsuario[10]);
-		
-			ControleDados.getD().setUsuarioPrincipal(user);
-			
-			return true;
 		}
-		
+		if(!dadosUsuario[2].matches("[0-9]+") || !dadosUsuario[3].matches("[0-9]+")) {
+			return false;
+		}
+		if(!dadosUsuario[0].matches("[A-Za-z ]+")){
+			return false;
+		}
+		if(!dadosUsuario[4].contains("@")){
+			return false;			
+		}
+		if(!dadosUsuario[4].equals(up.getEmail())){
+			for(int i = 0; i < ControleDados.getD().getUsuarios().size(); i++) {
+				if(ControleDados.getD().getUsuarios().get(i).getEmail().equals(dadosUsuario[4])) {
+					mensagemEmailExistente();
+					return false;
+				}
+			}
+		}
+			
+		ControleDados.getD().getUsuarioPrincipal().setNome(dadosUsuario[0]);
+		ControleDados.getD().getUsuarioPrincipal().setSenha(dadosUsuario[1]);
+		ControleDados.getD().getUsuarioPrincipal().setTelefone(Long.parseLong(dadosUsuario[2]));
+		ControleDados.getD().getUsuarioPrincipal().setCpf(Long.parseLong(dadosUsuario[3]));
+		ControleDados.getD().getUsuarioPrincipal().setEmail(dadosUsuario[4]);
+
+		return true;
 	}
 	
 	//Deleta um usuario ja existente

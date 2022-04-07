@@ -1,6 +1,14 @@
 package model;
 import java.util.Scanner;
 
+/**
+ * Classe que representa os Acessorios que serão vendidos no sistema, herda atributos da Classe Produto
+ * @author Luan Melo
+ * @param material Se refere a qual material o Acessório é feito
+ * @param peso Peso do Acessório 
+ * @param medidaLargura Medida da largura do Acessório
+ * @param medidaAltura Medida da altura do Acessório
+ */
 public class Acessorio extends Produto{
 	Scanner ler = new Scanner(System.in);
 	

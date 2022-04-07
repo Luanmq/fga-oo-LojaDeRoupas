@@ -17,6 +17,24 @@ import javax.swing.event.ListSelectionListener;
 import control.ControleDados;
 import control.ControleUsuario;
 
+/**
+ * Tela responsável por mostrar os Produtos na Sacola de Compras do Usuário
+ * @author Luan Melo
+ * @param janela JFrame que representa a Tela a ser executada
+ * @param titulo JLabel usado para mostrar "Minha Sacola" na tela
+ * @param listaNomesAcessoriosSacola Array de String responsável por guardar o nome dos Acessórios na Sacola do Usuário
+ * @param listaAcessoriosSacola JList responsável por receber o Array listaNomesAcessoriosSacola e mostrar na Tela
+ * @param listaNomesRoupasSacola Array de String responsável por guardar o nome das Roupas na Sacola do Usuário
+ * @param listaRoupasSacola JList responsável por receber o Array listaNomesRoupasSacola e mostrar na Tela
+ * @param textoValorTotal usado para mostrar "Valor Total R$:" na tela
+ * @param valorTotalSacola JTextField usado para mostrar a soma do preço de todos os Produtos na Sacola
+ * 
+ * @param retirarProduto JButton que quando apertado chama o método retirarRoupaNaSacola e retirarAcessorioNaSacola,
+ * 		passando como parâmetro a posição do Acessório e da Roupa no Array de Sacola para Roupa e de Sacola para Acessório
+ * @param esvaziarSacola JButton que quando apertado chama o método esvaziarSacola
+ * @param finalizarCompra JButton que quando apertado chama o método finalizarCompra
+ * @param dados Instância de Controle de Dados utilizada para o acesso das mesmas informações em todo sistema. A instância tem o seu valor substituído por de outra instância já utilizada no código
+ */
 public class TelaMinhaSacola implements ListSelectionListener, ActionListener{
 	private JFrame janela = new JFrame("Minha Sacola");;
 	private JLabel titulo = new JLabel("Minha Sacola");
@@ -27,14 +45,18 @@ public class TelaMinhaSacola implements ListSelectionListener, ActionListener{
 	private JList<String> listaRoupasSacola = new JList<String>();
 	private String[] listaNomesRoupasSacola = new String[1000];
 	
-	private JLabel textoValorTotal = new JLabel("Valor:    R$");
+	private JLabel textoValorTotal = new JLabel("Valor Total R$: ");
 	private JTextField valorTotalSacola;
 	private JButton retirarProduto = new JButton("Retirar Produto");
 	private JButton esvaziarSacola = new JButton("Esvaziar Sacola");
 	private JButton finalizarCompra = new JButton("Finalizar Compra");
 
 	private ControleDados dados;
-
+	
+	/**
+	 * Construtor da Tela Minha Sacola
+	 * @param d Instância de Controle de Dados já usada em outra parte do código
+	 */
 	public TelaMinhaSacola(ControleDados d) {
 		dados = d;
 		int k = 0;

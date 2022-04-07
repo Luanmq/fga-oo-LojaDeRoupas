@@ -1,7 +1,6 @@
 package view;
 
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -20,6 +19,29 @@ import javax.swing.event.ListSelectionListener;
 
 import control.ControleDados;
 
+/**
+ * Tela responsável por mostrar os Produtos que estão à venda e pelas funcionalidades de busca e filtragem
+ * relacionadas aos Produtos
+ * @author Luan Melo
+ * @param janela JFrame que representa a Tela a ser executada
+ * @param titulo JLabel usado para mostrar "Minha Sacola" na tela
+ * @param listaNomesRoupasAVenda Array de String responsável por guardar o nome das Roupas à Venda no sistema
+ * @param listaRoupasAVenda JList responsável por receber o Array listaNomesRoupasAVenda e mostrar na Tela
+ * @param listaNomesAcessoriosAVenda Array de String responsável por guardar o nome dos Acessórios à Venda no sistema
+ * @param listaAcessoriosAVenda JList responsável por receber o Array listaNomesAcessoriosAVenda e mostrar na Tela
+ * @param textoBusca JTextField responsável por guardar o valor digitado quando se deseja buscar algum Acessório ou Roupa
+ * 
+ * @param botaoBusca JButton que quando apertado executa um código que recebe o texto digitado em textoBusca e procura por Acessórios e Roupas com o mesmo nome
+ * @param filtroProdutos JComboBox que quando é selecionado algum item é mostrado Acessórios ou Roupas de acordo com a seleção.
+ * 		(1) filtroProdutos = Todos: Mostra todos os Acessórios e todas as Roupas. (2) filtroProdutos = Acessorios: Mostra apenas os Acessórios.
+ * 		(3) filtroProdutos = Roupas: Mostra apenas as Roupas.
+ * @param filtroDepartamentos JComboBox que quando é selecionado algum item é mostrado Acessórios ou Roupas de acordo com a seleção.
+ * 		(1) filtroDepartamentos = Todos: Mostra todos os Acessórios e todas as Roupas.
+ * 		(2) filtroDepartamentos = Masculino: Mostra todos os Acessórios e todas as Roupas que possuem o departamento igual a Masculino. 
+ *	 	(3) filtroDepartamentos = Feminino: Mostra todos os Acessórios e todas as Roupas que possuem o departamento igual a Feminino.  
+ *	 	(3) filtroDepartamentos = Infantil: Mostra todos os Acessórios e todas as Roupas que possuem o departamento igual a Infantil.  
+ *	 	(4) filtroDepartamentos = Unissex: Mostra todos os Acessórios e todas as Roupas que possuem o departamento igual a Unissex.  
+ */
 public class TelaProdutosAVenda implements ActionListener, ItemListener, ListSelectionListener{
 	private JFrame janela;
 	private JLabel titulo;
@@ -43,7 +65,6 @@ public class TelaProdutosAVenda implements ActionListener, ItemListener, ListSel
 		titulo = new JLabel("Produtos a venda");
 		botaoBusca = new JButton("Buscar");
 		textoBusca = new JTextField ("");
-		//textoBusca.setForeground(Color.GRAY);
 		String s1[] = {"Todos", "Acessorios", "Roupas"};
 		filtroProdutos = new JComboBox(s1);
 		String s2[] = {"Todos", "Masculino", "Feminino", "Infantil", "Unissex"};

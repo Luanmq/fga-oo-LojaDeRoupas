@@ -13,7 +13,21 @@ import javax.swing.JTextField;
 
 import control.ControleDados;
 import control.ControleUsuario;
-//TelaInicial
+
+/**
+ * Tela responsável pelo Login ou Cadastro de um Usuário
+ * @author Lucas
+ * @param janela JFrame que representa a Tela a ser executada
+ * @param email JLabel usado para mostrar "Email" na tela
+ * @param valorEmail JTextField usado para receber o email digitado
+ * @param senha JLabel usado para mostrar "Senha" na tela
+ * @param valorSenha JTextField usado para receber a senha digitada
+ * 
+ * @param logarUsuario JButton que quando apertado procura algum Usuário no programa com o mesmo email digitado
+ * @param cadastrarUsuario JButton que chama o método cadastrarEditarUsuario na forma de Cadastrar na Tela Detalhe Usuario
+ * 
+ * @param dados Instância de Controle de Dados utilizada para o acesso das mesmas informações em todo sistema. A instância tem o seu valor substituído por de outra instância já utilizada no código
+ */
 public class TelaLoginCadastroUsuario implements ActionListener{
 
 	private JFrame janela = new JFrame("Login e Cadastro");
@@ -26,8 +40,7 @@ public class TelaLoginCadastroUsuario implements ActionListener{
 	
 	public static ControleDados dados = new ControleDados();
 
-	public TelaLoginCadastroUsuario( ) {
-		
+	public TelaLoginCadastroUsuario() {
 		email.setFont(new Font("Arial", Font.BOLD, 15));
 		email.setBounds(10, 10, 80, 25);
 		valorEmail.setBounds(100, 10, 160, 25);
@@ -53,27 +66,25 @@ public class TelaLoginCadastroUsuario implements ActionListener{
 		
 		cadastrarUsuario.addActionListener(this);
 		logarUsuario.addActionListener(this);
-		
 	}
 	
+	/**
+	 * Função main que inicializa a Tela de Login e Cadastro de Usuario
+	 */
 	public static void main(String[] args) {
-
 		TelaLoginCadastroUsuario telaInicial = new TelaLoginCadastroUsuario();
-	
 	}
 	
-	int UsuarioSelecionado = -1;
-	
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object src = e.getSource();
 		
 		//Cadastro de novo usuario
 		if(src == cadastrarUsuario) {
-			new TelaDetalheUsuario().cadastrarEditarUsuario(dados, 1 , 0);
+			new TelaDetalheUsuario().cadastrarEditarUsuario(dados, 1);
 		}
 			
-		
+		int UsuarioSelecionado = -1;
+
 		//Loga com um usuario
 		if(src == logarUsuario) {
 			//Procuro pelo usuario de email digitado
@@ -95,7 +106,7 @@ public class TelaLoginCadastroUsuario implements ActionListener{
 	}
 	
 	public void mensagemSucessoLogar() {
-		JOptionPane.showMessageDialog(null, "O login foi feito com sucesso!\n Seja bem-vindo, " + dados.getUsuarios().get(UsuarioSelecionado).getNome(), null, 
+		JOptionPane.showMessageDialog(null, "O login foi feito com sucesso!\n Seja bem-vindo, " + dados.getUsuarioPrincipal().getNome(), null, 
 				JOptionPane.INFORMATION_MESSAGE);
 	}
 	

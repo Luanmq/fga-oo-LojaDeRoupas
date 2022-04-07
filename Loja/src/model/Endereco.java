@@ -1,12 +1,22 @@
 package model;
-
+/**
+ * Classe que representa o Endereço do Usuário
+ * @author Luan Melo
+ * @param pais País do Usuário
+ * @param estado Estado do Usuário
+ * @param cidade Cidade do Usuário
+ * @param numeroResidencia Número da Residência do Usuário
+ * @param cep CEP do Usuário
+ * @param referencia Referência para encontrar a residência do Usuário
+ * @param usuario Usuário que possui o Endereço
+ */
 public class Endereco {
 
 	 private String pais;
 	 private String estado;
 	 private String cidade;
-	 private int numeroResidencia;
-	 private int cep;
+	 private long numeroResidencia;
+	 private long cep;
 	 private String referencia;
 	 private Usuario usuario;
 	
@@ -14,14 +24,13 @@ public class Endereco {
 		this.usuario = usuario;
 	}
 
-	public Endereco(String p, String e, String c, int n, int ce, String r, Usuario u) {
+	public Endereco(String p, String e, String c, long l, long m, String r) {
 		this.pais = p;
 		this.estado = e;
 		this.cidade = c;
-		this.numeroResidencia = n;
-		this.cep = ce;
+		this.numeroResidencia = l;
+		this.cep = m;
 		this.referencia = r;
-		this.usuario = u;
 	}
 	
 	//Gets e sets
@@ -49,19 +58,19 @@ public class Endereco {
 		this.cidade = cidade;
 	}
 
-	public int getNumeroResidencia() {
+	public long getNumeroResidencia() {
 		return numeroResidencia;
 	}
 
-	public void setNumeroResidencia(int numeroResidencia) {
+	public void setNumeroResidencia(long numeroResidencia) {
 		this.numeroResidencia = numeroResidencia;
 	}
 
-	public int getCep() {
+	public long getCep() {
 		return cep;
 	}
 
-	public void setCep(int cep) {
+	public void setCep(long cep) {
 		this.cep = cep;
 	}
 

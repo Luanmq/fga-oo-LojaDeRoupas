@@ -1,7 +1,16 @@
 package model;
 
 import java.util.ArrayList;
-
+/**
+ * Classe que armazena os principais dados do sistema
+ * @author Luan Melo
+ * @param usuarioPrincipal Instância de Usuário que é usada para as funcionalidades do sistema
+ * @param usuarios ArrayList de Usuários cadastrados no sistema
+ * @params acessoriosComprados ArrayList de Acessórios Comprados pelo Usuário
+ * @param roupasCompradas ArrayList de Roupas Compradas pelo Usuário
+ * @param acessoriosAVenda ArrayList de Acessórios que estão à venda no sistema
+ * @param roupasAVenda ArrayList de Roupas que estão à venda no sistema
+ */
 public class Dados {
 	//Usuario responsavel pelas acoes no sistema
 	private Usuario usuarioPrincipal = new Usuario();
@@ -16,6 +25,9 @@ public class Dados {
 	private ArrayList<Acessorio> acessoriosAVenda = new ArrayList<>();
 	private ArrayList<Roupa> roupasAVenda = new ArrayList<>();
 	
+	/**
+	 * Método para inicializar os dados pré-cadastrados no sistema
+	 */
 	//Pre cadastro de dados
 	public void precadastros() {
 		  Usuario bruno = new Usuario();

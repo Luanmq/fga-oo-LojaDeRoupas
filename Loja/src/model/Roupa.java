@@ -1,5 +1,12 @@
 package model;
 import java.util.Scanner;
+/**
+ * Classe que representa as Roupas que serão vendidas no sistema, herda atributos da Classe Produto
+ * @author Luan Melo
+ * @param tamanho Tamanho da Roupa, podendo ser: PP, P, M, G, GG
+ * @param tecido Tecido da Roupa
+ * @param estampa String para informa qual a estampa da Roupa
+ */
 
 public class Roupa extends Produto {
 	Scanner ler = new Scanner(System.in);

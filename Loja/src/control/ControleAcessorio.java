@@ -3,25 +3,30 @@ package control;
 import java.util.ArrayList;
 
 import model.*;
-
+/**
+ * Responsável pelas operações o Acessório
+ * @author Lucas
+ * @param acessoriosComprados Array dos Acessórios Comprados pelo Usuário
+ * @param acessoriosAVenda Array dos Acessórios que estão à venda
+ */
 public class ControleAcessorio {
 	
-	private ArrayList<Acessorio> ac = new ArrayList<>();
-	private ArrayList<Acessorio> av = new ArrayList<>();
+	private ArrayList<Acessorio> acessoriosComprados = new ArrayList<>();
+	private ArrayList<Acessorio> acessoriosAVenda = new ArrayList<>();
 	
 	public ControleAcessorio (ControleDados d) {
-		ac = d.getAcessoriosComprados();
-		av = d.getAcessoriosAVenda();
+		acessoriosComprados = d.getAcessoriosComprados();
+		acessoriosAVenda = d.getAcessoriosAVenda();
 	}
 
 	//Coloca um acessorio a venda
 	public boolean cadastrarAcessorio(String[] dadosAcessorio, Usuario usuario) {
-		if(!dadosAcessorio[4].matches("[0-9]+") || !dadosAcessorio[8].matches("[0-9]+") || 
-				!dadosAcessorio[9].matches("[0-9]+") || !dadosAcessorio[10].matches("[0-9]+")) {
-			return false;
-		}
 		if(dadosAcessorio[0].isEmpty() || dadosAcessorio[1].isEmpty() || dadosAcessorio[2].isEmpty() || dadosAcessorio[3].isEmpty() || dadosAcessorio[4].isEmpty() || dadosAcessorio[5].isEmpty() ||
 				dadosAcessorio[6].isEmpty() || dadosAcessorio[7].isEmpty() || dadosAcessorio[8].isEmpty() || dadosAcessorio[9].isEmpty() || dadosAcessorio[10].isEmpty()){
+			return false;
+		}
+		if(!dadosAcessorio[4].matches("[0-9]+") || !dadosAcessorio[8].matches("[0-9]+") || 
+				!dadosAcessorio[9].matches("[0-9]+") || !dadosAcessorio[10].matches("[0-9]+")) {
 			return false;
 		}
 		if(!dadosAcessorio[0].matches("[A-Za-z ]+") || !dadosAcessorio[6].matches("[A-Za-z ]+") ){
@@ -40,6 +45,18 @@ public class ControleAcessorio {
 	
 	//Salva os dados editados de um acessorio
 	public boolean salvarAcessorio(String[] dadosAcessorio, Usuario usuario, int posicao) {
+		if(dadosAcessorio[0].isEmpty() || dadosAcessorio[1].isEmpty() || dadosAcessorio[2].isEmpty() || dadosAcessorio[3].isEmpty() || dadosAcessorio[4].isEmpty() || dadosAcessorio[5].isEmpty() ||
+				dadosAcessorio[6].isEmpty() || dadosAcessorio[7].isEmpty() || dadosAcessorio[8].isEmpty() || dadosAcessorio[9].isEmpty() || dadosAcessorio[10].isEmpty()){
+			return false;
+		}
+		if(!dadosAcessorio[4].matches("[0-9]+") || !dadosAcessorio[8].matches("[0-9]+") || 
+				!dadosAcessorio[9].matches("[0-9]+") || !dadosAcessorio[10].matches("[0-9]+")) {
+			return false;
+		}
+		if(!dadosAcessorio[0].matches("[A-Za-z ]+") || !dadosAcessorio[6].matches("[A-Za-z ]+") ){
+			return false;
+		}
+		
 		ControleDados.getD().getAcessoriosAVenda().get(posicao).setNome(dadosAcessorio[0]);
 		ControleDados.getD().getAcessoriosAVenda().get(posicao).setDepartamento(dadosAcessorio[1]);
 		ControleDados.getD().getAcessoriosAVenda().get(posicao).setDescricao(dadosAcessorio[2]);
@@ -70,115 +87,115 @@ public class ControleAcessorio {
 	
 	//Gets e sets
 	public ArrayList<Acessorio> getAc() {
-		return ac;
+		return acessoriosComprados;
 	}
 
-	public void setAc(ArrayList<Acessorio> ac) {
-		this.ac = ac;
+	public void setAc(ArrayList<Acessorio> acessoriosComprados) {
+		this.acessoriosComprados = acessoriosComprados;
 	}
 
 	public ArrayList<Acessorio> getAv() {
-		return av;
+		return acessoriosAVenda;
 	}
 
-	public void setAv(ArrayList<Acessorio> av) {
-		this.av = av;
+	public void setAv(ArrayList<Acessorio> acessoriosAVenda) {
+		this.acessoriosAVenda = acessoriosAVenda;
 	}
 	
 	public String getNomeAC(int i) {
-		return ac.get(i).getNome();
+		return acessoriosComprados.get(i).getNome();
 	}
 	
 	public String getDepartamentoAC(int i) {
-		return ac.get(i).getDepartamento();
+		return acessoriosComprados.get(i).getDepartamento();
 	}
 	
 	public String getDescricaoAC(int i) {
-		return ac.get(i).getDescricao();
+		return acessoriosComprados.get(i).getDescricao();
 	}
 	
 	public String getMarcaAC(int i) {
-		return ac.get(i).getMarca();
+		return acessoriosComprados.get(i).getMarca();
 	}
 	
 	public Double getPrecoAC(int i) {
-		return ac.get(i).getPreco();
+		return acessoriosComprados.get(i).getPreco();
 	}
 	
 	public String getCondicaoAC(int i) {
-		return ac.get(i).getCondicao();
+		return acessoriosComprados.get(i).getCondicao();
 	}
 	
 	public String getCorAC(int i) {
-		return ac.get(i).getCor();
+		return acessoriosComprados.get(i).getCor();
 	}
 
 	public Usuario getUsuarioAC(int i) {
-		return ac.get(i).getUsuario();
+		return acessoriosComprados.get(i).getUsuario();
 	}
 	
 	public String getMaterialAC(int i) {
-		return ac.get(i).getMaterial();
+		return acessoriosComprados.get(i).getMaterial();
 	}
 	
 	public double getPesoAC(int i) {
-		return ac.get(i).getPeso();
+		return acessoriosComprados.get(i).getPeso();
 	}
 	
 	public double getMedidaLarguraAC(int i) {
-		return ac.get(i).getMedidaLargura();
+		return acessoriosComprados.get(i).getMedidaLargura();
 	}
 	
 	public double getMedidaAlturaAC(int i) {
-		return ac.get(i).getMedidaAltura();
+		return acessoriosComprados.get(i).getMedidaAltura();
 	}
 	
 	public String getNomeAV(int i) {
-		return av.get(i).getNome();
+		return acessoriosAVenda.get(i).getNome();
 	}
 	
 	public String getDepartamentoAV(int i) {
-		return av.get(i).getDepartamento();
+		return acessoriosAVenda.get(i).getDepartamento();
 	}
 	
 	public String getDescricaoAV(int i) {
-		return av.get(i).getDescricao();
+		return acessoriosAVenda.get(i).getDescricao();
 	}
 	
 	public String getMarcaAV(int i) {
-		return av.get(i).getMarca();
+		return acessoriosAVenda.get(i).getMarca();
 	}
 	
 	public Double getPrecoAV(int i) {
-		return av.get(i).getPreco();
+		return acessoriosAVenda.get(i).getPreco();
 	}
 	
 	public String getCondicaoAV(int i) {
-		return av.get(i).getCondicao();
+		return acessoriosAVenda.get(i).getCondicao();
 	}
 	
 	public String getCorAV(int i) {
-		return av.get(i).getCor();
+		return acessoriosAVenda.get(i).getCor();
 	}
 
 	public Usuario getUsuarioAV(int i) {
-		return av.get(i).getUsuario();
+		return acessoriosAVenda.get(i).getUsuario();
 	}
 	
 	public String getMaterialAV(int i) {
-		return av.get(i).getMaterial();
+		return acessoriosAVenda.get(i).getMaterial();
 	}
 	
 	public double getPesoAV(int i) {
-		return av.get(i).getPeso();
+		return acessoriosAVenda.get(i).getPeso();
 	}
 	
 	public double getMedidaLarguraAV(int i) {
-		return av.get(i).getMedidaLargura();
+		return acessoriosAVenda.get(i).getMedidaLargura();
 	}
 	
 	public double getMedidaAlturaAV(int i) {
-		return av.get(i).getMedidaAltura();
+		return acessoriosAVenda.get(i).getMedidaAltura();
 	}	
 
 }
