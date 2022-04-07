@@ -22,59 +22,6 @@ import model.Usuario;
 /**
  * Tela responsável por mostrar os detalhes dos Produtos
  * @author Luan Melo
- * @param janela JFrame que representa a Tela a ser executada
- * @param labelNome JLabel usado para mostrar o nome de algum produto
- * @param valorNome JTextField usado para mostrar o nome cadastrado
- * @param labelDepartamento JLabel usado para mostrar o departamento de algum produto
- * @param departamentos String com os tipos de departamentos possíveis no sistema
- * @param comboboxDepartamento Combobox com os tipos de departamentos
- * @param labelDescricao JLabel usado para mostrar a descrição de algum produto
- * @param valorDescricao JTextField usado para mostrar a descrição cadastrada
- * @param labelMarca JLabel usado para mostrar a marca de algum produto
- * @param valorMarca JTextField usado para mostrar a marca cadastrada
- * @param labelPreco JLabel usado para mostrar o preço de algum produto
- * @param valorPreco JTextField usado para mostrar o preço cadastrado
- * @param labelCondicao JLabel usado para mostrar a condição de algum produto
- * @param condicao String com os tipos de condições possíveis no sistema
- * @param comboboxCondicao Combobox com os tipos de condições
- * @param labelCor JLabel usado para mostrar a cor de algum produto
- * @param valorCor JTextField usado para mostrar a cor cadastrada
- * @param labelMaterial JLabel usado para mostrar o material de algum Acessório
- * @param valorMaterial JTextField usado para mostrar o material cadastrado
- * @param labelPeso JLabel usado para mostrar o peso de algum Acessório
- * @param valorPeso JTextField usado para mostrar o peso cadastrado
- * @param labelMedida JLabel usado para mostrar a medida de algum Acessório
- * @param valorMedidaLargura JTextField usado para mostrar a largura de alguma Acessório
- * @param labelTamanho JLabel usado para mostrar o tamanho de alguma Roupa
- * @param tamanhos String com os tipos de tamanhos possíveis de Roupa no sistema
- * @param comboboxTamanho Combobox com os diferentes tamanhos
- * @param labelTecido JLabel usado para mostrar a tecido de alguma Roupa
- * @param valorTecido JTextField usado para mostrar o tecido de alguma Roupa
- * @param labelEstampa JLabel usado para mostrar a estampa de alguma Roupa
- * @param valorEstampa JTextField usado para mostrar a estampa de alguma Roupa
- * 
- * @param novoDado Array de String para armazenar os valores dos Produtos e utilizar no Cadastro e validações
- * @param dados Instância de Controle de Dados utilizada para o acesso das mesmas informações em todo sistema. A instância tem o seu valor substituído por de outra instância já utilizada no código
- * @param imagem JLabel que representa a imagem dos produtos no sistema
- * 
- * @param botaoComprarAcessorio JButton responsável por chamar o método adicionarAcessorioNaSacola passando a posição do 
- * 		Acessório no Array de Acessórios à Venda.
- * @param botaoComprarRoupa As ações realizadas por esse botão são as mesmas de botaoComprarAcessorio,
- * 		porém as ações são feitas com uma Roupa.
- * @param botaoExcluirAcessorio JButton responsável por chamar o método excluirAcessorio passando a posição do
- * 		Acessório no Array de Acessórios à Venda.
- * @param botaoExcluirRoupa As ações realizadas por esse botão são as mesmas de botaoExcluirAcessorio,
- * 		porém as ações são feitas com uma Roupa.
- * @param botaoSalvarAcessorio JButton responsável pela edição dos dados. Ao apertar esse botão os valores dos JTextFields são passados para as posições
- * 		do Array novoDados.Com o Array cheio, é chamado o método salvarAcessorio, que é responsável pela
- * 		mudança de dados de um Acessório, passando novoDados como parâmetro e o Usuário que cadastrou o produto. O método salvarAcessorio retorna true ou false informando se os valores inseridos foram válidos ou não.
- * @param botaoSalvarRoupa As ações realizadas por esse botão são as mesmas de botaoSalvarAcessorio,
- * 		porém as ações são feitas com uma Roupa.
- * @param botaoCadastrarAcessorio JButton responsável pelo cadastro dos dados. Ao apertar esse botão os valores dos JTextFields são passados para as 
- * 		posições do Array novoDados. Com o Array cheio, é chamado o método cadastrarAcessorio,
- * 		que é responsável pelo cadastro de um Acessório, passando novoDados como parâmetro.
- * @param botaoCadastrarRoupa As ações realizadas por esse botão são as mesmas de botaoCadastrarAcessorio,
- * 		porém as ações são feitas com uma Roupa.
  */
 public class TelaDetalheProduto implements ActionListener {
 	private JFrame janela;
@@ -119,7 +66,7 @@ public class TelaDetalheProduto implements ActionListener {
 	private JButton botaoSalvarRoupa = new JButton("Salvar");
 	private JButton botaoCadastrarRoupa = new JButton("Cadastrar");
 
-	private String[] novoDado = new String[9];
+	private String[] novoDado = new String[11];
 	private ControleDados dados;
 	
 	private JLabel imagem = new JLabel();
@@ -128,17 +75,6 @@ public class TelaDetalheProduto implements ActionListener {
 	
 	/**
 	 * Método responsável por selecionar qual tipo de Tela abrir
-	 * @param d Instância de Controle de Dados já usada em outra parte do código
-	 * @param opcaoAcessorioRoupa Inteiro que define se será uma tela de Acessório ou Roupa.
-	 * (1) opcaoAcessorioRoupa = 1: Tela relacionada a Acessório.
-	 * (2) opcaoAcessorioRoupa = 2: Tela relacionada a Roupa
-	 * @param opcao Inteiro que define qual tipo de Tela será aberta.
-	 * (1) opcao = 1: Cadastrar uma Roupa ou Acessório.
-	 * (2) opcao = 2: Ver uma Roupa ou Acessório e adicionar na Sacola de Compras.
-	 * (3) opcao = 3: Apenas ver uma Roupa ou Acessório.
-	 * (4) opcao = 4: Editar ou excluir uma Roupa ou Acessório.
-	 * (5) opcao = 5: Apenas ver uma Roupa comprada ou Acessório comprado
-	 * @param posicaoProduto Posição de um Acessório no ArrayList de Acessórios à Venda ou de uma Roupa no ArrayList de Roupas à Venda 
 	 */
 	public void cadastrarEditarProduto(ControleDados d, int opcaoAcessorioRoupa, int opcao, int posicaoProduto){
 		dados = d;

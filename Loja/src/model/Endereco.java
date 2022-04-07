@@ -24,13 +24,14 @@ public class Endereco {
 		this.usuario = usuario;
 	}
 
-	public Endereco(String p, String e, String c, long l, long m, String r) {
+	public Endereco(String p, String e, String c, long l, long m, String r, Usuario user) {
 		this.pais = p;
 		this.estado = e;
 		this.cidade = c;
 		this.numeroResidencia = l;
 		this.cep = m;
 		this.referencia = r;
+		this.usuario = user;
 	}
 	
 	//Gets e sets

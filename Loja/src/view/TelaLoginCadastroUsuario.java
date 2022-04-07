@@ -17,16 +17,6 @@ import control.ControleUsuario;
 /**
  * Tela responsável pelo Login ou Cadastro de um Usuário
  * @author Lucas
- * @param janela JFrame que representa a Tela a ser executada
- * @param email JLabel usado para mostrar "Email" na tela
- * @param valorEmail JTextField usado para receber o email digitado
- * @param senha JLabel usado para mostrar "Senha" na tela
- * @param valorSenha JTextField usado para receber a senha digitada
- * 
- * @param logarUsuario JButton que quando apertado procura algum Usuário no programa com o mesmo email digitado
- * @param cadastrarUsuario JButton que chama o método cadastrarEditarUsuario na forma de Cadastrar na Tela Detalhe Usuario
- * 
- * @param dados Instância de Controle de Dados utilizada para o acesso das mesmas informações em todo sistema. A instância tem o seu valor substituído por de outra instância já utilizada no código
  */
 public class TelaLoginCadastroUsuario implements ActionListener{
 

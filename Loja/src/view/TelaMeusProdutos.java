@@ -19,25 +19,6 @@ import control.ControleDados;
 /**
  * Tela responsável por mostrar os Produtos à Venda do Usuário e os Produtos Comprados por ele
  * @author Luan Melo
- * @param janela JFrame que representa a Tela a ser executada
- * @param tituloAVenda JLabel usado para mostrar "Produtos a venda" na tela
- * @param tituloComprados JLabel usado para mostrar "Produtos comprados" na tela
- * 
- * @param listaNomesMeusAcessoriosAVenda Array de String responsável por guardar o nome dos Acessórios à Venda do Usuário
- * @param listaNomesMinhasRoupasAVenda Array de String responsável por guardar o nome das Roupas à Venda do Usuário
- * @param listaMeusAcessoriosAVenda JList responsável por receber o Array listaNomesMeusAcessoriosAVenda e mostrar na Tela
- * @param listaMinhasRoupasAVenda JList responsável por receber o Array listaNomesMinhasRoupasAVenda e mostrar na Tela
- * 
- * @param listaNomesMeusAcessoriosComprados Array de String responsável por guardar o nome dos Acessórios Comprados pelo Usuário
- * @param listaNomesMinhasRoupasCompradas Array de String responsável por guardar o nome das Roupas Compradas pelo Usuário
- * @param listaMeusAcessoriosComprados JList responsável por receber o Array listaNomesMeusAcessoriosComprados e mostrar na Tela
- * @param listaMinhasRoupasCompradas JList responsável por receber o Array listaNomesMinhasRoupasCompradas e mostrar na Tela
- * 
- * @param cadastrarRoupa JButton que quando apertado chama a Tela de Detalhe de um Produto
- * 		na forma de cadastro de uma Roupa
- * @param cadastrarAcessorio JButton que quando apertado chama a Tela de Detalhe de um Produto
- * 		na forma de cadastro de um Acessório
- * @param atualizar JButton que quando apertado atualiza os JList listaMeusAcessoriosAVenda e listaMinhasRoupasAVenda
  */
 public class TelaMeusProdutos implements ListSelectionListener, ActionListener{
 	private JFrame janela = new JFrame("Meus produtos");

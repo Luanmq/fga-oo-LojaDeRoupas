@@ -44,7 +44,16 @@ public class Dados {
 				enderecobruno.setNumeroResidencia(211);
 				enderecobruno.setCep(7711811);
 				enderecobruno.setReferencia("Shopping");
-				bruno.setEndereco(enderecobruno);
+				bruno.getEnderecos().add(enderecobruno);
+				
+		Endereco enderecobruno2 = new Endereco(bruno);
+				enderecobruno2.setPais("Brasil");
+				enderecobruno2.setEstado("DF");
+				enderecobruno2.setCidade("Guara");
+				enderecobruno2.setNumeroResidencia(437);
+				enderecobruno2.setCep(7711991);
+				enderecobruno2.setReferencia("Park shopping");
+				bruno.getEnderecos().add(enderecobruno2);
 				
 		  Roupa blusapreta = new Roupa(bruno);
 		  		blusapreta.setImagem("img/Roupa.0.png");

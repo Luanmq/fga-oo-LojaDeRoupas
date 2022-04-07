@@ -16,39 +16,7 @@ import model.Endereco;
 /**
  * Tela responsável por mostrar os detalhes do Usuário
  * @author Luan Melo
- * @param janela JFrame que representa a Tela a ser executada
- * @param labelNome JLabel usado para mostrar o nome de um Usuário
- * @param valorNome JTextField usado para mostrar o nome do Usuário cadastrado
- * @param labelSenha JLabel usado para mostrar a senha de um Usuário
- * @param valorSenha JTextField usado para mostrar a senha do Usuário cadastrado
- * @param labelTelefone JLabel usado para mostrar o telefone de um Usuário
- * @param valorTelefone JTextField usado para mostrar o telefone do Usuário cadastrado
- * @param labelCpf JLabel usado para mostrar o CPF de um Usuário
- * @param valorCpf JTextField usado para mostrar o CPF do Usuário cadastrado
- * @param labelEmail JLabel usado para mostrar o email de um Usuário
- * @param valorEmail JTextField usado para mostrar o email do Usuário cadastrado
- * @param labelPais JLabel usado para mostrar o País de um Usuário
- * @param valorPais JTextField usado para mostrar o País do Usuário cadastrado
- * @param labelEstado JLabel usado para mostrar o Estado de um Usuário
- * @param valorEstado JTextField usado para mostrar o Estado do Usuário cadastrado
- * @param labelCidade JLabel usado para mostrar a Cidade de um Usuário
- * @param valorCidade JTextField usado para mostrar a Cidade do Usuário cadastrado
- * @param labelNumeroResidencia JLabel usado para mostrar o Número da Residência de um Usuário
- * @param valorNumeroResidencia JTextField usado para mostrar o Número da Residência do Usuário cadastrado
- * @param labelCep JLabel usado para mostrar o CEP de um Usuário
- * @param valorCep JTextField usado para mostrar o CEP  do Usuário cadastrado
- * @param labelReferencia JLabel usado para mostrar a Referência da residência de um Usuário
- * @param valorReferencia JTextField usado para mostrar a Referência da residência do Usuário cadastrado
- * 
- * @param novoDado Array de String para armazenar os valores do Usuário e utilizar no Cadastro e validações
- * @param dados Instância de Controle de Dados utilizada para o acesso das mesmas informações em todo sistema. A instância tem o seu valor substituído por de outra instância já utilizada no código
-
- * @param botaoExcluir JButton que quando apertado chama o método excluirUsuario.
- * @param botaoSalvar JButton que quando apertado chama o método cadastrarSalvarUsuario. Ao apertar esse botão os dados do Usuário são armazenados
- * 		no Array novoDado, que por sua vez é passado para o método cadastrarSalvarUsuario.
- * @param botaoCadastrar JButton que quando apertado executa as mesmas funcionalidades que o botaoSalvar, porém se diferencia pela mensagem de erro.
  */
-
 public class TelaDetalheUsuario implements ActionListener {
 	private JFrame janela = new JFrame();
 	private JLabel labelNome = new JLabel("Nome: ");
@@ -79,6 +47,8 @@ public class TelaDetalheUsuario implements ActionListener {
 	private JButton botaoSalvar = new JButton("Salvar");
 	private JButton botaoCadastrar = new JButton("Cadastrar");
 	
+	private JButton botaoCadastrarEndereco = new JButton("Cadastrar Endereco");
+	
 	private JButton botaoAnterior = new JButton("<");
 	private JButton botaoProximo = new JButton(">");
 	
@@ -98,7 +68,7 @@ public class TelaDetalheUsuario implements ActionListener {
 	 */
 	public void cadastrarEditarUsuario(ControleDados d, int opcao) {
 		posicaoEndereco = 0;
-		valorPosicaoEndereco.setText(Integer.toString(posicaoEndereco));
+		valorPosicaoEndereco.setText(Integer.toString(posicaoEndereco+1));
 
 		dados = d;
 		int op = opcao;
@@ -122,6 +92,10 @@ public class TelaDetalheUsuario implements ActionListener {
 			valorReferencia = new JTextField(200);
 			
 			botaoCadastrar.setBounds(180, 350, 180, 25);
+			
+			botaoCadastrarEndereco.setBounds(30, 350, 150, 25);
+			
+			this.janela.add(botaoCadastrarEndereco);
 			this.janela.add(botaoCadastrar);
 			
 			janela.dispose();
@@ -138,7 +112,6 @@ public class TelaDetalheUsuario implements ActionListener {
 			valorEmail = new JTextField(dados.getUsuarioPrincipal().getEmail(),200);
 			
 			//Mostrando apenas o primeiro Endereco
-			System.out.println(new ControleUsuario(dados).getUp().getEnderecos().get(posicaoEndereco).getPais());
 			valorPais = new JTextField(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getPais());
 			valorEstado = new JTextField(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getEstado(),200);
 			valorCidade = new JTextField(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getCidade(),200);
@@ -148,6 +121,13 @@ public class TelaDetalheUsuario implements ActionListener {
 			
 			botaoSalvar.setBounds(180, 350, 90, 25);
 			botaoExcluir.setBounds(270, 350, 90, 25);
+			
+			botaoAnterior.setBounds(30, 350, 75, 25);
+			botaoProximo.setBounds(105, 350, 75, 25);
+			
+			this.janela.add(botaoAnterior);
+			this.janela.add(botaoProximo);
+			
 			this.janela.add(botaoSalvar);
 			this.janela.add(botaoExcluir);			
 		}
@@ -184,9 +164,6 @@ public class TelaDetalheUsuario implements ActionListener {
 		
 		labelReferencia.setBounds(30, 320, 150, 25);
 		valorReferencia.setBounds(180, 320, 180, 25);
-
-		botaoAnterior.setBounds(30, 350, 75, 25);
-		botaoProximo.setBounds(105, 350, 75, 25);
 		
 		labelTituloEndereco.setBounds(30, 380, 75, 25);
 		valorPosicaoEndereco.setBounds(105, 380, 35, 25);
@@ -213,8 +190,6 @@ public class TelaDetalheUsuario implements ActionListener {
 		this.janela.add(valorCep);
 		this.janela.add(labelReferencia);
 		this.janela.add(valorReferencia);
-		this.janela.add(botaoProximo);
-		this.janela.add(botaoAnterior);
 		this.janela.add(labelTituloEndereco);
 		this.janela.add(valorPosicaoEndereco);
 
@@ -223,6 +198,7 @@ public class TelaDetalheUsuario implements ActionListener {
 		this.janela.setSize(400, 450);
 		this.janela.setVisible(true);
 		
+		botaoCadastrarEndereco.addActionListener(this);
 		botaoProximo.addActionListener(this);
 		botaoAnterior.addActionListener(this);
 		botaoCadastrar.addActionListener(this);
@@ -234,27 +210,44 @@ public class TelaDetalheUsuario implements ActionListener {
 		Object src = e.getSource();
 		
 		if(src == botaoCadastrar) {
-			novoDado[0] = valorNome.getText();
-			novoDado[1] = valorSenha.getText();
-			novoDado[2] = valorTelefone.getText();
-			novoDado[3] = valorCpf.getText();
-			novoDado[4] = valorEmail.getText();
-			
-			novoDado[5] = valorPais.getText();
-			novoDado[6] = valorEstado.getText();
-			novoDado[7] = valorCidade.getText();
-			novoDado[8] = valorNumeroResidencia.getText();
-			novoDado[9] = valorCep.getText();
-			novoDado[10] = valorReferencia.getText();
-			
-			boolean auxiliarUsuario = new ControleUsuario(dados).cadastrarUsuario(novoDado);
-			boolean auxiliarEndereco = new ControleUsuario(dados).cadastrarEndereco(novoDado);
-			
-			if(auxiliarUsuario == true && auxiliarEndereco == true) {
-				mensagemSucessoCadastrar();	
+			if(posicaoEndereco == 0) {
+				novoDado[0] = valorNome.getText();
+				novoDado[1] = valorSenha.getText();
+				novoDado[2] = valorTelefone.getText();
+				novoDado[3] = valorCpf.getText();
+				novoDado[4] = valorEmail.getText();
 				
-			}else {
-				mensagemErroSalvar();
+				novoDado[5] = valorPais.getText();
+				novoDado[6] = valorEstado.getText();
+				novoDado[7] = valorCidade.getText();
+				novoDado[8] = valorNumeroResidencia.getText();
+				novoDado[9] = valorCep.getText();
+				novoDado[10] = valorReferencia.getText();
+
+				boolean auxiliar = new ControleUsuario(dados).cadastrarUsuario(novoDado);
+				
+				if(auxiliar == true) {
+					mensagemSucessoCadastrar();	
+					
+				}else {
+					mensagemErroSalvar();
+				}
+			}else if(posicaoEndereco > 0) {
+				novoDado[5] = valorPais.getText();
+				novoDado[6] = valorEstado.getText();
+				novoDado[7] = valorCidade.getText();
+				novoDado[8] = valorNumeroResidencia.getText();
+				novoDado[9] = valorCep.getText();
+				novoDado[10] = valorReferencia.getText();
+				
+				int posicaoUltimoUsuario = dados.getUsuarios().size()-1;
+				boolean auxiliar = new ControleUsuario(dados).cadastrarEndereco(novoDado,dados.getUsuarios().get(posicaoUltimoUsuario));
+				
+				if(auxiliar == true) {
+					mensagemSucessoCadastrar();	
+				}else {
+					mensagemErroSalvar();
+				}
 			}
 		}
 		
@@ -289,66 +282,91 @@ public class TelaDetalheUsuario implements ActionListener {
 			mensagemSucessoDeletar();
 		}
 		
-		if(src == botaoProximo) {
-			novoDado[0] = valorNome.getText();
-			novoDado[1] = valorSenha.getText();
-			novoDado[2] = valorTelefone.getText();
-			novoDado[3] = valorCpf.getText();
-			novoDado[4] = valorEmail.getText();
+		if(src == botaoCadastrarEndereco) {
+			//Se for o primeiro endereco
+			if(posicaoEndereco == 0) {
+				novoDado[0] = valorNome.getText();
+				novoDado[1] = valorSenha.getText();
+				novoDado[2] = valorTelefone.getText();
+				novoDado[3] = valorCpf.getText();
+				novoDado[4] = valorEmail.getText();
+				
+				novoDado[5] = valorPais.getText();
+				novoDado[6] = valorEstado.getText();
+				novoDado[7] = valorCidade.getText();
+				novoDado[8] = valorNumeroResidencia.getText();
+				novoDado[9] = valorCep.getText();
+				novoDado[10] = valorReferencia.getText();
+				
+				boolean auxiliar;
+				//Cadastra os dados do endereco e do usuario juntos
+				auxiliar = new ControleUsuario(dados).cadastrarUsuario(novoDado);
+				
+				//Se todos os dados foram preenchidos corretamente é permitido passar para o proximo endereco
+				if(auxiliar == true) {					
+					posicaoEndereco++;
+					valorPosicaoEndereco.setText(Integer.toString(posicaoEndereco+1));
+					
+					valorPais.setText("");
+					valorEstado.setText("");
+					valorCidade.setText("");
+					valorNumeroResidencia.setText("");
+					valorCep.setText("");
+					valorReferencia.setText("");
+				}else {
+					mensagemErroSalvar();
+				}
 			
-			novoDado[5] = valorPais.getText();
-			novoDado[6] = valorEstado.getText();
-			novoDado[7] = valorCidade.getText();
-			novoDado[8] = valorNumeroResidencia.getText();
-			novoDado[9] = valorCep.getText();
-			novoDado[10] = valorReferencia.getText();
-			
-			boolean auxiliar;
-			auxiliar = new ControleUsuario(dados).cadastrarEndereco(novoDado);
-			
-			//Se todos os dados foram preenchidos corretamente é permitido passar para o proximo endereco
-			if(auxiliar == true) {
-					boolean proximoVazio = false;
-					try {
-						//Tenta ler o pais do proximo endereço
-						dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getPais();
-			        } catch (IndexOutOfBoundsException error) {
-			        	//Ve se o endereco lido é vazio ou nao
-			        	proximoVazio = true;
-			        }
-			        
-					if(proximoVazio = true) {
-						posicaoEndereco++;
-						valorPosicaoEndereco.setText(Integer.toString(posicaoEndereco));
-						
-						valorPais.setText("");
-						valorEstado.setText("");
-						valorCidade.setText("");
-						valorNumeroResidencia.setText("");
-						valorCep.setText("");
-						valorReferencia.setText("");
-					}else {
-						posicaoEndereco++;
-						valorPosicaoEndereco.setText(Integer.toString(posicaoEndereco));
-						
-						System.out.println(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getPais());
-						valorPais.setText(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getPais());
-						valorEstado.setText(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getEstado());
-						valorCidade.setText(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getCidade());
-						valorNumeroResidencia.setText(Long.toString(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getNumeroResidencia()));
-						valorCep.setText(Long.toString(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getCep()));
-						valorReferencia.setText(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getReferencia());
-					}
-			}else {
-				mensagemErroSalvar();
+			//Se o endereco quando apertou o botao nao for 0
+			}else if(posicaoEndereco > 0) {							
+				novoDado[5] = valorPais.getText();
+				novoDado[6] = valorEstado.getText();
+				novoDado[7] = valorCidade.getText();
+				novoDado[8] = valorNumeroResidencia.getText();
+				novoDado[9] = valorCep.getText();
+				novoDado[10] = valorReferencia.getText();
+				
+				boolean auxiliar;
+				//Pega a posicao do ultimo usuario cadastrado
+				int posicaoUltimoUsuario = dados.getUsuarios().size()-1;
+				auxiliar = new ControleUsuario(dados).cadastrarEndereco(novoDado, dados.getUsuarios().get(posicaoUltimoUsuario));
+				
+				//Se todos os dados foram preenchidos corretamente é permitido passar para o proximo endereco
+				if(auxiliar == true) {
+					posicaoEndereco++;
+					valorPosicaoEndereco.setText(Integer.toString(posicaoEndereco+1));
+					
+					valorPais.setText("");
+					valorEstado.setText("");
+					valorCidade.setText("");
+					valorNumeroResidencia.setText("");
+					valorCep.setText("");
+					valorReferencia.setText("");
+				}else {
+					mensagemErroSalvar();
+				}
 			}
-	}
+		}
+		
+		if(src == botaoProximo) {
+			if(posicaoEndereco < dados.getUsuarioPrincipal().getEnderecos().size()-1) {
+				posicaoEndereco++;
+				valorPosicaoEndereco.setText(Integer.toString(posicaoEndereco+1));
+				
+				valorPais.setText(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getPais());
+				valorEstado.setText(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getEstado());
+				valorCidade.setText(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getCidade());
+				valorNumeroResidencia.setText(Long.toString(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getNumeroResidencia()));
+				valorCep.setText(Long.toString(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getCep()));
+				valorReferencia.setText(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getReferencia());
+			}
+		}
 		
 		if(src == botaoAnterior) {
 			if(posicaoEndereco != 0) {
 				posicaoEndereco--;
-				valorPosicaoEndereco.setText(Integer.toString(posicaoEndereco));
-				
+				valorPosicaoEndereco.setText(Integer.toString(posicaoEndereco+1));
+
 				valorPais.setText(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getPais());
 				valorEstado.setText(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getEstado());
 				valorCidade.setText(dados.getUsuarioPrincipal().getEnderecos().get(posicaoEndereco).getCidade());

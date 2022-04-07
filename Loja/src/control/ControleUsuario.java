@@ -22,7 +22,7 @@ public class ControleUsuario {
 	}
 	
 	//Realiza o cadastro de um novo endereco
-	public boolean cadastrarEndereco(String[] dadosUsuario) {
+	public boolean cadastrarEndereco(String[] dadosUsuario, Usuario user) {
 		if(dadosUsuario[5].isEmpty() || dadosUsuario[6].isEmpty() || dadosUsuario[7].isEmpty() || dadosUsuario[8].isEmpty() || dadosUsuario[9].isEmpty() || dadosUsuario[10].isEmpty()){
 			return false;
 		}
@@ -33,10 +33,8 @@ public class ControleUsuario {
 			return false;
 		}
 		
-		Endereco endereco = new Endereco(dadosUsuario[5], dadosUsuario[6], dadosUsuario[7], Long.parseLong(dadosUsuario[8]), Long.parseLong(dadosUsuario[9]),dadosUsuario[10]);
-		up.getEnderecos().add(endereco);
-		
-		System.out.println(up.getEnderecos());
+		Endereco endereco = new Endereco(dadosUsuario[5], dadosUsuario[6], dadosUsuario[7], Long.parseLong(dadosUsuario[8]), Long.parseLong(dadosUsuario[9]),dadosUsuario[10], user);
+		user.getEnderecos().add(endereco);
 		return true;
 	}
 	
@@ -76,17 +74,18 @@ public class ControleUsuario {
 		if(!dadosUsuario[4].contains("@")){
 			return false;			
 		}
-		if(!dadosUsuario[4].equals(up.getEmail())){
+		/*if(!dadosUsuario[4].equals(up.getEmail())){
 			for(int i = 0; i < ControleDados.getD().getUsuarios().size(); i++) {
 				if(ControleDados.getD().getUsuarios().get(i).getEmail().equals(dadosUsuario[4])) {
 					mensagemEmailExistente();
 					return false;
 				}
 			}
-		}
+		}*/
 			
 		Usuario user = new Usuario(dadosUsuario[0], dadosUsuario[1], Long.parseLong(dadosUsuario[2]), Long.parseLong(dadosUsuario[3]), dadosUsuario[4]);
-		u.add(user);
+		cadastrarEndereco(dadosUsuario, user);
+		ControleDados.getD().getUsuarios().add(user);
 		return true;
 	}
 	
@@ -182,6 +181,7 @@ public class ControleUsuario {
 					
 					//Tira os acessorios comprados de Acessorios A Venda
 					ControleDados.getD().getAcessoriosAVenda().remove(i);
+					break;
 				}
 			}
 		}
@@ -194,6 +194,7 @@ public class ControleUsuario {
 					
 					//Tira as roupas compradas de Roupas Venda
 			    	ControleDados.getD().getRoupasAVenda().remove(k);
+			    	break;
 				}
 			}
 		}
