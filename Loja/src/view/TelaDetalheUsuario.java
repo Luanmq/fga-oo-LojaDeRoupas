@@ -16,6 +16,7 @@ import model.Endereco;
 /**
  * Tela responsável por mostrar os detalhes do Usuário
  * @author Luan Melo
+ * @author Lucas
  */
 public class TelaDetalheUsuario implements ActionListener {
 	private JFrame janela = new JFrame();
@@ -64,7 +65,6 @@ public class TelaDetalheUsuario implements ActionListener {
 	 * @param opcao Inteiro que define qual tipo de Tela será aberta.
 	 * (1) opcao = 1: Tela para cadastro de um Usuário.
 	 * (2) opcao = 2: Tela para Editar ou Excluir um Usuário.
-	 * @param posicao Posição do Usuário no ArrayList de usuários 
 	 */
 	public void cadastrarEditarUsuario(ControleDados d, int opcao) {
 		posicaoEndereco = 0;
@@ -279,6 +279,7 @@ public class TelaDetalheUsuario implements ActionListener {
 			//Verificar se existem produtos relacionados ao usuario antes de excluir
 			new ControleUsuario(dados).excluirUsuario();
 			new TelaLoginCadastroUsuario();
+			
 			mensagemSucessoDeletar();
 		}
 		
@@ -387,9 +388,9 @@ public class TelaDetalheUsuario implements ActionListener {
 		JOptionPane.showMessageDialog(null,"Erro ao salvar os dados!\n "
 				+ "Pode ter ocorrido um dos quatro erros a seguir:  \n"
 				+ "1. Nem todos os campos foram preenchidos \n"
-				+ "2. Os campos CPF, telefone, numero da residencia e cep nao contem apenas numeros \n"
-				+ "3. O  email cadastrado ja existe ou nao e valido \n"
-				+ "4. Os campos nome, pais, estado e cidade nao contem apenas letras", null, 
+				+ "2. Os campos CPF, Telefone, Numero da Residencia e CEP nao contem apenas numeros \n"
+				+ "3. O  Email cadastrado ja existe ou nao e valido \n"
+				+ "4. Os campos Nome, Pais, Estado e Cidade nao contem apenas letras", null, 
 				JOptionPane.ERROR_MESSAGE);
 	}
 	

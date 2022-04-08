@@ -2,13 +2,7 @@ package model;
 /**
  * Classe que representa o Endereço do Usuário
  * @author Luan Melo
- * @param pais País do Usuário
- * @param estado Estado do Usuário
- * @param cidade Cidade do Usuário
- * @param numeroResidencia Número da Residência do Usuário
- * @param cep CEP do Usuário
- * @param referencia Referência para encontrar a residência do Usuário
- * @param usuario Usuário que possui o Endereço
+ * @author Lucas
  */
 public class Endereco {
 
@@ -20,10 +14,24 @@ public class Endereco {
 	 private String referencia;
 	 private Usuario usuario;
 	
+	 /**
+	 * Construtor de Endereco
+	 * @param usuario Usuário no qual será cadastrado
+	 */
 	public Endereco(Usuario usuario) {
 		this.usuario = usuario;
 	}
 
+	/**
+	 * Construtor de Endereco, passando o dados para cadastro
+	 * @param p país 
+	 * @param e estado
+	 * @param c cidade
+	 * @param l número da residência
+	 * @param m cep
+	 * @param r referência
+	 * @param user usuário
+	 */
 	public Endereco(String p, String e, String c, long l, long m, String r, Usuario user) {
 		this.pais = p;
 		this.estado = e;

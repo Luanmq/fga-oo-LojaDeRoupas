@@ -17,6 +17,7 @@ import control.ControleUsuario;
 /**
  * Tela responsável pelo Login ou Cadastro de um Usuário
  * @author Lucas
+ * @author Luan Melo
  */
 public class TelaLoginCadastroUsuario implements ActionListener{
 

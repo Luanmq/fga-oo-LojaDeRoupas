@@ -19,6 +19,7 @@ import control.ControleDados;
 /**
  * Tela responsável por mostrar os Produtos à Venda do Usuário e os Produtos Comprados por ele
  * @author Luan Melo
+ * @author Lucas
  */
 public class TelaMeusProdutos implements ListSelectionListener, ActionListener{
 	private JFrame janela = new JFrame("Meus produtos");

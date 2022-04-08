@@ -4,12 +4,7 @@ import java.util.ArrayList;
 /**
  * Classe que armazena os principais dados do sistema
  * @author Luan Melo
- * @param usuarioPrincipal Instância de Usuário que é usada para as funcionalidades do sistema
- * @param usuarios ArrayList de Usuários cadastrados no sistema
- * @params acessoriosComprados ArrayList de Acessórios Comprados pelo Usuário
- * @param roupasCompradas ArrayList de Roupas Compradas pelo Usuário
- * @param acessoriosAVenda ArrayList de Acessórios que estão à venda no sistema
- * @param roupasAVenda ArrayList de Roupas que estão à venda no sistema
+ * @author Lucas
  */
 public class Dados {
 	//Usuario responsavel pelas acoes no sistema
@@ -104,7 +99,7 @@ public class Dados {
 		  Roupa blusaverde = new Roupa(lucas);
 		  		blusaverde.setImagem("img/Roupa.1.png");
 			  	blusaverde.setNome("Blusa Verde Nike");
-			  	blusaverde.setDepartamento("Infatil");
+			  	blusaverde.setDepartamento("Infantil");
 			  	blusaverde.setDescricao("Blusa infantil verde da marca Nike");
 			  	blusaverde.setMarca("Nike");
 			  	blusaverde.setPreco(30.00);

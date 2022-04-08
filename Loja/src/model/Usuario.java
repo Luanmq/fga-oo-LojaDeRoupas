@@ -2,13 +2,7 @@ package model;
 /**
  * Classe que representa o Usuário do sistema
  * @author Luan Melo
- * @param nome Nome do Usuário
- * @param senha Senha do Usuário
- * @param telefone Telefone do Usuário
- * @param cpf CPF do Usuário
- * @param email Email do Usuário
- * @param endereco ArrayList que possui os Endereços cadastrados pelo Usuário
- * @param sacolausuario Representa a Sacola de Compras do Usuário
+ * @author Lucas
  */
 import java.util.ArrayList;
 
@@ -22,12 +16,21 @@ public class Usuario {
 	private ArrayList<Endereco> enderecos = new ArrayList<>();
 	private SacolaDeCompra sacolausuario = new SacolaDeCompra(this);
 	
+	/**
+	 * Construtor de Usuario
+	 */
 	public Usuario() {
-		
 	}
 	
+	/**
+	 * Construtor de Usuario
+	 * @param n nome 
+	 * @param s senha
+	 * @param t telefone
+	 * @param c cpf 
+	 * @param e email
+	 */
 	public Usuario(String n, String s, long t, long c, String e) {
-		
 		this.nome = n;
 		this.senha = s;
 		this.telefone = t;

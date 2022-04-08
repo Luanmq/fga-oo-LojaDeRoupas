@@ -22,6 +22,7 @@ import model.Usuario;
 /**
  * Tela responsável por mostrar os detalhes dos Produtos
  * @author Luan Melo
+ * @author Lucas
  */
 public class TelaDetalheProduto implements ActionListener {
 	private JFrame janela;
@@ -113,7 +114,6 @@ public class TelaDetalheProduto implements ActionListener {
 			//Ver acessorio a venda e Colocar na sacola
 			if(op == 2) {
 				String arquivo = dados.getAcessoriosAVenda().get(pos).getImagem();
-				System.out.println(arquivo);
 				ImageIcon icon = new ImageIcon(arquivo);
 				imagem = new JLabel(icon);
 						        
@@ -195,7 +195,6 @@ public class TelaDetalheProduto implements ActionListener {
 			//Ver acessorio comprado
 			if(op == 5) {
 				String arquivo = dados.getAcessoriosComprados().get(pos).getImagem();
-				System.out.println(arquivo);
 				ImageIcon icon = new ImageIcon(arquivo);
 				imagem = new JLabel(icon);
 				
@@ -381,8 +380,7 @@ public class TelaDetalheProduto implements ActionListener {
 				valorCor = new JTextField(dados.getRoupasAVenda().get(pos).getCor(),200);
 				valorTecido = new JTextField(dados.getRoupasAVenda().get(pos).getTecido(),200);
 				valorEstampa = new JTextField(dados.getRoupasAVenda().get(pos).getEstampa(),10);
-				String tamanho_cadastrado[] = {dados.getRoupasAVenda().get(pos).getTamanho()};
-				comboboxTamanho =  new JComboBox(tamanho_cadastrado);
+				comboboxTamanho =  new JComboBox(tamanhos);
 
 				botaoSalvarRoupa.setBounds(520, 320, 90, 25);
 				botaoExcluirRoupa.setBounds(610, 320, 90, 25);
@@ -626,18 +624,17 @@ public class TelaDetalheProduto implements ActionListener {
 		JOptionPane.showMessageDialog(null,"Erro ao salvar os dados!\n "
 				+ "Pode ter ocorrido um dos tres erros a seguir:  \n"
 				+ "1. Nem todos os campos foram preenchidos \n"
-				+ "2. Preco, peso, medida da largura e a medida da altura nao contem apenas numeros \n"
-				+ "3. Nome e cor nao contem apenas letras", null, 
+				+ "2. Preco, Peso, Medida da largura e a Medida da altura nao contem apenas numeros \n"
+				+ "3. Nome e Cor nao contem apenas letras", null, 
 				JOptionPane.ERROR_MESSAGE);
-		janela.dispose();
 	}
 	
 	public void mensagemErroSalvarRoupa() {
 		JOptionPane.showMessageDialog(null,"Erro ao salvar os dados!\n "
 				+ "Pode ter ocorrido um dos dois erros a seguir:  \n"
 				+ "1. Nem todos os campos foram preenchidos \n"
-				+ "2. Preco e peso devem conter apenas numeros", null, 
+				+ "2. Preco e Peso devem conter apenas numeros \n"
+				+ "3. Nome e Cor nao contem apenas letras", null, 
 				JOptionPane.ERROR_MESSAGE);
-		janela.dispose();
 	}
 }

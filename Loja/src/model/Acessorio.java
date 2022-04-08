@@ -4,10 +4,7 @@ import java.util.Scanner;
 /**
  * Classe que representa os Acessorios que serão vendidos no sistema, herda atributos da Classe Produto
  * @author Luan Melo
- * @param material Se refere a qual material o Acessório é feito
- * @param peso Peso do Acessório 
- * @param medidaLargura Medida da largura do Acessório
- * @param medidaAltura Medida da altura do Acessório
+ * @author Lucas
  */
 public class Acessorio extends Produto{
 	Scanner ler = new Scanner(System.in);
@@ -17,10 +14,29 @@ public class Acessorio extends Produto{
 	protected double medidaLargura;
 	protected double medidaAltura;
 	
+	/**
+	 * Construtor de Acessorio
+	 * @param usuario Usuário no qual será cadastrado
+	 */
 	public Acessorio(Usuario usuario) {
 		this.usuario = usuario;
 	}
 	
+	/**
+	 * Construtor de Acessorio, passando os dados para cadastro
+	 * @param n nome
+	 * @param dep departamento
+	 * @param des descrição
+	 * @param m marca
+	 * @param p preço
+	 * @param cond condição
+	 * @param co cor
+	 * @param u usuário
+	 * @param mat material
+	 * @param pe peso
+	 * @param ml medida da largura
+	 * @param ma medida da altura
+	 */
 	public Acessorio(String n, String dep, String des, String m, double p, String cond, String co, Usuario u, String mat, double pe, double ml,double ma) {
 		this.nome = n;
 		this.departamento = dep;
@@ -34,9 +50,7 @@ public class Acessorio extends Produto{
 		this.peso = pe;
 		this.medidaLargura = ml;
 		this.medidaAltura = ma;
-		
 	}
-	
 
 	//Gets e sets
 	public String getMaterial() {

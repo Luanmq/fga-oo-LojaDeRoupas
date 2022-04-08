@@ -24,6 +24,7 @@ import control.ControleDados;
  * Tela responsável por mostrar os Produtos que estão à venda e pelas funcionalidades de busca e filtragem
  * relacionadas aos Produtos
  * @author Luan Melo
+ * @author Lucas
  */
 public class TelaProdutosAVenda implements ActionListener, ItemListener, ListSelectionListener{
 	private JFrame janela;
@@ -232,7 +233,7 @@ public class TelaProdutosAVenda implements ActionListener, ItemListener, ListSel
 	  			int l = 0;
 	  			for(int i = 0; i < dados.getRoupasAVenda().size(); i++){
 		  			if(dados.getRoupasAVenda().get(i).getDepartamento().equals(filtroDepartamentos.getSelectedItem()) == true) {
-		  				listaNomesAcessoriosAVenda[l] = dados.getRoupasAVenda().get(i).getNome();
+		  				listaNomesRoupasAVenda[l] = dados.getRoupasAVenda().get(i).getNome();
 		  			}
 	  			
 		  			l++;
@@ -263,7 +264,7 @@ public class TelaProdutosAVenda implements ActionListener, ItemListener, ListSel
   			int l = 0;
   			for(int i = 0; i < dados.getRoupasAVenda().size(); i++){
 	  			if(dados.getRoupasAVenda().get(i).getDepartamento().equals(filtroDepartamentos.getSelectedItem()) == true) {
-	  				listaNomesAcessoriosAVenda[l] = dados.getRoupasAVenda().get(i).getNome();
+	  				listaNomesRoupasAVenda[l] = dados.getRoupasAVenda().get(i).getNome();
 	  			}
   			
 	  			l++;
@@ -293,7 +294,7 @@ public class TelaProdutosAVenda implements ActionListener, ItemListener, ListSel
   			int l = 0;
   			for(int i = 0; i < dados.getRoupasAVenda().size(); i++){
 	  			if(dados.getRoupasAVenda().get(i).getDepartamento().equals(filtroDepartamentos.getSelectedItem()) == true) {
-	  				listaNomesAcessoriosAVenda[l] = dados.getRoupasAVenda().get(i).getNome();
+	  				listaNomesRoupasAVenda[l] = dados.getRoupasAVenda().get(i).getNome();
 	  			}
   			
 	  			l++;
@@ -323,7 +324,7 @@ public class TelaProdutosAVenda implements ActionListener, ItemListener, ListSel
   			int l = 0;
   			for(int i = 0; i < dados.getRoupasAVenda().size(); i++){
 	  			if(dados.getRoupasAVenda().get(i).getDepartamento().equals(filtroDepartamentos.getSelectedItem()) == true) {
-	  				listaNomesAcessoriosAVenda[l] = dados.getRoupasAVenda().get(i).getNome();
+	  				listaNomesRoupasAVenda[l] = dados.getRoupasAVenda().get(i).getNome();
 	  			}
   			
 	  			l++;

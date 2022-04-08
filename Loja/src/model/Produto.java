@@ -2,14 +2,7 @@ package model;
 /**
  * Classe que representa os Produtos cadastrados no sistema
  * @author Luan Melo
- * @param imagem String contendo o caminho para o arquivo da imagem do Produto
- * @param nome Nome do Produto
- * @param departamento Departamento do Produto, podendo ser: Masculino, Feminino, Infantil ou Unissex
- * @param marca Marca do Produto
- * @param preco Preço do Produto
- * @param condicao Condição do Produto, podendo ser: Ruim, Neutra, Boa ou Otima
- * @param cor Cor do Produto
- * @param usuario Usuario responsável por cadastrar o Produto
+  * @author Lucas
  */
 public abstract class Produto {
 	protected String imagem;

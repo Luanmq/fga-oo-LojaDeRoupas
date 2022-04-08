@@ -13,6 +13,7 @@ import control.ControleDados;
 /**
  * Tela Menu usada para se acessar as diversas partes do sistema
  * @author Luan Melo
+ * @author Lucas
  */
 public class TelaMenu implements ActionListener{
 	private static JFrame janela = new JFrame("Menu");
@@ -76,8 +77,7 @@ public class TelaMenu implements ActionListener{
 			new TelaMinhaSacola(dados);
 		
 		if(src == sair) {
-			janela.dispose();			
-			TelaLoginCadastroUsuario telaInicial = new TelaLoginCadastroUsuario();
+			janela.dispose();
 		}	
 	}
 	

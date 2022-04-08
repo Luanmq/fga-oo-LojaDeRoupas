@@ -4,10 +4,7 @@ import java.util.Scanner;
 /**
  * Classe que representa a Sacola De Compra do Usuário do sistema
  * @author Lucas 
- * @param valorTotal Soma de todos os preços dos produtos na Sacola
- * @param SacolaParaRoupas ArrayList que possui a divisão da Sacola de Compras para Roupas
- * @param SacolaParaAcessórios ArrayList que possui a divisão da Sacola de Compras para Acessórios
- * @param usuarioComprador Usuário que está comprando no sistema e utilizando a Sacola
+ * @author Luan Melo
  */
 public class SacolaDeCompra {
 	 Scanner ler = new Scanner(System.in);
@@ -17,6 +14,10 @@ public class SacolaDeCompra {
 	 private ArrayList<Acessorio> SacolaParaAcessorios = new ArrayList<>();
 	 private Usuario usuarioComprador;
 	 
+	 /**
+	 * Construtor de Sacola de Compra
+	 * @param usuario Usuário no qual será cadastrado
+	 */
 	 public SacolaDeCompra(Usuario usuario) {
 			this.usuarioComprador = usuario;
 	 }

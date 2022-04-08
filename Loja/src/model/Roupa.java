@@ -3,9 +3,7 @@ import java.util.Scanner;
 /**
  * Classe que representa as Roupas que serão vendidas no sistema, herda atributos da Classe Produto
  * @author Luan Melo
- * @param tamanho Tamanho da Roupa, podendo ser: PP, P, M, G, GG
- * @param tecido Tecido da Roupa
- * @param estampa String para informa qual a estampa da Roupa
+ * @author Lucas
  */
 
 public class Roupa extends Produto {
@@ -15,10 +13,28 @@ public class Roupa extends Produto {
 	protected String tecido;
 	protected String estampa;
 	
+	/**
+	 * Construtor de Roupa
+	 * @param usuario Usuário no qual será cadastrado
+	 */
 	public Roupa(Usuario usuario) {
 		this.usuario = usuario;
 	}
 	
+	/**
+	 * Construtor de Roupa, passando os dados para cadastro
+	 * @param n nome
+	 * @param dep departamento
+	 * @param des descrição
+	 * @param m marca
+	 * @param p preço
+	 * @param cond condição
+	 * @param co cor
+	 * @param u usuário
+	 * @param tam tamanho
+	 * @param t tecido
+	 * @param e estampa
+	 */
 	public Roupa (String n, String dep, String des, String m, double p, String cond, String co, Usuario u, String tam, String t, String e) {
 		this.nome = n;
 		this.departamento = dep;

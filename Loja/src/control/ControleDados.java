@@ -1,48 +1,56 @@
 package control;
 
 import java.util.ArrayList;
-
 import model.*;
 
+/**
+ * Realiza a instânciação da classe Dados que será utiliada no programa e manupilação de dados
+ * @author Luan Melo
+ * @author Lucas
+ */
+
 public class ControleDados {
-	
-	private static Dados d = new Dados();
-	
-	public ControleDados() {
-		d.precadastros();
-	}
 
-	//Gets e sets
-	public static Dados getD() {
-		return d;
-	}
+    private static Dados dados = new Dados();
 
-	public void setD(Dados d) {
-		ControleDados.d = d;
-	}
-	
-	public Usuario getUsuarioPrincipal() {
-		return ControleDados.d.getUsuarioPrincipal();
-	}
+    /**
+     * Construtor do ControleDados, inicializa o Dados d, com a função precadastros 
+     */
+    public ControleDados() {
+        dados.precadastros();
+    }
 
-	public ArrayList<Usuario> getUsuarios() {
-		return ControleDados.d.getUsuarios();
-	}
-	
-	public ArrayList<Acessorio> getAcessoriosComprados() {
-		return ControleDados.d.getAcessoriosComprados();
-	}
-	
-	public ArrayList<Roupa> getRoupasCompradas() {
-		return ControleDados.d.getRoupasCompradas();
-	}
-	
-	public ArrayList<Acessorio> getAcessoriosAVenda() {
-		return ControleDados.d.getAcessoriosAVenda();
-	}
-	
-	public ArrayList<Roupa> getRoupasAVenda() {
-		return ControleDados.d.getRoupasAVenda();
-	}
-	
+    //Gets e sets
+    public static Dados getDados() {
+        return dados;
+    }
+
+    public void setDados(Dados dados) {
+        ControleDados.dados = dados;
+    }
+
+    public Usuario getUsuarioPrincipal() {
+        return ControleDados.dados.getUsuarioPrincipal();
+    }
+
+    public ArrayList<Usuario> getUsuarios() {
+        return ControleDados.dados.getUsuarios();
+    }
+
+    public ArrayList<Acessorio> getAcessoriosComprados() {
+        return ControleDados.dados.getAcessoriosComprados();
+    }
+
+    public ArrayList<Roupa> getRoupasCompradas() {
+        return ControleDados.dados.getRoupasCompradas();
+    }
+
+    public ArrayList<Acessorio> getAcessoriosAVenda() {
+        return ControleDados.dados.getAcessoriosAVenda();
+    }
+
+    public ArrayList<Roupa> getRoupasAVenda() {
+        return ControleDados.dados.getRoupasAVenda();
+    }
+
 }
